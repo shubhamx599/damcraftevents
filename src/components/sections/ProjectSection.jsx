@@ -1,144 +1,199 @@
 import React, { useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  RiArrowRightLine,
+  RiPlayLargeFill,
+  RiStarFill,
+  RiUserHeartLine,
+  RiCalendarEventLine,
+  RiTeamLine,
+} from "@remixicon/react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Sphere, MeshDistortMaterial } from "@react-three/drei";
 
 import twogoodgo from "../../assets/videos/twogoodgo.mp4";
 import obys from "../../assets/videos/obys.mp4";
 import ScrollFloat from "../ui/ScrollFloat";
-import ReadMoreButton from "../ui/ReadMoreButton";
 
-// Enhanced Service Video Component with 3D Effects
-const ServiceVideo = ({ videoSrc, title, description, delay = 0 }) => {
-  const containerRef = useRef(null);
-  const videoRef = useRef(null);
+// 3D Background Sphere
+const FloatingSphere = () => {
+  const meshRef = useRef();
+
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x =
+        Math.sin(state.clock.elapsedTime * 0.2) * 0.1;
+      meshRef.current.rotation.y =
+        Math.sin(state.clock.elapsedTime * 0.3) * 0.1;
+      meshRef.current.position.y =
+        Math.sin(state.clock.elapsedTime * 0.4) * 0.1;
+    }
+  });
+
+  return (
+    <Sphere ref={meshRef} args={[1, 100, 200]} scale={2.5}>
+      <MeshDistortMaterial
+        color="#ff6b6b"
+        attach="material"
+        distort={0.4}
+        speed={1.2}
+        roughness={0.2}
+        metalness={0.1}
+      />
+    </Sphere>
+  );
+};
+
+// Service Card Component
+const ServiceCard = ({
+  title,
+  description,
+  videoSrc,
+  index,
+  isFeatured = false,
+}) => {
+  const cardRef = useRef();
+  const videoRef = useRef();
 
   useEffect(() => {
-    const container = containerRef.current;
+    const card = cardRef.current;
     const video = videoRef.current;
 
     const handleEnter = () => {
       if (video) video.play();
-
-      gsap.to(container, {
-        scale: 1.05,
-        rotationY: 5,
-        duration: 0.5,
-        ease: "power2.out",
-      });
-
-      gsap.to(video, {
-        filter: "brightness(1.2) contrast(1.1)",
-        duration: 0.5,
+      gsap.to(card, {
+        y: -10,
+        scale: 1.02,
+        duration: 0.3,
         ease: "power2.out",
       });
     };
 
     const handleLeave = () => {
       if (video) video.pause();
-
-      gsap.to(container, {
+      gsap.to(card, {
+        y: 0,
         scale: 1,
-        rotationY: 0,
-        duration: 0.5,
-        ease: "power2.out",
-      });
-
-      gsap.to(video, {
-        filter: "brightness(1) contrast(1)",
-        duration: 0.5,
+        duration: 0.3,
         ease: "power2.out",
       });
     };
 
-    if (container) {
-      container.addEventListener("mouseenter", handleEnter);
-      container.addEventListener("mouseleave", handleLeave);
+    if (card) {
+      card.addEventListener("mouseenter", handleEnter);
+      card.addEventListener("mouseleave", handleLeave);
     }
 
     return () => {
-      if (container) {
-        container.removeEventListener("mouseenter", handleEnter);
-        container.removeEventListener("mouseleave", handleLeave);
+      if (card) {
+        card.removeEventListener("mouseenter", handleEnter);
+        card.removeEventListener("mouseleave", handleLeave);
       }
     };
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="service-video-item group relative cursor-pointer rounded-3xl overflow-hidden shadow-2xl"
-      style={{ animationDelay: `${delay}ms` }}
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.8,
+        delay: index * 0.1,
+        ease: "easeOut",
+      }}
+      viewport={{ once: true }}
+      className={`relative rounded-3xl overflow-hidden group cursor-pointer ${
+        isFeatured ? "lg:col-span-2" : ""
+      }`}
     >
-      <video
-        ref={videoRef}
-        src={videoSrc}
-        muted
-        loop
-        className="w-full h-80 object-cover transition-all duration-700"
-        data-cursor-size="60"
-        data-cursor-text="WATCH"
-      />
+      <div className="relative h-80 lg:h-96">
+        <video
+          ref={videoRef}
+          src={videoSrc}
+          muted
+          loop
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-6">
-        <div className="text-white transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
-          <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent">
-            {title}
-          </h3>
-          <p className="text-white/90 leading-relaxed">{description}</p>
+        {/* Content Overlay */}
+        <div className="absolute inset-0 p-8 flex flex-col justify-end">
+          <div className="transform translate-y-0 group-hover:translate-y-0 transition-transform duration-500">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+              <span className="text-white/80 text-sm font-semibold uppercase tracking-wider">
+                Service {String(index + 1).padStart(2, "0")}
+              </span>
+            </div>
 
-          {/* Action Button */}
-          <button className="mt-4 bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105">
-            Explore Service
-          </button>
+            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3">
+              {title}
+            </h3>
+
+            <p className="text-white/70 leading-relaxed mb-6">{description}</p>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center gap-2 w-fit"
+            >
+              Explore
+              <RiArrowRightLine size={16} />
+            </motion.button>
+          </div>
         </div>
-      </div>
 
-      {/* Top Badge */}
-      <div className="absolute top-4 left-4 bg-black/80 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
-        Featured
+        {/* Play Icon */}
+        <div className="absolute top-6 right-6 bg-black/60 text-white p-3 rounded-full backdrop-blur-sm border border-white/20">
+          <RiPlayLargeFill size={20} />
+        </div>
+
+        {/* Featured Badge */}
+        {isFeatured && (
+          <div className="absolute top-6 left-6 bg-gradient-to-r from-red-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+            Featured Service
+          </div>
+        )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
-// Main Services Section
+// Stat Card Component
+const StatCard = ({ number, label, icon: Icon, delay }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay }}
+    viewport={{ once: true }}
+    className="text-center p-8 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300"
+  >
+    <div className="flex justify-center mb-4">
+      <div className="p-4 rounded-2xl bg-white/10">
+        <Icon size={32} className="text-red-500" />
+      </div>
+    </div>
+    <h3 className="text-4xl lg:text-5xl font-black text-white mb-2">
+      {number}
+    </h3>
+    <p className="text-gray-300 text-lg font-medium">{label}</p>
+  </motion.div>
+);
+
 const ProjectSection = () => {
-  const sectionRef = useRef(null);
+  const navigate = useNavigate();
+  const sectionRef = useRef();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Creative entrance animation for service items
-    gsap.utils.toArray(".service-video-item").forEach((item, index) => {
-      gsap.fromTo(
-        item,
-        {
-          opacity: 0,
-          y: 100,
-          rotationX: 10,
-          scale: 0.8,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          rotationX: 0,
-          scale: 1,
-          duration: 1,
-          delay: index * 0.15,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: item,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    });
-
-    // Parallax effect for background
+    // Parallax effect
     gsap.to(sectionRef.current, {
-      backgroundPosition: "50% 100%",
+      yPercent: -20,
       ease: "none",
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -151,146 +206,193 @@ const ProjectSection = () => {
 
   const services = [
     {
-      video: twogoodgo,
       title: "Corporate Events",
       description:
-        "Conferences, corporate meet, product launches, seminars, brand promotions",
-      delay: 0,
-    },
-    {
-      video: obys,
-      title: "Social Events",
-      description:
-        "Anniversaries, birthdays, private parties, and personal celebrations",
-      delay: 100,
-    },
-    {
-      video: obys,
-      title: "Concerts & Entertainment",
-      description:
-        "Artist management, stage shows, live performances, and entertainment events",
-      delay: 200,
-    },
-    {
+        "Professional conferences, product launches, and corporate gatherings that leave lasting impressions.",
       video: twogoodgo,
-      title: "Brand Promotions",
-      description:
-        "Mall & market activations, expos, product displays, and brand engagement",
-      delay: 300,
+      featured: true,
     },
     {
+      title: "Social Celebrations",
+      description:
+        "Memorable birthdays, anniversaries, and private parties crafted with personal touch.",
       video: obys,
+      featured: false,
+    },
+    {
+      title: "Brand Activations",
+      description:
+        "Engaging mall and market activations that turn audiences into loyal customers.",
+      video: twogoodgo,
+      featured: false,
+    },
+    {
+      title: "Entertainment Shows",
+      description:
+        "Spectacular concerts, live performances, and entertainment events that captivate audiences.",
+      video: obys,
+      featured: false,
+    },
+    {
       title: "Talent Management",
       description:
-        "Anchors, hosts, supervisors, influencers, promoters, and celebrity collaborations",
-      delay: 400,
-    },
-    {
+        "Professional anchors, influencers, and celebrity collaborations for your events.",
       video: obys,
-      title: "Event Coordination",
-      description:
-        "Real-time supervision, logistics management, and flawless execution",
-      delay: 500,
+      featured: false,
     },
   ];
 
-  return (
-    <div
-      ref={sectionRef}
-      id="services"
-      className="relative px-40 font-semibold w-full flex flex-col gap-20 max-lg:px-4 py-20 bg-gradient-to-br from-gray-50 to-blue-50"
+  const stats = [
+    {
+      number: "400+",
+      label: "Events Executed",
+      icon: RiCalendarEventLine,
+    },
+    {
+      number: "50+",
+      label: "Happy Clients",
+      icon: RiUserHeartLine,
+    },
+    {
+      number: "10+",
+      label: "Years Experience",
+      icon: RiStarFill,
+    },
+    {
+      number: "40+",
+      label: "Team Members",
+      icon: RiTeamLine,
+    },
+  ];
+
+  const RevealText = ({ children, delay = 0 }) => (
+    <motion.div
+      initial={{ y: 100, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{
+        duration: 0.8,
+        delay,
+        ease: [0.25, 0.1, 0.25, 1],
+      }}
+      viewport={{ once: true, margin: "-50px" }}
     >
-      {/* Animated Header */}
-      <div className="text-center">
-        <ScrollFloat
-          animationDuration={1}
-          ease="back.inOut(2)"
-          scrollStart="center bottom+=50%"
-          scrollEnd="bottom bottom-=40%"
-          stagger={0.03}
-        >
-          Our Comprehensive Services
-        </ScrollFloat>
+      {children}
+    </motion.div>
+  );
 
-        <p className="medium text-gray-600 mt-4 max-w-2xl mx-auto">
-          From concept to execution, we deliver end-to-end event solutions that
-          create unforgettable experiences and drive meaningful results.
-        </p>
+  return (
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen bg-black text-white overflow-hidden py-30"
+    >
+      {/* 3D Background */}
+      <div className="absolute inset-0 z-0 opacity-10">
+        <Canvas>
+          <ambientLight intensity={0.5} />
+          <pointLight position={[10, 10, 10]} />
+          <FloatingSphere />
+        </Canvas>
       </div>
 
-      {/* Creative Services Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
-        {services.map((service, index) => (
-          <ServiceVideo
-            key={index}
-            videoSrc={service.video}
-            title={service.title}
-            description={service.description}
-            delay={service.delay}
-          />
-        ))}
-      </div>
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70 z-5" />
 
-      {/* Enhanced Stats Section */}
-      <div className="grid grid-cols-4 gap-8 py-16 max-md:grid-cols-2 max-sm:grid-cols-1">
-        {[
-          {
-            number: "400+",
-            label: "Events Completed",
-            color: "from-green-500 to-blue-500",
-          },
-          {
-            number: "50+",
-            label: "Happy Clients",
-            color: "from-purple-500 to-pink-500",
-          },
-          {
-            number: "10+",
-            label: "Years Experience",
-            color: "from-orange-500 to-red-500",
-          },
-          {
-            number: "40+",
-            label: "Team Members",
-            color: "from-blue-500 to-purple-500",
-          },
-        ].map((stat, index) => (
-          <div
-            key={index}
-            className="service-video-item text-center p-6 rounded-3xl bg-white shadow-lg"
+      <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-20">
+          <ScrollFloat
+            animationDuration={1}
+            ease="back.inOut(2)"
+            scrollStart="center bottom+=50%"
+            scrollEnd="bottom bottom-=40%"
+            stagger={0.03}
+            textClassName="text-white"
           >
-            <h3
-              className={`mlarge font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}
-            >
-              {stat.number}
-            </h3>
-            <p className="medium text-gray-600 mt-2">{stat.label}</p>
-            <div
-              className={`w-12 h-1 bg-gradient-to-r ${stat.color} mx-auto mt-3 rounded-full`}
-            ></div>
-          </div>
-        ))}
-      </div>
+            Our Premium Services
+          </ScrollFloat>
 
-      {/* CTA Section */}
-      <div className="text-center">
-        <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl p-12 text-white">
-          <h2 className="mmedium font-bold mb-4">
-            Ready to Transform Your Vision into Reality?
-          </h2>
-          <p className="medium mb-8 opacity-90">
-            Let's collaborate to create an unforgettable experience that exceeds
-            your expectations.
-          </p>
-          <ReadMoreButton
-            label="Start Your Project"
-            to="/services"
-            variant="secondary"
-            size="large"
-          />
+          <RevealText delay={0.2}>
+            <p className="text-xl text-gray-300 mt-6 max-w-3xl mx-auto">
+              Experience the difference with our comprehensive event solutions.
+              From intimate gatherings to grand celebrations, we bring your
+              vision to life with unmatched creativity and precision.
+            </p>
+          </RevealText>
         </div>
+
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-30">
+          {services.map((service, index) => (
+            <ServiceCard
+              key={index}
+              title={service.title}
+              description={service.description}
+              videoSrc={service.video}
+              index={index}
+              isFeatured={service.featured}
+            />
+          ))}
+        </div>
+
+        {/* Stats Section */}
+        <div className="mb-30">
+          <RevealText delay={0.1}>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+                Trusted by{" "}
+                <span className="text-red-500">Industry Leaders</span>
+              </h2>
+              <p className="text-xl text-gray-300">
+                Our track record speaks for itself
+              </p>
+            </div>
+          </RevealText>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {stats.map((stat, index) => (
+              <StatCard
+                key={index}
+                number={stat.number}
+                label={stat.label}
+                icon={stat.icon}
+                delay={index * 0.1}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <RevealText delay={0.3}>
+          <div className="text-center">
+            <div className="bg-gradient-to-r from-red-600 to-pink-600 rounded-3xl p-12 lg:p-16 text-white shadow-2xl relative overflow-hidden">
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute inset-0 bg-black/20"></div>
+              </div>
+
+              <div className="relative z-10">
+                <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+                  Ready to Create Magic Together?
+                </h2>
+                <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+                  Let's transform your ideas into unforgettable experiences that
+                  will be remembered for years to come.
+                </p>
+                <motion.button
+                  onClick={() => navigate("/contact")}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-white text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center gap-3 mx-auto"
+                >
+                  Start Your Project
+                  <RiArrowRightLine className="group-hover:translate-x-1 transition-transform duration-300" />
+                </motion.button>
+              </div>
+            </div>
+          </div>
+        </RevealText>
       </div>
-    </div>
+    </section>
   );
 };
 
