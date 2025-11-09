@@ -2,8 +2,8 @@ import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import twogoodgo from "../../assets/videos/twogoodgo.mp4";
-import obys from "../../assets/videos/obys.mp4";
+import twogoodgo from "../../../assets/videos/twogoodgo.mp4";
+import obys from "../../../assets/videos/obys.mp4";
 import ScrollFloat from "../ui/ScrollFloat";
 import ReadMoreButton from "../ui/ReadMoreButton";
 
