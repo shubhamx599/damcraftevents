@@ -87,8 +87,7 @@ dam-craft-events
 │  │     ├─ ink.mp4
 │  │     ├─ mall.mp4
 │  │     ├─ market.mp4
-│  │     ├─ obys.mp4
-│  │     └─ twogoodgo.mp4
+│  │     └─ obys.mp4
 │  ├─ components
 │  │  ├─ layout
 │  │  │  ├─ Footer.jsx
