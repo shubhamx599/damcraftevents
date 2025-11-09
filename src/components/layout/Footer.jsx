@@ -14,45 +14,6 @@ const Footer = () => {
     scale: 1.01,
   });
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Animate footer elements on scroll
-    gsap.utils.toArray(".footer-element").forEach((element, index) => {
-      gsap.fromTo(
-        element,
-        {
-          opacity: 0,
-          y: 50,
-          rotationX: 10,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          rotationX: 0,
-          duration: 0.8,
-          delay: index * 0.1,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: element,
-            start: "top 90%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    });
-
-    // Floating animation for background elements
-    gsap.to(".floating-footer", {
-      y: -15,
-      duration: 4,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      stagger: 0.3,
-    });
-  }, []);
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -84,10 +45,6 @@ const Footer = () => {
       ref={footerRef}
       className="bg-gradient-to-br from-gray-900 to-black text-white mt-[5rem] relative overflow-hidden"
     >
-      {/* Floating Background Elements */}
-      <div className="floating-footer absolute top-20 left-10 w-16 h-16 bg-purple-500/20 rounded-full"></div>
-      <div className="floating-footer absolute bottom-40 right-20 w-24 h-24 bg-blue-500/15 rounded-full"></div>
-      <div className="floating-footer absolute top-1/3 left-1/4 w-12 h-12 bg-green-500/10 rounded-full"></div>
 
       {/* Hero Video Section */}
       <div className="relative h-[100vh] max-md:h-[50vh] w-full overflow-hidden">
