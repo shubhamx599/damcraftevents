@@ -2,46 +2,9 @@ import { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {
-  RiArrowRightLine,
-  RiFolderOpenLine,
-} from "@remixicon/react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Sphere, MeshDistortMaterial } from "@react-three/drei";
+import { RiArrowRightLine, RiFolderOpenLine } from "@remixicon/react";
 
 // Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger);
-
-// 3D Background Component
-const AnimatedSphere = () => {
-  const meshRef = useRef();
-
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x =
-        Math.sin(state.clock.elapsedTime * 0.3) * 0.1;
-      meshRef.current.rotation.y =
-        Math.sin(state.clock.elapsedTime * 0.2) * 0.1;
-      meshRef.current.position.y =
-        Math.sin(state.clock.elapsedTime * 0.4) * 0.1;
-    }
-  });
-
-  return (
-    <Sphere ref={meshRef} args={[1, 100, 200]} scale={2.5}>
-      <MeshDistortMaterial
-        color="#ff6b6b"
-        attach="material"
-        distort={0.5}
-        speed={1.5}
-        roughness={0.2}
-        metalness={0.1}
-      />
-    </Sphere>
-  );
-};
-
 const HeroSection = () => {
   const navigate = useNavigate();
   const heroRef = useRef();
@@ -70,43 +33,6 @@ const HeroSection = () => {
         { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
         "-=0.4"
       );
-
-    // Parallax effect for hero
-    gsap.to(heroRef.current, {
-      yPercent: -30,
-      ease: "none",
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
-
-    // Floating elements animation
-    gsap.to(".floating-element-1", {
-      y: -30,
-      duration: 4,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    });
-
-    gsap.to(".floating-element-2", {
-      y: 40,
-      duration: 5,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    });
-
-    gsap.to(".floating-element-3", {
-      x: 20,
-      duration: 6,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    });
   }, []);
 
   return (
@@ -114,19 +40,7 @@ const HeroSection = () => {
       ref={heroRef}
       className="h-screen relative flex items-center justify-center overflow-hidden"
     >
-      {/* 3D Background */}
-      <div className="absolute inset-0 z-0 opacity-20">
-        <Canvas>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} />
-          <AnimatedSphere />
-        </Canvas>
-      </div>
-
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70 z-10" />
-
-      {/* Content */}
+      {/* Hero Title */}
       <div className="relative z-20 text-center px-6 max-w-6xl mx-auto">
         <motion.div ref={titleRef} className="mb-8">
           <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight">
