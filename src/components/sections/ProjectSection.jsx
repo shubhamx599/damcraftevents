@@ -6,7 +6,6 @@ import twogoodgo from "../../assets/videos/twogoodgo.mp4";
 import obys from "../../assets/videos/obys.mp4";
 import ScrollFloat from "../ui/ScrollFloat";
 import ReadMoreButton from "../ui/ReadMoreButton";
-import HoverRevealCard from "../ui/HoverRevealCard";
 
 // Enhanced Service Video Component with 3D Effects
 const ServiceVideo = ({ videoSrc, title, description, delay = 0 }) => {
