@@ -214,7 +214,7 @@ const StatsSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-30 bg-black text-white overflow-hidden"
+      className="relative py-30 pb-0 bg-black text-white overflow-hidden"
     >
       {/* 3D Background */}
       <div className="absolute inset-0 z-0 opacity-10">
