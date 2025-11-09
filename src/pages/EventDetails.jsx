@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import mainVideo from "../assets/1.mp4";
-import corporate from "../assets/corporate.mp4";
-import mall from "../assets/mall.mp4";
-import market from "../assets/market.mp4";
-import advertisement from "../assets/bike.mp4";
-import corp from "../assets/corp.mp4";
+import mainVideo from "../assets/videos/1.mp4";
+import corporate from "../assets/videos/corporate.mp4";
+import mall from "../assets/videos/mall.mp4";
+import market from "../assets/videos/market.mp4";
+import advertisement from "../assets/videos/bike.mp4";
+import corp from "../assets/videos/corp.mp4";
 
 const contentMap = {
   corporate: {
