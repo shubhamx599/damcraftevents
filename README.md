@@ -38,6 +38,7 @@ cd dam-craft-events
 
 
 
+
 ```
 dam-craft-events
 ├─ eslint.config.js
@@ -112,6 +113,7 @@ dam-craft-events
 │  │  └─ eventImages.js
 │  ├─ hooks
 │  │  ├─ useGsapFullWidthOnScroll.js
+│  │  ├─ useHorizontalScroll.js
 │  │  ├─ useScrollAnimation.js
 │  │  └─ useScrollMorph.js
 │  ├─ main.jsx
