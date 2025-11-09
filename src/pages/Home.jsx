@@ -57,7 +57,7 @@ const Home = () => {
       <StatsSection />
 
       {/* Main Video Section */}
-      <section className="py-20 px-4 lg:px-20">
+      <section className="py-20 pt-0 px-4 lg:px-20">
         <div className="max-w-6xl mx-auto">
           <RevealText>
             <div className="text-center mb-16">
