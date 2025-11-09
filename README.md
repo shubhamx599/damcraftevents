@@ -88,7 +88,7 @@ dam-craft-events
 │  │     ├─ mall.mp4
 │  │     ├─ market.mp4
 │  │     ├─ obys.mp4
-│  │     └─ twoGoodGo.mp4
+│  │     └─ twogoodgo.mp4
 │  ├─ components
 │  │  ├─ layout
 │  │  │  ├─ Footer.jsx
@@ -100,6 +100,7 @@ dam-craft-events
 │  │  │  └─ ProjectSection.jsx
 │  │  └─ ui
 │  │     ├─ CustomCursor.jsx
+│  │     ├─ HoverRevealCard.jsx
 │  │     ├─ logo.jsx
 │  │     ├─ MajorProjectItem.jsx
 │  │     ├─ ReadMoreButton.jsx
@@ -110,7 +111,8 @@ dam-craft-events
 │  │  └─ eventImages.js
 │  ├─ hooks
 │  │  ├─ useGsapFullWidthOnScroll.js
-│  │  └─ useScrollAnimation.js
+│  │  ├─ useScrollAnimation.js
+│  │  └─ useScrollMorph.js
 │  ├─ main.jsx
 │  ├─ pages
 │  │  ├─ About.jsx
