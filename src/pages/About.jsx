@@ -234,7 +234,7 @@ const About = () => {
           {values.map((value, index) => (
             <div
               key={index}
-              className="service-item text-center group p-6 rounded-3xl bg-white shadow-lg hover-lift"
+              className="service-item text-center group p-6 rounded-3xl bg-white shadow-lg"
             >
               <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-500">
                 <i className={`${value.icon} text-2xl text-white`}></i>
@@ -388,10 +388,10 @@ const About = () => {
         </p>
 
         <div className="flex gap-4 justify-center flex-wrap mt-8">
-          <button className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 magnetic-btn">
+          <button className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105">
             Start Your Project
           </button>
-          <button className="border border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300 hover:scale-105 magnetic-btn">
+          <button className="border border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300 hover:scale-105">
             Meet Our Team
           </button>
         </div>

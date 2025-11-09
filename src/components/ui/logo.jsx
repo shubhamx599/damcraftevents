@@ -80,7 +80,7 @@ const Logo = () => {
         {logos.map((logo, idx) => (
           <div 
             key={idx} 
-            className="logo-item flex flex-col items-center justify-center group cursor-pointer p-8 rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 hover-lift relative overflow-hidden"
+            className="logo-item flex flex-col items-center justify-center group cursor-pointer p-8 rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 relative overflow-hidden"
           >
             {/* Background Gradient on Hover */}
             <div className="absolute inset-0 bg-gradient-to-br from-transparent to-gray-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -105,17 +105,17 @@ const Logo = () => {
 
       {/* Enhanced Stats Section */}
       <div className="grid grid-cols-3 gap-8 mt-20 max-md:grid-cols-1 text-center">
-        <div className="stat-item p-6 rounded-3xl bg-white shadow-lg hover-lift">
+        <div className="stat-item p-6 rounded-3xl bg-white shadow-lg">
           <h3 className="mlarge font-bold text-green-600 mb-2">50+</h3>
           <p className="medium text-gray-600">Brand Partnerships</p>
           <div className="w-16 h-1 bg-gradient-to-r from-green-500 to-blue-500 mx-auto mt-3 rounded-full"></div>
         </div>
-        <div className="stat-item p-6 rounded-3xl bg-white shadow-lg hover-lift">
+        <div className="stat-item p-6 rounded-3xl bg-white shadow-lg">
           <h3 className="mlarge font-bold text-green-600 mb-2">100%</h3>
           <p className="medium text-gray-600">Client Satisfaction</p>
           <div className="w-16 h-1 bg-gradient-to-r from-green-500 to-blue-500 mx-auto mt-3 rounded-full"></div>
         </div>
-        <div className="stat-item p-6 rounded-3xl bg-white shadow-lg hover-lift">
+        <div className="stat-item p-6 rounded-3xl bg-white shadow-lg">
           <h3 className="mlarge font-bold text-green-600 mb-2">10+</h3>
           <p className="medium text-gray-600">Years Collaborating</p>
           <div className="w-16 h-1 bg-gradient-to-r from-green-500 to-blue-500 mx-auto mt-3 rounded-full"></div>
@@ -125,7 +125,7 @@ const Logo = () => {
       {/* CTA Section */}
       <div className="text-center mt-16 pt-8 border-t border-gray-200">
         <p className="medium text-gray-600 mb-6">Ready to join our prestigious client portfolio?</p>
-        <button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 hover:scale-105 magnetic-btn">
+        <button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 hover:scale-105">
           Start Your Project
         </button>
       </div>

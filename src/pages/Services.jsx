@@ -184,7 +184,7 @@ const Services = () => {
         {serviceCards.map((service, index) => (
           <div
             key={index}
-            className="service-item group relative p-8 rounded-3xl bg-white shadow-xl hover-lift overflow-hidden"
+            className="service-item group relative p-8 rounded-3xl bg-white shadow-xl overflow-hidden"
           >
             {/* Background Gradient */}
             <div
@@ -352,11 +352,11 @@ const Services = () => {
         <div className="flex gap-4 justify-center flex-wrap">
           <a
             href="#contact"
-            className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 magnetic-btn"
+            className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105"
           >
             Start Your Project
           </a>
-          <button className="border border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300 hover:scale-105 magnetic-btn">
+          <button className="border border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300 hover:scale-105">
             View Portfolio
           </button>
         </div>

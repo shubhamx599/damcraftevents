@@ -67,7 +67,7 @@ const ServiceVideo = ({ videoSrc, title, description, delay = 0 }) => {
   return (
     <div
       ref={containerRef}
-      className="service-video-item group relative cursor-pointer rounded-3xl overflow-hidden shadow-2xl hover-lift"
+      className="service-video-item group relative cursor-pointer rounded-3xl overflow-hidden shadow-2xl"
       style={{ animationDelay: `${delay}ms` }}
     >
       <video
@@ -258,7 +258,7 @@ const ProjectSection = () => {
         ].map((stat, index) => (
           <div
             key={index}
-            className="service-video-item text-center p-6 rounded-3xl bg-white shadow-lg hover-lift"
+            className="service-video-item text-center p-6 rounded-3xl bg-white shadow-lg"
           >
             <h3
               className={`mlarge font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}

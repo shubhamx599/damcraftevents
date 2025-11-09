@@ -165,7 +165,7 @@ const Work = () => {
           {filters.map((filter) => (
             <button
               key={filter.id}
-              className={`filter-btn px-6 py-3 rounded-full font-semibold transition-all duration-300 magnetic-btn ${
+              className={`filter-btn px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                 activeFilter === filter.id
                   ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
@@ -272,10 +272,10 @@ const Work = () => {
           exceeds expectations.
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
-          <button className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 magnetic-btn">
+          <button className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105">
             Start Your Project
           </button>
-          <button className="border border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300 hover:scale-105 magnetic-btn">
+          <button className="border border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300 hover:scale-105">
             View Case Studies
           </button>
         </div>

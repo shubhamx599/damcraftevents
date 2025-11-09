@@ -110,13 +110,13 @@ const Footer = () => {
             <div className="flex gap-4 justify-center mt-8 flex-wrap">
               <button
                 onClick={handleEmailClick}
-                className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 magnetic-btn"
+                className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105"
               >
                 Get In Touch
               </button>
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="border border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300 hover:scale-105 magnetic-btn"
+                className="border border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300 hover:scale-105"
               >
                 View Services
               </button>
@@ -225,7 +225,7 @@ const Footer = () => {
                     href={`https://${social.platform}.com`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-10 h-10 bg-gradient-to-r ${social.color} rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg magnetic-btn`}
+                    className={`w-10 h-10 bg-gradient-to-r ${social.color} rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg`}
                     aria-label={social.platform}
                   >
                     <i className={`ri-${social.platform}-line text-white`}></i>
@@ -261,7 +261,7 @@ const Footer = () => {
             {/* Scroll to Top Button */}
             <button
               onClick={scrollToTop}
-              className="small px-4 py-2 cursor-pointer bg-white/10 rounded-full hover:bg-white/20 transition-all duration-300 flex items-center gap-2 footer-element magnetic-btn hover:scale-105 backdrop-blur-sm"
+              className="small px-4 py-2 cursor-pointer bg-white/10 rounded-full hover:bg-white/20 transition-all duration-300 flex items-center gap-2 footer-element hover:scale-105 backdrop-blur-sm"
               aria-label="Scroll to top"
             >
               <i className="ri-arrow-up-line"></i>

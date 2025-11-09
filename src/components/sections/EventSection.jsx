@@ -153,7 +153,7 @@ const EventSection = () => {
         <p className="medium mb-6">Ready to bring your vision to life?</p>
         <button
           onClick={() => navigate("/services")}
-          className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 magnetic-btn"
+          className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105"
         >
           Explore All Services
           <i className="ri-arrow-right-line ml-2"></i>

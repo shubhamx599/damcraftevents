@@ -138,7 +138,7 @@ const Home = () => {
       {/* Stats Section with Creative Grid */}
       <div className="px-20 max-md:px-4">
         <div className="creative-grid gap-8 py-16">
-          <div className="grid-item-large bg-black text-white rounded-3xl p-8 hover-lift">
+          <div className="grid-item-large bg-black text-white rounded-3xl p-8">
             <h3 className="mlarge font-bold text-green-400 mb-4">400+</h3>
             <p className="medium">Successful Events Delivered</p>
             <p className="small mt-2 text-gray-300">
@@ -146,12 +146,12 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid-item-small bg-gradient-to-br from-green-500 to-green-600 text-white rounded-3xl p-6 hover-lift">
+          <div className="grid-item-small bg-gradient-to-br from-green-500 to-green-600 text-white rounded-3xl p-6">
             <h3 className="mmedium font-bold">50+</h3>
             <p className="small mt-2">Happy Clients</p>
           </div>
 
-          <div className="grid-item-medium bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-3xl p-6 hover-lift">
+          <div className="grid-item-medium bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-3xl p-6">
             <h3 className="mmedium font-bold">10+</h3>
             <p className="small mt-2">Years Experience</p>
           </div>

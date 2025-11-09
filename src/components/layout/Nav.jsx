@@ -203,7 +203,7 @@ const Nav = () => {
           <li className="hidden sm:block">
             <button
               onClick={() => navigate("/contact")}
-              className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full text-sm font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 hover:scale-105 shadow-lg magnetic-btn"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full text-sm font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 hover:scale-105 shadow-lg"
             >
               Get Quote
             </button>

@@ -5,7 +5,6 @@ import { gsap } from "gsap";
 const CustomCursor = () => {
   const circleRef = useRef(null);
   const isInteractiveRef = useRef(false);
-  const magneticElements = useRef([]);
 
   useEffect(() => {
     const circle = circleRef.current;
@@ -29,35 +28,6 @@ const CustomCursor = () => {
 
       xprev = e.clientX;
       yprev = e.clientY;
-
-      // Magnetic effect for buttons
-      magneticElements.current.forEach((element) => {
-        const rect = element.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-
-        const distance = Math.sqrt(
-          Math.pow(e.clientX - centerX, 2) + Math.pow(e.clientY - centerY, 2)
-        );
-
-        if (distance < 100) {
-          // Magnetic radius
-          const strength = (100 - distance) / 100;
-          gsap.to(element, {
-            x: (e.clientX - centerX) * strength * 0.1,
-            y: (e.clientY - centerY) * strength * 0.1,
-            duration: 0.3,
-            ease: "power2.out",
-          });
-        } else {
-          gsap.to(element, {
-            x: 0,
-            y: 0,
-            duration: 0.3,
-            ease: "power2.out",
-          });
-        }
-      });
     };
 
     const tick = () => {
@@ -123,11 +93,6 @@ const CustomCursor = () => {
       circle.style.display = "block";
       circle.style.fontSize = "0";
     };
-
-    // Initialize magnetic elements
-    magneticElements.current = Array.from(
-      document.querySelectorAll(".magnetic-btn, button, .magnetic")
-    );
 
     const interactiveEls = document.querySelectorAll(
       "a, button, [data-cursor-size], video, input, textarea, .interactive"

@@ -208,7 +208,7 @@ const Contact = () => {
                 href={`https://${social.platform}.com`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`w-12 h-12 bg-gradient-to-r ${social.color} text-white rounded-2xl flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg magnetic-btn`}
+                className={`w-12 h-12 bg-gradient-to-r ${social.color} text-white rounded-2xl flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg`}
                 aria-label={social.platform}
               >
                 <i className={`ri-${social.platform}-line text-xl`}></i>
@@ -280,7 +280,7 @@ const Contact = () => {
                 <button
                   key={item}
                   type="button"
-                  className={`px-4 py-2 cursor-pointer border-2 rounded-full transition-all duration-300 form-element magnetic-btn ${
+                  className={`px-4 py-2 cursor-pointer border-2 rounded-full transition-all duration-300 form-element ${
                     selectedInterests.includes(item)
                       ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white border-transparent shadow-lg"
                       : "text-gray-600 border-gray-300 hover:border-purple-500 hover:text-purple-600 bg-white"
@@ -316,7 +316,7 @@ const Contact = () => {
                 <button
                   key={range}
                   type="button"
-                  className={`p-3 rounded-2xl border-2 transition-all duration-300 magnetic-btn ${
+                  className={`p-3 rounded-2xl border-2 transition-all duration-300 ${
                     selectedBudget === range
                       ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white border-transparent shadow-lg"
                       : "bg-white border-gray-300 hover:border-purple-500"
@@ -334,7 +334,7 @@ const Contact = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 cursor-pointer px-12 rounded-full hover:from-purple-700 hover:to-pink-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 magnetic-btn hover:scale-105 shadow-lg"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 cursor-pointer px-12 rounded-full hover:from-purple-700 hover:to-pink-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 hover:scale-105 shadow-lg"
             >
               {isSubmitting ? (
                 <>
