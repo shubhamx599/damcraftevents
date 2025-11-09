@@ -124,7 +124,7 @@ const Nav = () => {
     <div className="">
       <nav
         ref={navRef}
-        className="flex justify-between pt-5 px-20 max-md:px-4 pb-1 fixed top-0 left-0 w-full z-[200] bg-white/80 backdrop-blur-md border-b border-gray-100/50 transition-all duration-500 items-center"
+        className="flex justify-between pt-5 px-20 max-md:px-4 pb-1 fixed top-0 left-0 w-full z-[200] backdrop-blur-md transition-all duration-500 items-center"
       >
         {/* Logo with Creative Design */}
         <Link
