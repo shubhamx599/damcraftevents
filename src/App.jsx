@@ -5,7 +5,6 @@ import Routing from "./utils/Routing.jsx";
 import Footer from "./components/layout/Footer.jsx";
 import CustomCursor from "./components/ui/CustomCursor.jsx";
 import ScrollToTop from "./utils/ScrollToTop.jsx";
-import Contact from "./components/sections/Contact.jsx";
 
 const App = () => {
   const lenis = useLenis(({ scroll }) => {
@@ -21,16 +20,16 @@ const App = () => {
   }, [lenis]);
 
   useEffect(() => {
-    document.body.classList.add('loaded');
-    
+    document.body.classList.add("loaded");
+
     const preloadCriticalImages = () => {
       const criticalImages = [
-        '/src/assets/1.mp4',
-        '/src/assets/corporate.jpg',
-        '/src/assets/deepak.jpg'
+        "/src/assets/1.mp4",
+        "/src/assets/corporate.jpg",
+        "/src/assets/deepak.jpg",
       ];
-      
-      criticalImages.forEach(src => {
+
+      criticalImages.forEach((src) => {
         const img = new Image();
         img.src = src;
       });
@@ -39,36 +38,35 @@ const App = () => {
     preloadCriticalImages();
 
     return () => {
-      document.body.classList.remove('loaded');
+      document.body.classList.remove("loaded");
     };
   }, []);
 
   return (
     <>
       <CustomCursor />
-      
-      <ReactLenis 
-        root 
+
+      <ReactLenis
+        root
         options={{
           duration: 1.2,
           easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          orientation: 'vertical',
-          gestureOrientation: 'vertical',
+          orientation: "vertical",
+          gestureOrientation: "vertical",
           smoothWheel: true,
           wheelMultiplier: 1,
           touchMultiplier: 2,
         }}
       >
         <ScrollToTop />
-        
+
         <div className="app-container min-h-screen bg-white">
           <Nav />
-          
+
           <main className="main-content relative z-10">
             <Routing />
-            <Contact />
           </main>
-          
+
           <Footer />
         </div>
       </ReactLenis>
@@ -90,7 +88,7 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.error('App Error:', error, errorInfo);
+    console.error("App Error:", error, errorInfo);
   }
 
   render() {

@@ -96,10 +96,12 @@ dam-craft-events
 │  │  │  ├─ Footer.jsx
 │  │  │  └─ Nav.jsx
 │  │  ├─ sections
-│  │  │  ├─ Contact.jsx
+│  │  │  ├─ EventDetails.jsx
 │  │  │  ├─ EventSection.jsx
 │  │  │  ├─ Gallery.jsx
-│  │  │  └─ ProjectSection.jsx
+│  │  │  ├─ HeroSection.jsx
+│  │  │  ├─ ProjectSection.jsx
+│  │  │  └─ StatsSection.jsx
 │  │  └─ ui
 │  │     ├─ CustomCursor.jsx
 │  │     ├─ HoverRevealCard.jsx
@@ -119,7 +121,7 @@ dam-craft-events
 │  ├─ main.jsx
 │  ├─ pages
 │  │  ├─ About.jsx
-│  │  ├─ EventDetails.jsx
+│  │  ├─ Contact.jsx
 │  │  ├─ Home.jsx
 │  │  ├─ Services.jsx
 │  │  └─ Work.jsx

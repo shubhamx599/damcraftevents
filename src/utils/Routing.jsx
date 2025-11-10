@@ -1,14 +1,14 @@
 import React, { lazy, Suspense } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
-import withPageTransition from './animations/pageTransition'; // YAHI SE USE KARENGE
+import withPageTransition from './animations/pageTransition';
 
 // Lazy load pages for better performance
 const Home = lazy(() => import('../pages/Home.jsx'))
 const About = lazy(() => import('../pages/About.jsx'))
 const Work = lazy(() => import('../pages/Work.jsx'))
 const Services = lazy(() => import('../pages/Services.jsx'))
-const EventDetails = lazy(() => import('../pages/EventDetails.jsx'))
+const Contact = lazy(() => import('../pages/Contact.jsx'))
 
 // Loading component
 const PageLoader = () => (
@@ -28,7 +28,7 @@ const Routing = () => {
   const AboutWithTransition = withPageTransition(About);
   const WorkWithTransition = withPageTransition(Work);
   const ServicesWithTransition = withPageTransition(Services);
-  const EventDetailsWithTransition = withPageTransition(EventDetails);
+  const ContactWithTransition = withPageTransition(Contact);
   
   return (
     <Suspense fallback={<PageLoader />}>
@@ -38,7 +38,7 @@ const Routing = () => {
           <Route path="/about" element={<AboutWithTransition />} />
           <Route path="/work" element={<WorkWithTransition />} />
           <Route path="/services" element={<ServicesWithTransition />} />
-          <Route path="/service/:type" element={<EventDetailsWithTransition />} />
+          <Route path="/contact" element={<ContactWithTransition />} />
           
           {/* 404 Page */}
           <Route path="*" element={

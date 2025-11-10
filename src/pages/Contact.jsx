@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import useScrollMorph from "../../hooks/useScrollMorph";
+import useScrollMorph from "../hooks/useScrollMorph";
 
 const interests = [
   "Corporate Event",
@@ -16,13 +16,8 @@ const interests = [
 ];
 
 const Contact = () => {
-  const [selectedInterests, setSelectedInterests] = useState([]);
-  const [selectedBudget, setSelectedBudget] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState("");
 
   const sectionRef = useRef(null);
-  const formRef = useRef(null);
 
   useScrollMorph(sectionRef, {
     borderRadius: "60px",
@@ -65,33 +60,6 @@ const Contact = () => {
     });
   }, []);
 
-  const toggleInterest = (item) => {
-    setSelectedInterests((prev) =>
-      prev.includes(item) ? prev.filter((i) => i !== item) : [...prev, item]
-    );
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus("");
-
-    // Simulate form submission
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      setSubmitStatus("success");
-
-      // Reset form
-      e.target.reset();
-      setSelectedInterests([]);
-      setSelectedBudget("");
-    } catch (error) {
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <div
       ref={sectionRef}
@@ -119,9 +87,7 @@ const Contact = () => {
         </h1>
       </div>
 
-      {/* Contact Form Section */}
       <div className="flex gap-10 max-md:flex-col justify-between relative z-10">
-        {/* Left Side Text */}
         <div className="w-1/3 max-md:w-full">
           <div className="flex items-center gap-2 mb-4 form-element">
             <div className="bg-gradient-to-r from-purple-500 to-pink-500 h-3 w-3 rounded-full"></div>

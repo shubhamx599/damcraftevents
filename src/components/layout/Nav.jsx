@@ -172,6 +172,14 @@ const Nav = () => {
               <AnimatedText text="Work" />
             </NavLink>
           </li>
+          <li className="hidden sm:block">
+            <NavLink
+              className={({ isActive }) => `group ${activeStyle({ isActive })}`}
+              to="/contact"
+            >
+              <AnimatedText text="Contact" />
+            </NavLink>
+          </li>
 
           {/* Mobile menu toggle */}
           <li className="block sm:hidden">

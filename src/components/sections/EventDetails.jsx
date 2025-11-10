@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import mainVideo from "../assets/videos/1.mp4";
-import corporate from "../assets/videos/corporate.mp4";
-import mall from "../assets/videos/mall.mp4";
-import market from "../assets/videos/market.mp4";
-import advertisement from "../assets/videos/bike.mp4";
-import corp from "../assets/videos/corp.mp4";
+import mainVideo from "../../assets/videos/1.mp4";
+import corporate from "../../assets/videos/corporate.mp4";
+import mall from "../../assets/videos/mall.mp4";
+import market from "../../assets/videos/market.mp4";
+import advertisement from "../../assets/videos/bike.mp4";
+import corp from "../../assets/videos/corp.mp4";
 
 const contentMap = {
   corporate: {
@@ -21,9 +21,9 @@ const contentMap = {
       "Product Launches",
       "Corporate Meetings",
       "Award Ceremonies",
-      "Team Building Events"
+      "Team Building Events",
     ],
-    stats: { events: "150+", clients: "50+", satisfaction: "98%" }
+    stats: { events: "150+", clients: "50+", satisfaction: "98%" },
   },
   mall: {
     title: "Mall Activations",
@@ -34,10 +34,10 @@ const contentMap = {
       "Brand Promotions",
       "Product Demonstrations",
       "Customer Engagement",
-      "Live Performances", 
-      "Interactive Installations"
+      "Live Performances",
+      "Interactive Installations",
     ],
-    stats: { events: "200+", reach: "1M+", engagement: "85%" }
+    stats: { events: "200+", reach: "1M+", engagement: "85%" },
   },
   market: {
     title: "Market Activations",
@@ -49,9 +49,9 @@ const contentMap = {
       "Sampling Campaigns",
       "Street Marketing",
       "Public Engagement",
-      "Brand Awareness"
+      "Brand Awareness",
     ],
-    stats: { campaigns: "100+", cities: "25+", impact: "90%" }
+    stats: { campaigns: "100+", cities: "25+", impact: "90%" },
   },
   advertisement: {
     title: "Advertising Solutions",
@@ -60,12 +60,12 @@ const contentMap = {
     video: advertisement,
     features: [
       "Digital Campaigns",
-      "Print Advertising", 
+      "Print Advertising",
       "Outdoor Media",
       "Social Media Marketing",
-      "Brand Storytelling"
+      "Brand Storytelling",
     ],
-    stats: { campaigns: "300+", reach: "5M+", conversion: "25%" }
+    stats: { campaigns: "300+", reach: "5M+", conversion: "25%" },
   },
   product: {
     title: "Product Advertisement",
@@ -77,9 +77,9 @@ const contentMap = {
       "Demo Events",
       "Influencer Marketing",
       "Media Coverage",
-      "Consumer Engagement"
+      "Consumer Engagement",
     ],
-    stats: { launches: "80+", products: "200+", success: "95%" }
+    stats: { launches: "80+", products: "200+", success: "95%" },
   },
 };
 
@@ -92,21 +92,25 @@ const EventDetails = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     // Animate sections on scroll
-    gsap.utils.toArray('.animate-on-scroll').forEach((section, index) => {
-      gsap.fromTo(section, {
-        opacity: 0,
-        y: 60
-      }, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        delay: index * 0.2,
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          toggleActions: "play none none reverse"
+    gsap.utils.toArray(".animate-on-scroll").forEach((section, index) => {
+      gsap.fromTo(
+        section,
+        {
+          opacity: 0,
+          y: 60,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: index * 0.2,
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
         }
-      });
+      );
     });
   }, [type]);
 
@@ -115,9 +119,11 @@ const EventDetails = () => {
       <div className="min-h-screen flex items-center justify-center px-20 max-md:px-4">
         <div className="text-center">
           <h1 className="mlarge font-bold mb-4">Event Not Found</h1>
-          <p className="medium mb-8">The requested event service doesn't exist.</p>
-          <button 
-            onClick={() => navigate('/services')}
+          <p className="medium mb-8">
+            The requested event service doesn't exist.
+          </p>
+          <button
+            onClick={() => navigate("/services")}
             className="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-colors"
           >
             Back to Services
@@ -136,15 +142,15 @@ const EventDetails = () => {
             <h1 className="mmedium font-semibold uppercase">{data.title}</h1>
             <p className="medium text-gray-600 mt-2">{data.subtitle}</p>
           </div>
-          <button 
-            onClick={() => navigate('/services')}
+          <button
+            onClick={() => navigate("/services")}
             className="flex items-center gap-2 text-gray-600 hover:text-black transition-colors"
           >
             <i className="ri-arrow-left-line"></i>
             Back to Services
           </button>
         </div>
-        
+
         <div className="relative w-full h-full rounded-4xl overflow-hidden">
           <video
             className="h-full w-full object-cover object-top"
@@ -164,7 +170,9 @@ const EventDetails = () => {
         {Object.entries(data.stats).map(([key, value], index) => (
           <div key={key} className="text-center">
             <h3 className="mlarge font-bold text-green-600">{value}</h3>
-            <p className="medium capitalize">{key.replace(/([A-Z])/g, ' $1')}</p>
+            <p className="medium capitalize">
+              {key.replace(/([A-Z])/g, " $1")}
+            </p>
           </div>
         ))}
       </div>
@@ -174,7 +182,10 @@ const EventDetails = () => {
         <h2 className="mmedium font-semibold uppercase mb-8">What We Offer</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-md:grid-cols-1">
           {data.features.map((feature, index) => (
-            <div key={index} className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl">
+            <div
+              key={index}
+              className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl"
+            >
               <i className="ri-checkbox-circle-line text-green-600"></i>
               <span className="medium">{feature}</span>
             </div>
@@ -184,7 +195,6 @@ const EventDetails = () => {
 
       {/* Content Sections */}
       <div className="part w-full min-h-screen mt-[10rem] flex flex-col gap-[5rem] overflow-hidden">
-        
         {/* Section 1 */}
         <div className="view2 w-full flex justify-between gap-10 max-md:flex-col animate-on-scroll">
           <div className="w-[50%] max-md:w-full">
@@ -195,7 +205,9 @@ const EventDetails = () => {
                 alt="Event Setup"
               />
             </div>
-            <h1 className="uppercase font-semibold text-lg tracking-tight mt-4">Professional Setup</h1>
+            <h1 className="uppercase font-semibold text-lg tracking-tight mt-4">
+              Professional Setup
+            </h1>
           </div>
           <div className="w-[50%] max-md:w-full">
             <img
@@ -208,7 +220,10 @@ const EventDetails = () => {
                 {data.description}
               </h1>
               <p className="w-fit text-[1rem] max-md:w-full text-gray-600">
-                Every event we craft is designed to make an impression — not just on the day it happens, but long after. From strategy to storytelling, our goal is to bring brands to life in the most immersive and impactful way.
+                Every event we craft is designed to make an impression — not
+                just on the day it happens, but long after. From strategy to
+                storytelling, our goal is to bring brands to life in the most
+                immersive and impactful way.
               </p>
             </div>
           </div>
@@ -247,12 +262,17 @@ const EventDetails = () => {
           />
 
           <div className="w-[50%] max-md:w-full h-[90vh] flex flex-col gap-8 max-md:gap-2">
-            <h1 className="uppercase font-bold text-lg tracking-tight">Captivating Moments</h1>
+            <h1 className="uppercase font-bold text-lg tracking-tight">
+              Captivating Moments
+            </h1>
             <p className="font-semibold w-full leading-7 text-sm">
               Creating moments that stay with your brand.
             </p>
             <p className="text-gray-600">
-              We believe that great events don't just happen — they're built. With detail-oriented execution and creative direction, we ensure that every frame, every interaction, and every moment delivers value.
+              We believe that great events don't just happen — they're built.
+              With detail-oriented execution and creative direction, we ensure
+              that every frame, every interaction, and every moment delivers
+              value.
             </p>
             <div className="flex gap-5 max-md:flex-col w-full overflow-hidden">
               <img
@@ -273,10 +293,11 @@ const EventDetails = () => {
         <div className="text-center py-20 bg-black text-white rounded-2xl animate-on-scroll">
           <h2 className="mlarge font-bold mb-4">Ready to {data.title}?</h2>
           <p className="medium mb-8 max-w-2xl mx-auto">
-            Let's discuss your requirements and create an unforgettable {data.title.toLowerCase()} experience.
+            Let's discuss your requirements and create an unforgettable{" "}
+            {data.title.toLowerCase()} experience.
           </p>
-          <a 
-            href="#contact" 
+          <a
+            href="#contact"
             className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-block"
           >
             Start Your Project

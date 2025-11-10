@@ -9,6 +9,7 @@ import HeroSection from "../components/sections/HeroSection";
 import StatsSection from "../components/sections/StatsSection";
 import EventSection from "../components/sections/EventSection";
 import ProjectSection from "../components/sections/ProjectSection";
+import EventDetails from "../components/sections/EventDetails";
 import ReadMoreButton from "../components/ui/ReadMoreButton";
 
 // Register GSAP plugins
@@ -156,6 +157,7 @@ const Home = () => {
       {/* Rest of the sections */}
       <EventSection />
       <ProjectSection />
+      <EventDetails />
     </div>
   );
 };

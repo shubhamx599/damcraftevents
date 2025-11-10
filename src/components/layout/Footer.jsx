@@ -1,6 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import foot from "../../assets/videos/foot.mp4";
 import { Link } from "react-router-dom";
 import useScrollMorph from "../../hooks/useScrollMorph";
@@ -43,11 +41,11 @@ const Footer = () => {
   return (
     <div
       ref={footerRef}
-      className="bg-gradient-to-br from-gray-900 to-black text-white mt-[5rem] relative overflow-hidden"
+      className="bg-gradient-to-br from-gray-900 to-black text-white mt-20 relative overflow-hidden"
     >
 
-      {/* Hero Video Section */}
-      <div className="relative h-[100vh] max-md:h-[50vh] w-full overflow-hidden">
+      {/* Footer Video Section */}
+      <div className="relative h-[60vh] max-md:h-[50vh] w-full overflow-hidden">
         <video
           src={foot}
           autoPlay
@@ -55,7 +53,7 @@ const Footer = () => {
           muted
           className="h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center footer-element">
             <h1 className="mlarge font-bold mb-6 text-white">
               Let's Create Magic Together
