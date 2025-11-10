@@ -35,15 +35,6 @@ export function withPageTransition(Component) {
         transition={pageTransition}
         style={{ minHeight: "100vh", position: "relative" }}
       >
-        {/* Loading Bar Animation */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          exit={{ scaleX: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="fixed top-0 left-0 w-full h-1 bg-green-600 z-50 origin-left"
-        />
-        
         <Component {...props} />
       </motion.div>
     );
@@ -53,14 +44,14 @@ export function withPageTransition(Component) {
 // Additional animation utilities
 export const scrollAnimation = {
   hidden: { opacity: 0, y: 60 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: {
       duration: 0.8,
-      ease: [0.4, 0, 0.2, 1]
-    }
-  }
+      ease: [0.4, 0, 0.2, 1],
+    },
+  },
 };
 
 export const staggerAnimation = {
@@ -68,9 +59,9 @@ export const staggerAnimation = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 export default withPageTransition;
