@@ -1,122 +1,97 @@
-import { useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
-import { RiArrowRightLine, RiFolderOpenLine } from "@remixicon/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
+
 const HeroSection = () => {
-  const navigate = useNavigate();
-  const heroRef = useRef();
-  const titleRef = useRef();
-  const subtitleRef = useRef();
-  const ctaRef = useRef();
+  const heroRef = useRef(null);
+  const textLines = useRef([]);
 
   useEffect(() => {
-    // Hero animation
-    const tl = gsap.timeline();
+    const ctx = gsap.context(() => {
+      // Reveal text with smooth stagger
+      gsap.from(textLines.current, {
+        y: 100,
+        opacity: 0,
+        duration: 1.4,
+        ease: "back.out(1.7)",
+        stagger: 0.15,
+      });
 
-    tl.fromTo(
-      titleRef.current,
-      { y: 100, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.2, ease: "power3.out" }
-    )
-      .fromTo(
-        subtitleRef.current,
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, ease: "power2.out" },
-        "-=0.6"
-      )
-      .fromTo(
-        ctaRef.current,
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-        "-=0.4"
-      );
+      // Parallax scroll effect
+      gsap.to(heroRef.current, {
+        yPercent: -15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    }, heroRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (
     <section
       ref={heroRef}
-      className="h-screen relative flex items-center justify-center overflow-hidden"
+      className="relative h-screen w-full flex flex-col justify-center items-center text-center bg-black overflow-hidden"
     >
-      {/* Hero Title */}
-      <div className="relative z-20 text-center px-6 max-w-6xl mx-auto">
-        <motion.div ref={titleRef} className="mb-8">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 leading-none tracking-tight">
-            <div className="hero-line">WE CREATE</div>
-            <div className="hero-line unforgettable-text text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-pink-400 to-purple-500">
-              UNFORGETTABLE
-            </div>
-            <div className="hero-line">EXPERIENCES</div>
-          </h1>
-        </motion.div>
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/60 to-black/90 z-0" />
 
-        {/* Tagline */}
-        <motion.div
-          ref={subtitleRef}
-          className="inline-block border border-white/30 rounded-full px-6 py-3 backdrop-blur-sm mb-8 bg-white/10 border-white/40"
+      {/* Main Content */}
+      <div className="relative z-1 max-w-5xl mx-auto px-6 pt-20 flex flex-col items-center justify-center">
+
+        {/* Hero Text */}
+        <div className="overflow-hidden space-y-3">
+          {["We Create", "Unforgettable", "Experiences"].map((line, i) => (
+            <h1
+              key={i}
+              ref={(el) => (textLines.current[i] = el)}
+              className={`hero-title text-center text-6xl md:text-8xl font-black drop-shadow-[0_0_30px_rgba(255,255,255,0.1)] ${
+                line === "Unforgettable" ? "hero-title-unforgettable" : "text-white"
+              }`}
+            >
+              {line}
+            </h1>
+          ))}
+        </div>
+
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.2 }}
+          className="text-center max-w-2xl mt-6 text-gray-300 text-lg leading-relaxed"
         >
-          <p className="text-base md:text-lg font-medium">
-            Event Management Reimagined
-          </p>
-        </motion.div>
+          Designing unforgettable event experiences that merge creativity,
+          innovation, and emotion — crafted for brands that want to stand apart.
+        </motion.p>
 
-        {/* CTA Buttons */}
+        {/* Buttons */}
         <motion.div
-          ref={ctaRef}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.5 }}
+          className="mt-10 flex flex-wrap justify-center gap-6"
         >
-          <motion.button
-            onClick={() => navigate("/services")}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-semibold flex items-center gap-3 group transition-all duration-300"
-            data-cursor-size="60"
-            data-cursor-text="🚀 EXPLORE"
-          >
-            <span>Explore Services</span>
-            <RiArrowRightLine className="group-hover:translate-x-1 transition-transform duration-300" />
-          </motion.button>
-
-          <motion.button
-            onClick={() => navigate("/work")}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="border border-white/30 hover:border-white/60 text-white px-8 py-4 rounded-full font-semibold flex items-center gap-3 group transition-all duration-300"
-            data-cursor-size="60"
-            data-cursor-text="📁 VIEW"
-          >
-            <span>View Portfolio</span>
-            <RiFolderOpenLine className="group-hover:scale-110 transition-transform duration-300" />
-          </motion.button>
+          <button className="px-8 py-3 rounded-full text-white font-semibold border border-white/30 hover:border-white backdrop-blur-md hover:bg-white/15 transition-all duration-500">
+            Explore Services
+          </button>
+          <button className="px-8 py-3 rounded-full text-white font-semibold border border-white/30 hover:border-white backdrop-blur-md hover:bg-white/15 transition-all duration-500">
+            View Work
+          </button>
         </motion.div>
       </div>
 
-      {/* Animated Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-white/80 text-sm font-medium">
-            Scroll to Explore
-          </span>
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center backdrop-blur-sm"
-          >
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1 h-3 bg-white/70 rounded-full mt-2"
-            />
-          </motion.div>
-        </div>
-      </motion.div>
+      {/* Floating Blurred Shapes */}
+      <div className="absolute w-[320px] h-[320px] bg-gradient-to-tr from-red-500/20 to-blue-500/20 blur-[120px] rounded-full top-16 right-20 animate-pulse z-[0]" />
+      <div className="absolute w-[260px] h-[260px] bg-gradient-to-tr from-blue-500/20 to-pink-500/20 blur-[100px] rounded-full bottom-16 left-16 animate-pulse z-[0]" />
     </section>
   );
 };

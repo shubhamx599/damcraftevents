@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import foot from "../../assets/videos/foot.mp4";
 import { Link } from "react-router-dom";
 import useScrollMorph from "../../hooks/useScrollMorph";
 
@@ -9,7 +8,7 @@ const Footer = () => {
 
   useScrollMorph(footerRef, {
     borderRadius: "40px 40px 0 0",
-    scale: 1.01,
+    scale: 1,
   });
 
   const scrollToTop = () => {
@@ -43,14 +42,14 @@ const Footer = () => {
       ref={footerRef}
       className="bg-gradient-to-br from-gray-900 to-black text-white mt-20 relative overflow-hidden"
     >
-
-      {/* Footer Video Section */}
+      {/* Footer Video Section — Stock Video */}
       <div className="relative h-[60vh] max-md:h-[50vh] w-full overflow-hidden">
         <video
-          src={foot}
+          src="https://www.pexels.com/download/video/3163534/"
           autoPlay
           loop
           muted
+          playsInline
           className="h-full w-full object-cover object-center"
         />
         <div className="absolute inset-0 flex items-center justify-center">
@@ -132,7 +131,7 @@ const Footer = () => {
           {/* Right Section - Contact */}
           <div className="flex flex-col gap-8 footer-element">
             {/* Business Enquiries */}
-            <div className="">
+            <div>
               <p className="small text-white/60 uppercase mb-4 font-semibold">
                 Business enquiries
               </p>
@@ -151,7 +150,7 @@ const Footer = () => {
             </div>
 
             {/* Address */}
-            <div className="">
+            <div>
               <p className="small text-white/60 uppercase mb-4 font-semibold">
                 Our Location
               </p>
@@ -161,7 +160,7 @@ const Footer = () => {
             </div>
 
             {/* Social Links */}
-            <div className="">
+            <div>
               <p className="small text-white/60 uppercase mb-4 font-semibold">
                 Follow Us
               </p>
@@ -213,7 +212,7 @@ const Footer = () => {
               Facebook
             </a>
 
-            {/* Scroll to Top Button */}
+            {/* Scroll to Top */}
             <button
               onClick={scrollToTop}
               className="small px-4 py-2 cursor-pointer bg-white/10 rounded-full hover:bg-white/20 transition-all duration-300 flex items-center gap-2 footer-element hover:scale-105 backdrop-blur-sm"

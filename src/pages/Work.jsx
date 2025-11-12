@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Gallery from "../components/sections/Gallery";
-import main from "../assets/videos/1.mp4";
 import HoverRevealCard from "../components/ui/HoverRevealCard";
 import useScrollMorph from "../hooks/useScrollMorph";
 
@@ -15,24 +14,21 @@ const Work = () => {
     scale: 1.02,
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Creative animations for filter buttons
-    gsap.utils.toArray(".filter-btn").forEach((btn, index) => {
+    // Animate filter buttons
+    const buttons = document.querySelectorAll(".filter-btn");
+    buttons.forEach((btn, index) => {
       gsap.fromTo(
         btn,
-        {
-          opacity: 0,
-          x: -50,
-          scale: 0.8,
-        },
+        { opacity: 0, x: -50, scale: 0.8 },
         {
           opacity: 1,
           x: 0,
           scale: 1,
           duration: 0.6,
-          delay: index * 0.1,
+          delay: index * 0.1, // seconds
           ease: "back.out(1.7)",
           scrollTrigger: {
             trigger: btn,
@@ -104,7 +100,7 @@ const Work = () => {
 
   return (
     <div className="flex flex-col px-20 max-lg:px-4 gap-20">
-      {/* Enhanced Hero Section */}
+      {/* Hero Section */}
       <div
         ref={heroRef}
         className="mlarge font-bold flex flex-col gap-5 mt-[12rem] max-md:mt-[6rem] justify-center items-center bg-gradient-to-br from-purple-600 via-blue-600 to-green-600 rounded-4xl p-20 max-md:p-8 text-white relative overflow-hidden"
@@ -128,7 +124,7 @@ const Work = () => {
         <div className="relative vid flex justify-center w-full mt-[5rem] h-[80vh] max-md:h-[40vh] overflow-hidden rounded-3xl">
           <video
             className="h-full rounded-3xl w-[100%] object-cover shadow-2xl"
-            src={main}
+            src="https://www.pexels.com/download/video/30334313/"
             autoPlay
             loop
             muted
@@ -154,13 +150,12 @@ const Work = () => {
         </div>
       </div>
 
-      {/* Creative Filter Section */}
+      {/* Filters */}
       <div className="text-center">
         <h2 className="mmedium font-bold mb-8 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
           Featured Work
         </h2>
 
-        {/* Animated Filter Buttons */}
         <div className="flex flex-wrap gap-4 justify-center mb-12">
           {filters.map((filter) => (
             <button
@@ -179,13 +174,13 @@ const Work = () => {
 
         {/* Portfolio Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredItems.map((item, index) => (
-            <div key={index} className="service-item">
+          {filteredItems.map((item) => (
+            <div key={item.title} className="service-item">
               <HoverRevealCard
                 image={item.image}
                 title={item.title}
                 description={item.description}
-                delay={index * 100}
+                delay={0.1} // small delay in seconds
               />
               <div className="mt-4 text-left">
                 <div className="flex justify-between items-start mb-2">
@@ -223,7 +218,7 @@ const Work = () => {
         )}
       </div>
 
-      {/* Enhanced Stats Section */}
+      {/* Stats Section */}
       <div className="grid grid-cols-3 gap-8 py-20 max-md:grid-cols-1 max-md:py-10 bg-gradient-to-br from-gray-50 to-white rounded-4xl p-12">
         <div className="text-center service-item">
           <div className="w-20 h-20 bg-gradient-to-r from-green-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -248,7 +243,7 @@ const Work = () => {
         </div>
       </div>
 
-      {/* Interactive Gallery Section */}
+      {/* Gallery Section */}
       <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black rounded-4xl p-12 text-white">
         <div className="text-center mb-16">
           <h2 className="mmedium font-bold mb-4 text-white">Visual Journey</h2>
@@ -262,7 +257,6 @@ const Work = () => {
 
       {/* CTA Section */}
       <div className="text-center py-20 bg-gradient-to-r from-purple-600 to-blue-600 rounded-4xl text-white relative overflow-hidden">
-        {/* Floating Elements */}
         <div className="absolute top-8 left-8 w-16 h-16 bg-white/10 rounded-full animate-float"></div>
         <div className="absolute bottom-8 right-8 w-24 h-24 bg-white/5 rounded-full animate-float-slow"></div>
 

@@ -11,50 +11,10 @@ import {
   RiCalendarEventLine,
   RiTeamLine,
 } from "@remixicon/react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Sphere, MeshDistortMaterial } from "@react-three/drei";
-
-import twogoodgo from "../../assets/videos/twogoodgo.mp4";
-import obys from "../../assets/videos/obys.mp4";
 import ScrollFloat from "../ui/ScrollFloat";
 
-// 3D Background Sphere
-const FloatingSphere = () => {
-  const meshRef = useRef();
-
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x =
-        Math.sin(state.clock.elapsedTime * 0.2) * 0.1;
-      meshRef.current.rotation.y =
-        Math.sin(state.clock.elapsedTime * 0.3) * 0.1;
-      meshRef.current.position.y =
-        Math.sin(state.clock.elapsedTime * 0.4) * 0.1;
-    }
-  });
-
-  return (
-    <Sphere ref={meshRef} args={[1, 100, 200]} scale={2.5}>
-      <MeshDistortMaterial
-        color="#ff6b6b"
-        attach="material"
-        distort={0.4}
-        speed={1.2}
-        roughness={0.2}
-        metalness={0.1}
-      />
-    </Sphere>
-  );
-};
-
 // Service Card Component
-const ServiceCard = ({
-  title,
-  description,
-  videoSrc,
-  index,
-  isFeatured = false,
-}) => {
+const ServiceCard = ({ title, description, videoSrc, index, isFeatured = false }) => {
   const cardRef = useRef();
   const videoRef = useRef();
 
@@ -64,22 +24,12 @@ const ServiceCard = ({
 
     const handleEnter = () => {
       if (video) video.play();
-      gsap.to(card, {
-        y: -10,
-        scale: 1.02,
-        duration: 0.3,
-        ease: "power2.out",
-      });
+      gsap.to(card, { y: -10, scale: 1.02, duration: 0.3, ease: "power2.out" });
     };
 
     const handleLeave = () => {
       if (video) video.pause();
-      gsap.to(card, {
-        y: 0,
-        scale: 1,
-        duration: 0.3,
-        ease: "power2.out",
-      });
+      gsap.to(card, { y: 0, scale: 1, duration: 0.3, ease: "power2.out" });
     };
 
     if (card) {
@@ -100,15 +50,9 @@ const ServiceCard = ({
       ref={cardRef}
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.8,
-        delay: index * 0.1,
-        ease: "easeOut",
-      }}
+      transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
       viewport={{ once: true }}
-      className={`relative rounded-3xl overflow-hidden group cursor-pointer ${
-        isFeatured ? "lg:col-span-2" : ""
-      }`}
+      className={`relative rounded-3xl overflow-hidden group cursor-pointer ${isFeatured ? "lg:col-span-2" : ""}`}
     >
       <div className="relative h-80 lg:h-96">
         <video
@@ -130,10 +74,7 @@ const ServiceCard = ({
               </span>
             </div>
 
-            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3">
-              {title}
-            </h3>
-
+            <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3">{title}</h3>
             <p className="text-white/70 leading-relaxed mb-6">{description}</p>
 
             <motion.button
@@ -141,8 +82,7 @@ const ServiceCard = ({
               whileTap={{ scale: 0.95 }}
               className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center gap-2 w-fit"
             >
-              Explore
-              <RiArrowRightLine size={16} />
+              Explore <RiArrowRightLine size={16} />
             </motion.button>
           </div>
         </div>
@@ -177,9 +117,7 @@ const StatCard = ({ number, label, icon: Icon, delay }) => (
         <Icon size={32} className="text-red-500" />
       </div>
     </div>
-    <h3 className="text-4xl lg:text-5xl font-black text-white mb-2">
-      {number}
-    </h3>
+    <h3 className="text-4xl lg:text-5xl font-black text-white mb-2">{number}</h3>
     <p className="text-gray-300 text-lg font-medium">{label}</p>
   </motion.div>
 );
@@ -191,7 +129,6 @@ const ProjectSection = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Parallax effect
     gsap.to(sectionRef.current, {
       yPercent: -20,
       ease: "none",
@@ -207,73 +144,48 @@ const ProjectSection = () => {
   const services = [
     {
       title: "Corporate Events",
-      description:
-        "Professional conferences, product launches, and corporate gatherings that leave lasting impressions.",
-      video: twogoodgo,
+      description: "Professional conferences, product launches, and corporate gatherings that leave lasting impressions.",
+      video: "https://www.pexels.com/download/video/12695736/",
       featured: true,
     },
     {
       title: "Social Celebrations",
-      description:
-        "Memorable birthdays, anniversaries, and private parties crafted with personal touch.",
-      video: obys,
+      description: "Memorable birthdays, anniversaries, and private parties crafted with personal touch.",
+      video: "https://www.pexels.com/download/video/34594434/",
       featured: false,
     },
     {
       title: "Brand Activations",
-      description:
-        "Engaging mall and market activations that turn audiences into loyal customers.",
-      video: twogoodgo,
+      description: "Engaging mall and market activations that turn audiences into loyal customers.",
+      video: "https://www.pexels.com/download/video/7722222/",
       featured: false,
     },
     {
       title: "Entertainment Shows",
-      description:
-        "Spectacular concerts, live performances, and entertainment events that captivate audiences.",
-      video: obys,
+      description: "Spectacular concerts, live performances, and entertainment events that captivate audiences.",
+      video: "https://www.pexels.com/download/video/7647630/",
       featured: false,
     },
     {
       title: "Talent Management",
-      description:
-        "Professional anchors, influencers, and celebrity collaborations for your events.",
-      video: obys,
+      description: "Professional anchors, influencers, and celebrity collaborations for your events.",
+      video: "https://www.pexels.com/download/video/7647795/",
       featured: false,
     },
   ];
 
   const stats = [
-    {
-      number: "400+",
-      label: "Events Executed",
-      icon: RiCalendarEventLine,
-    },
-    {
-      number: "50+",
-      label: "Happy Clients",
-      icon: RiUserHeartLine,
-    },
-    {
-      number: "10+",
-      label: "Years Experience",
-      icon: RiStarFill,
-    },
-    {
-      number: "40+",
-      label: "Team Members",
-      icon: RiTeamLine,
-    },
+    { number: "400+", label: "Events Executed", icon: RiCalendarEventLine },
+    { number: "50+", label: "Happy Clients", icon: RiUserHeartLine },
+    { number: "10+", label: "Years Experience", icon: RiStarFill },
+    { number: "40+", label: "Team Members", icon: RiTeamLine },
   ];
 
   const RevealText = ({ children, delay = 0 }) => (
     <motion.div
       initial={{ y: 100, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
-      transition={{
-        duration: 0.8,
-        delay,
-        ease: [0.25, 0.1, 0.25, 1],
-      }}
+      transition={{ duration: 0.8, delay, ease: [0.25, 0.1, 0.25, 1] }}
       viewport={{ once: true, margin: "-50px" }}
     >
       {children}
@@ -281,47 +193,23 @@ const ProjectSection = () => {
   );
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-screen bg-black text-white overflow-hidden py-30"
-    >
-      {/* 3D Background */}
-      <div className="absolute inset-0 z-0 opacity-10">
-        <Canvas>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} />
-          <FloatingSphere />
-        </Canvas>
-      </div>
-
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70 z-5" />
-
+    <section ref={sectionRef} className="relative min-h-screen bg-black text-white overflow-hidden py-28">
       <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20">
-          <ScrollFloat
-            animationDuration={1}
-            ease="back.inOut(2)"
-            scrollStart="center bottom+=50%"
-            scrollEnd="bottom bottom-=40%"
-            stagger={0.03}
-            textClassName="text-white"
-          >
+          <ScrollFloat animationDuration={1} ease="back.inOut(2)" scrollStart="center bottom+=50%" scrollEnd="bottom bottom-=40%" stagger={0.03} textClassName="text-white">
             Our Premium Services
           </ScrollFloat>
 
           <RevealText delay={0.2}>
             <p className="text-xl text-gray-300 mt-6 max-w-3xl mx-auto">
-              Experience the difference with our comprehensive event solutions.
-              From intimate gatherings to grand celebrations, we bring your
-              vision to life with unmatched creativity and precision.
+              Experience the difference with our comprehensive event solutions. From intimate gatherings to grand celebrations, we bring your vision to life with unmatched creativity and precision.
             </p>
           </RevealText>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-30">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-28">
           {services.map((service, index) => (
             <ServiceCard
               key={index}
@@ -335,28 +223,19 @@ const ProjectSection = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="mb-30">
+        <div className="mb-28">
           <RevealText delay={0.1}>
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-                Trusted by{" "}
-                <span className="text-red-500">Industry Leaders</span>
+                Trusted by <span className="text-red-500">Industry Leaders</span>
               </h2>
-              <p className="text-xl text-gray-300">
-                Our track record speaks for itself
-              </p>
+              <p className="text-xl text-gray-300">Our track record speaks for itself</p>
             </div>
           </RevealText>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((stat, index) => (
-              <StatCard
-                key={index}
-                number={stat.number}
-                label={stat.label}
-                icon={stat.icon}
-                delay={index * 0.1}
-              />
+              <StatCard key={index} number={stat.number} label={stat.label} icon={stat.icon} delay={index * 0.1} />
             ))}
           </div>
         </div>
@@ -365,18 +244,14 @@ const ProjectSection = () => {
         <RevealText delay={0.3}>
           <div className="text-center">
             <div className="bg-gradient-to-r from-red-600 to-pink-600 rounded-3xl p-12 lg:p-16 text-white shadow-2xl relative overflow-hidden">
-              {/* Background Pattern */}
               <div className="absolute inset-0 opacity-10">
                 <div className="absolute inset-0 bg-black/20"></div>
               </div>
 
               <div className="relative z-10">
-                <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-                  Ready to Create Magic Together?
-                </h2>
+                <h2 className="text-3xl lg:text-4xl font-bold mb-6">Ready to Create Magic Together?</h2>
                 <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-                  Let's transform your ideas into unforgettable experiences that
-                  will be remembered for years to come.
+                  Let's transform your ideas into unforgettable experiences that will be remembered for years to come.
                 </p>
                 <motion.button
                   onClick={() => navigate("/contact")}

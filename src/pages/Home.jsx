@@ -3,8 +3,7 @@ import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import main from "../assets/videos/1.mp4";
-import ink from "../assets/videos/ink.mp4";
+
 import HeroSection from "../components/sections/HeroSection";
 import StatsSection from "../components/sections/StatsSection";
 import EventSection from "../components/sections/EventSection";
@@ -12,15 +11,18 @@ import ProjectSection from "../components/sections/ProjectSection";
 import EventDetails from "../components/sections/EventDetails";
 import ReadMoreButton from "../components/ui/ReadMoreButton";
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
+
+// STOCK VIDEO LINKS
+const mainVideo = "https://www.pexels.com/download/video/7648343/";
+
+const inkVideo = "https://www.pexels.com/download/video/4916813/";
 
 const Home = () => {
   const location = useLocation();
   const videoRef = useRef();
 
   useEffect(() => {
-    // Video scroll animation
     if (location.pathname === "/" && videoRef.current) {
       const video = videoRef.current;
       gsap.to(video, {
@@ -36,7 +38,6 @@ const Home = () => {
     }
   }, [location.pathname]);
 
-  // Text reveal animation component
   const RevealText = ({ children, delay = 0 }) => (
     <motion.div
       initial={{ y: 100, opacity: 0 }}
@@ -83,7 +84,7 @@ const Home = () => {
             <video
               ref={videoRef}
               className="h-full w-full md:w-[90%] object-cover shadow-2xl"
-              src={main}
+              src={mainVideo}
               autoPlay
               loop
               muted
@@ -142,7 +143,7 @@ const Home = () => {
               className="w-full lg:w-1/2 rounded-3xl md:rounded-4xl overflow-hidden shadow-2xl"
             >
               <video
-                src={ink}
+                src={inkVideo}
                 className="w-full h-[400px] md:h-[600px] object-cover rounded-3xl"
                 autoPlay
                 loop
@@ -154,7 +155,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Rest of the sections */}
       <EventSection />
       <ProjectSection />
       <EventDetails />

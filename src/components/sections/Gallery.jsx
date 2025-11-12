@@ -1,25 +1,54 @@
 import React, { useState } from "react";
-import { eventImages, getAllImages } from "../../constants/eventImages";
 
-// Local images
-import m1 from "../../assets/images/deepak.jpg";
-import m2 from "../../assets/images/ashish.jpg";
-import m3 from "../../assets/images/mukesh.jpg";
-import c1 from "../../assets/images/corporate.jpg";
-import c2 from "../../assets/images/mall.jpg";
-import a1 from "../../assets/images/bike.jpg";
-import a2 from "../../assets/images/market.jpg";
-import r1 from "../../assets/videos/head.mp4"; // Using video thumbnail
-import r2 from "../../assets/videos/ink.mp4";
+// Media detector
+const isVideo = (url) =>
+  url.includes(".mp4") ||
+  url.includes("video") ||
+  url.endsWith(".webm") ||
+  url.includes("pexels.com/video");
 
-// Enhanced image groups with mixed content
-const mallImages = [m1, m2, m3, ...eventImages.mall].slice(0, 10);
-const corporateImages = [c1, c2, ...eventImages.corporate].slice(0, 10);
-const advertisingImages = [a1, a2, ...eventImages.advertising].slice(0, 10);
-const roadImages = [r1, r2, ...eventImages.road].slice(0, 10);
+// ===============================
+// MEDIA LISTS (EDIT FREELY)
+// ===============================
 
+// Mall
+const mallImages = [
+  "https://images.unsplash.com/photo-1556740749-887f6717d7e4",
+  "https://images.unsplash.com/photo-1521335629791-ce4aec67dd47",
+  "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb",
+];
+
+// Corporate
+const corporateImages = [
+  "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
+  "https://images.unsplash.com/photo-1557804506-669a67965ba0",
+  "https://images.unsplash.com/photo-1521790361557-1a61aab04182",
+];
+
+// Advertising
+const advertisingImages = [
+  "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+  "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+];
+
+// Road Shows (videos allowed)
+const roadImages = [
+  "https://www.pexels.com/download/video/4239882/",
+  "https://videos.pexels.com/video-files/854332/854332-hd_1920_1080_30fps.mp4",
+  "https://images.unsplash.com/photo-1512427691650-1ff71b8a860e",
+];
+
+// All
+const allImages = [
+  ...mallImages,
+  ...corporateImages,
+  ...advertisingImages,
+  ...roadImages,
+];
+
+// Categories
 const images = {
-  all: getAllImages(),
+  all: allImages,
   mall: mallImages,
   corporate: corporateImages,
   advertising: advertisingImages,
@@ -34,142 +63,133 @@ const categories = [
   { id: "road", label: "Road Shows" },
 ];
 
+// ===============================
+// COMPONENT
+// ===============================
+
 const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [lightboxIndex, setLightboxIndex] = useState(null);
-  const galleryImages = images[activeCategory].filter(Boolean);
 
-  const openLightbox = (index) => setLightboxIndex(index);
-  const closeLightbox = () => setLightboxIndex(null);
+  const galleryItems = images[activeCategory];
 
-  const showPrev = () =>
-    setLightboxIndex((prev) =>
-      prev === 0 ? galleryImages.length - 1 : prev - 1
+  const open = (i) => setLightboxIndex(i);
+  const close = () => setLightboxIndex(null);
+
+  const next = () =>
+    setLightboxIndex((i) =>
+      i === galleryItems.length - 1 ? 0 : i + 1
     );
 
-  const showNext = () =>
-    setLightboxIndex((prev) =>
-      prev === galleryImages.length - 1 ? 0 : prev + 1
-    );
-
-  // Handle keyboard navigation
-  React.useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (lightboxIndex === null) return;
-
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowLeft") showPrev();
-      if (e.key === "ArrowRight") showNext();
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [lightboxIndex]);
+  const prev = () =>
+    setLightboxIndex((i) => (i === 0 ? galleryItems.length - 1 : i - 1));
 
   return (
     <div className="px-4 py-8">
-      <h1 className="mmedium font-semibold uppercase mb-8 text-center">
+      <h1 className="mmedium text-center mb-8 text-xl uppercase">
         <span className="text-green-600">Dam Craft Events</span> Gallery
       </h1>
 
-      {/* Category Filters */}
-      <nav className="flex flex-wrap gap-4 md:gap-6 mb-8 justify-center">
-        {categories.map(({ id, label }) => (
+      {/* Filters */}
+      <nav className="flex flex-wrap gap-4 justify-center mb-8">
+        {categories.map((c) => (
           <button
-            key={id}
+            key={c.id}
             onClick={() => {
-              setActiveCategory(id);
+              setActiveCategory(c.id);
               setLightboxIndex(null);
             }}
-            className={`cursor-pointer uppercase transition-all duration-300 px-4 py-2 rounded-full border ${
-              activeCategory === id
+            className={`px-4 py-2 rounded-full border transition ${
+              activeCategory === c.id
                 ? "text-green-600 border-green-600 bg-green-50"
-                : "text-gray-600 border-gray-300 hover:text-green-600 hover:border-green-600"
+                : "text-gray-600 border-gray-300 hover:border-green-600 hover:text-green-600"
             }`}
           >
-            {label}
+            {c.label}
           </button>
         ))}
       </nav>
 
-      {/* Image Grid */}
+      {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-        {galleryImages.map((img, index) => (
+        {galleryItems.map((media, i) => (
           <div
-            key={index}
-            className="group relative overflow-hidden rounded-xl shadow-md cursor-pointer transform transition-transform duration-300 hover:scale-105"
-            onClick={() => openLightbox(index)}
+            key={i}
+            onClick={() => open(i)}
+            className="relative rounded-xl overflow-hidden shadow cursor-pointer hover:scale-105 transition-transform"
           >
-            <img
-              src={img}
-              alt={`event-${index}`}
-              className="w-full h-64 object-cover group-hover:brightness-75 transition duration-300"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition duration-300" />
+            {isVideo(media) ? (
+              <video
+                src={media}
+                muted
+                autoPlay
+                loop
+                playsInline
+                className="w-full h-64 object-cover"
+              />
+            ) : (
+              <img
+                src={media}
+                alt=""
+                className="w-full h-64 object-cover"
+                loading="lazy"
+              />
+            )}
           </div>
         ))}
       </div>
 
-      {/* Empty State */}
-      {galleryImages.length === 0 && (
-        <div className="text-center py-16">
-          <p className="text-gray-500 medium">
-            No images found for this category.
-          </p>
-        </div>
-      )}
-
-      {/* Lightbox Modal */}
+      {/* Lightbox */}
       {lightboxIndex !== null && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-50 p-4"
-          onClick={closeLightbox}
+          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4"
+          onClick={close}
         >
-          {/* Close button */}
           <button
-            onClick={closeLightbox}
-            className="absolute top-6 right-6 text-white text-3xl font-bold z-10 cursor-pointer hover:text-gray-300 transition"
+            className="absolute top-6 right-6 text-white text-4xl"
+            onClick={close}
           >
-            &times;
+            ×
           </button>
 
-          {/* Navigation buttons */}
           <button
+            className="absolute left-4 text-white text-5xl"
             onClick={(e) => {
               e.stopPropagation();
-              showPrev();
+              prev();
             }}
-            className="absolute left-4 md:left-6 text-white text-4xl font-bold z-10 cursor-pointer hover:text-gray-300 transition"
           >
             ‹
           </button>
 
           <button
+            className="absolute right-4 text-white text-5xl"
             onClick={(e) => {
               e.stopPropagation();
-              showNext();
+              next();
             }}
-            className="absolute right-4 md:right-6 text-white text-4xl font-bold z-10 cursor-pointer hover:text-gray-300 transition"
           >
             ›
           </button>
 
-          {/* Image */}
           <div
-            className="relative max-w-4xl max-h-full"
+            className="max-w-4xl max-h-[80vh]"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={galleryImages[lightboxIndex]}
-              alt={`event-${lightboxIndex}`}
-              className="max-w-full max-h-[80vh] object-contain rounded-lg"
-            />
-
-            {/* Image counter */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white bg-black bg-opacity-50 px-3 py-1 rounded-full text-sm">
-              {lightboxIndex + 1} / {galleryImages.length}
-            </div>
+            {isVideo(galleryItems[lightboxIndex]) ? (
+              <video
+                src={galleryItems[lightboxIndex]}
+                controls
+                autoPlay
+                className="max-w-full max-h-[80vh] object-contain rounded-lg"
+              />
+            ) : (
+              <img
+                src={galleryItems[lightboxIndex]}
+                alt=""
+                className="max-w-full max-h-[80vh] object-contain rounded-lg"
+              />
+            )}
           </div>
         </div>
       )}

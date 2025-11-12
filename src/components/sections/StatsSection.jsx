@@ -6,56 +6,12 @@ import {
   RiStarFill,
   RiUserHeartLine,
   RiCalendarEventLine,
-  RiTeamLine,
   RiAwardLine,
 } from "@remixicon/react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Sphere, MeshDistortMaterial } from "@react-three/drei";
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
-// 3D Floating Particles
-const FloatingParticles = () => {
-  const groupRef = useRef();
-
-  useFrame((state) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y =
-        Math.sin(state.clock.elapsedTime * 0.1) * 0.1;
-      groupRef.current.children.forEach((particle, index) => {
-        particle.position.y =
-          Math.sin(state.clock.elapsedTime * 0.5 + index) * 0.2;
-      });
-    }
-  });
-
-  return (
-    <group ref={groupRef}>
-      {[...Array(12)].map((_, i) => (
-        <Sphere
-          key={i}
-          args={[0.05, 8, 8]}
-          position={[
-            (Math.random() - 0.5) * 8,
-            (Math.random() - 0.5) * 4,
-            (Math.random() - 0.5) * 2,
-          ]}
-        >
-          <meshBasicMaterial
-            color={
-              i % 3 === 0 ? "#ff6b6b" : i % 3 === 1 ? "#3b82f6" : "#8b5cf6"
-            }
-            opacity={0.3}
-            transparent
-          />
-        </Sphere>
-      ))}
-    </group>
-  );
-};
-
-// Animated Counter Component
+// Animated Counter
 const AnimatedCounter = ({ value, duration = 2 }) => {
   const countRef = useRef();
   const hasPlus = value.includes("+");
@@ -97,12 +53,7 @@ const StatCard = ({ stat, index }) => {
 
     gsap.fromTo(
       card,
-      {
-        opacity: 0,
-        y: 100,
-        scale: 0.8,
-        rotationY: 10,
-      },
+      { opacity: 0, y: 100, scale: 0.8, rotationY: 10 },
       {
         opacity: 1,
         y: 0,
@@ -216,17 +167,8 @@ const StatsSection = () => {
       ref={sectionRef}
       className="relative py-30 pb-0 bg-black text-white overflow-hidden"
     >
-      {/* 3D Background */}
-      <div className="absolute inset-0 z-0 opacity-10">
-        <Canvas>
-          <ambientLight intensity={0.3} />
-          <pointLight position={[10, 10, 10]} />
-          <FloatingParticles />
-        </Canvas>
-      </div>
-
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70 z-5" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70 z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
         {/* Section Header */}

@@ -5,10 +5,6 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  server: {
-    port: 3000,
-    open: true // Automatically open browser
-  },
   build: {
     rollupOptions: {
       output: {

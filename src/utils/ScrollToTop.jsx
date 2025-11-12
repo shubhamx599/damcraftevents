@@ -1,19 +1,20 @@
+// src/utils/ScrollToTop.jsx
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
+gsap.registerPlugin(ScrollToPlugin);
 export default function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // Smooth scroll to top with animation
     gsap.to(window, {
       duration: 0.5,
       scrollTo: { y: 0, autoKill: false },
       ease: "power2.out"
     });
 
-    // Add page transition animation
     const loadingBar = document.querySelector('.global-loading');
     if (loadingBar) {
       gsap.timeline()
@@ -21,7 +22,6 @@ export default function ScrollToTop() {
         .to(loadingBar, { opacity: 0, duration: 0.3, delay: 0.5 });
     }
 
-    // Update page title based on route
     const updatePageTitle = () => {
       const titles = {
         '/': 'Dam Craft Events - Premier Event Management',
