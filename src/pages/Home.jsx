@@ -9,7 +9,7 @@ import StatsSection from "../components/sections/StatsSection";
 import EventSection from "../components/sections/EventSection";
 import ProjectSection from "../components/sections/ProjectSection";
 import EventDetails from "../components/sections/EventDetails";
-import ReadMoreButton from "../components/ui/ReadMoreButton";
+import CustomButton from "../components/ui/CustomButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -127,7 +127,7 @@ const Home = () => {
                 </p>
               </div>
               <div className="mt-4">
-                <ReadMoreButton
+                <CustomButton
                   label="Our Story"
                   to="/about"
                   variant="secondary"
