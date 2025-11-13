@@ -15,8 +15,6 @@ dam-craft-events
 │  │  ├─ logos
 │  │  └─ videos
 │  ├─ components
-│  │  ├─ common
-│  │  │  └─ SectionWrapper.jsx
 │  │  ├─ layout
 │  │  │  ├─ Footer.jsx
 │  │  │  └─ Nav.jsx
@@ -57,7 +55,8 @@ dam-craft-events
 │     ├─ animations
 │     │  └─ pageTransition.jsx
 │     ├─ Routing.jsx
-│     └─ ScrollToTop.jsx
+│     ├─ ScrollToTop.jsx
+│     └─ SectionWrapper.jsx
 └─ vite.config.js
 
 ```
