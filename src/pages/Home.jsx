@@ -8,7 +8,6 @@ import HeroSection from "../components/sections/HeroSection";
 import StatsSection from "../components/sections/StatsSection";
 import EventSection from "../components/sections/EventSection";
 import ProjectSection from "../components/sections/ProjectSection";
-import EventDetails from "../components/sections/EventDetails";
 import CustomButton from "../components/ui/CustomButton";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -157,7 +156,6 @@ const Home = () => {
 
       <EventSection />
       <ProjectSection />
-      <EventDetails />
     </div>
   );
 };
