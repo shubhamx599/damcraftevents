@@ -36,14 +36,14 @@ const Nav = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[96%] max-w-[1200px] rounded-2xl transition-all duration-500 ${
+      className={`fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[1180px] rounded-xl transition-all duration-500 ${
         scrolled 
-          ? "glass-card shadow-lg backdrop-blur-2xl" 
+          ? "glass-card shadow-lg backdrop-blur-2xl rounded-xl" 
           : "bg-transparent border border-(--border-glass) backdrop-blur-xl"
       }`}
     >
       {/* Mobile First Layout */}
-      <div className="flex items-center justify-between px-4 py-3 md:px-8 md:py-4">
+      <div className="flex items-center justify-between px-4 py-2 md:px-6 md:py-3">
         
         {/* Logo - Mobile First */}
         <Link 
@@ -51,17 +51,17 @@ const Nav = () => {
           className="flex items-center group"
         >
           <div className="flex flex-col">
-            <div className="text-white font-bold text-lg md:text-xl font-[Space Grotesk] tracking-tight leading-none">
+            <div className="text-white font-bold text-base md:text-lg font-[Space Grotesk] tracking-tight leading-none">
               DAM CRAFT
             </div>
-            <div className="text-[9px] md:text-[10px] text-[rgba(255,255,255,0.6)] tracking-[0.15em] md:tracking-[0.2em] uppercase font-[Outfit] font-medium mt-0.5">
+            <div className="text-[8px] md:text-[9px] text-[rgba(255,255,255,0.6)] tracking-[0.15em] md:tracking-[0.2em] uppercase font-[Outfit] font-medium mt-0.5">
               Events & Activations
             </div>
           </div>
         </Link>
 
         {/* Desktop Navigation - Hidden on Mobile */}
-        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-6">
           {LINKS.map(({ label, path }) => (
             <motion.div
               key={label}
@@ -71,7 +71,7 @@ const Nav = () => {
               {path.startsWith("#") ? (
                 <a
                   href={path}
-                  className={`font-[Outfit] font-medium text-sm uppercase tracking-wider transition-colors duration-300 relative py-2 ${
+                  className={`font-[Outfit] font-medium text-xs uppercase tracking-wider transition-colors duration-300 relative py-1 ${
                     isActiveLink(path)
                       ? "text-white"
                       : "text-[rgba(255,255,255,0.7)] hover:text-white"
@@ -89,7 +89,7 @@ const Nav = () => {
               ) : (
                 <Link
                   to={path}
-                  className={`font-[Outfit] font-medium text-sm uppercase tracking-wider transition-colors duration-300 relative py-2 ${
+                  className={`font-[Outfit] font-medium text-xs uppercase tracking-wider transition-colors duration-300 relative py-1 ${
                     isActiveLink(path)
                       ? "text-white"
                       : "text-[rgba(255,255,255,0.7)] hover:text-white"
@@ -113,18 +113,18 @@ const Nav = () => {
         <div className="hidden md:block">
           <motion.a
             href="#contact"
-            className="btn-gradient font-[Outfit] text-sm font-semibold inline-flex items-center gap-2"
+            className="btn-gradient font-[Outfit] text-xs font-semibold inline-flex items-center gap-1 px-4 py-2"
             whileTap={{ scale: 0.95 }}
           >
             Contact Us
-            <RiArrowRightUpLine size={16} />
+            <RiArrowRightUpLine size={14} />
           </motion.a>
         </div>
 
         {/* Mobile Menu Button - Visible only on Mobile */}
         <motion.button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 rounded-xl bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] transition-all duration-300 text-white border border-[rgba(255,255,255,0.1)]"
+          className="md:hidden p-1.5 rounded-lg bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] transition-all duration-300 text-white border border-[rgba(255,255,255,0.1)]"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -136,7 +136,7 @@ const Nav = () => {
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              {mobileOpen ? <RiCloseLine size={18} /> : <RiMenuLine size={18} />}
+              {mobileOpen ? <RiCloseLine size={16} /> : <RiMenuLine size={16} />}
             </motion.div>
           </AnimatePresence>
         </motion.button>
@@ -150,7 +150,7 @@ const Nav = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="md:hidden overflow-hidden rounded-b-2xl"
+            className="md:hidden overflow-hidden rounded-b-xl"
           >
             <div className="px-4 py-4 bg-[#050505] border-t border-[rgba(255,255,255,0.1)] glass-card">
               <div className="flex flex-col gap-1">
