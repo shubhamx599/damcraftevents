@@ -36,14 +36,14 @@ const Nav = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[1180px] rounded-xl transition-all duration-500 ${
+      className={`fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[1180px] rounded-xl bg-black/50 transition-all duration-500 ${
         scrolled 
           ? "glass-card shadow-lg backdrop-blur-2xl rounded-xl" 
           : "bg-transparent border border-(--border-glass) backdrop-blur-xl rounded-xl"
       }`}
     >
       {/* Mobile First Layout */}
-      <div className="flex items-center justify-between px-4 py-2 md:px-6 md:py-3">
+      <div className="flex items-center justify-between bg-black/30 rounded-xl px-4 py-2 md:px-6 md:py-3">
         
         {/* Logo - Mobile First */}
         <Link 
