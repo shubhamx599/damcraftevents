@@ -1,19 +1,16 @@
 // Event Images Data
 export const eventImages = {
   corporate: [
-    "../assets/corporate.jpg",
     "https://images.unsplash.com/photo-1540575467063-178a50c2df87",
     "https://images.unsplash.com/photo-1511578314322-379afb476865",
     "https://images.unsplash.com/photo-1551833993-eea000b6c5b1"
   ],
   mall: [
-    "../assets/mall.jpg", 
     "https://images.unsplash.com/photo-1566073771259-6a8506099945",
     "https://images.unsplash.com/photo-1542744173-8e7e53415bb0",
     "https://images.unsplash.com/photo-1492684223066-81342ee5ff30"
   ],
   advertising: [
-    "../assets/bike.jpg",
     "https://images.unsplash.com/photo-1563986768609-322da13575f3",
     "https://images.unsplash.com/photo-1563013544-824ae1b704d3",
     "https://images.unsplash.com/photo-1462826303086-329426d1aef5"
