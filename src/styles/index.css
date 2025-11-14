@@ -81,7 +81,7 @@ h6 {
 /* Hero-specific layers */
 .hero-title {
   font-size: clamp(1rem, 6vw, 6rem);
-  line-height: 1;
+  line-height: 0.8;
   letter-spacing: 3px;
   text-transform: uppercase;
   font-family: Helvetica, sans-serif;
