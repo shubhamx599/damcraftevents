@@ -1,3 +1,4 @@
+
 ```
 dam-craft-events
 ├─ eslint.config.js
@@ -19,18 +20,18 @@ dam-craft-events
 │  │  │  ├─ Footer.jsx
 │  │  │  └─ Nav.jsx
 │  │  ├─ sections
-│  │  │  ├─ EventDetails.jsx
 │  │  │  ├─ EventSection.jsx
 │  │  │  ├─ Gallery.jsx
 │  │  │  ├─ HeroSection.jsx
 │  │  │  ├─ ProjectSection.jsx
-│  │  │  └─ StatsSection.jsx
+│  │  │  ├─ StatsSection.jsx
+│  │  │  └─ StorySection.jsx
 │  │  └─ ui
+│  │     ├─ CustomButton.jsx
 │  │     ├─ CustomCursor.jsx
 │  │     ├─ HoverRevealCard.jsx
 │  │     ├─ logo.jsx
 │  │     ├─ MajorProjectItem.jsx
-│  │     ├─ ReadMoreButton.jsx
 │  │     ├─ ScrollFloat.jsx
 │  │     └─ TiltedCard.jsx
 │  ├─ constants
