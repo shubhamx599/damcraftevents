@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { motion, useMotionValue, useSpring } from "motion/react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 const springValues = {
   damping: 30,
@@ -22,7 +22,7 @@ export default function TiltedCard({
   overlayContent = null,
   displayOverlayContent = false,
   className = "",
-  onClick = null
+  onClick = null,
 }) {
   const ref = useRef(null);
   const x = useMotionValue(0);
@@ -119,8 +119,8 @@ export default function TiltedCard({
             width: imageWidth,
             height: imageHeight,
           }}
-          whileHover={{ 
-            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)" 
+          whileHover={{
+            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
           }}
         />
 
