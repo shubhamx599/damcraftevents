@@ -121,19 +121,7 @@ const StatCard = ({ stat, index }) => {
 const StatsSection = () => {
   const sectionRef = useRef();
 
-  useEffect(() => {
-    // Parallax effect
-    gsap.to(sectionRef.current, {
-      yPercent: -20,
-      ease: "none",
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
-  }, []);
+  // Removed parallax effect useEffect
 
   const stats = [
     {
@@ -205,7 +193,7 @@ const StatsSection = () => {
           whileInView={{ scaleX: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="mt-20 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"
+          className="my-20 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"
         />
       </div>
     </section>
