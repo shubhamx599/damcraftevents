@@ -87,7 +87,6 @@ const StorySection = () => {
       </section>
 
       {/* Story Section */}
-      {/* Story Section */}
       <section className="py-24 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 lg:px-20 flex flex-col lg:flex-row gap-12 items-center">
           {/* Left Content */}
