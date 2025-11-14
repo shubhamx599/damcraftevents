@@ -20,7 +20,7 @@ const CustomButton = ({
   };
 
   const variantClasses = {
-    primary: "border-black text-black hover:bg-black hover:text-white",
+    primary: " border-white text-black bg-white",
     secondary: "border-white text-white hover:bg-white hover:text-black",
     outline: "border-gray-400 text-gray-700 hover:bg-gray-100 hover:text-black",
   };
