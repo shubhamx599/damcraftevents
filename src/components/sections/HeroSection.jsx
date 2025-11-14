@@ -1,9 +1,8 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import ScrollDownIndicator from "../ui/ScrollDownIndicator";
+import CustomButton from "../ui/CustomButton";
 
 const HeroSection = () => {
   const heroRef = useRef(null);
@@ -19,20 +18,6 @@ const HeroSection = () => {
         ease: "back.out(1.7)",
         stagger: 0.15,
       });
-
-      // Parallax scroll effect - only for desktop
-      if (window.innerWidth >= 768) {
-        gsap.to(heroRef.current, {
-          yPercent: -15,
-          ease: "none",
-          scrollTrigger: {
-            trigger: heroRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: true,
-          },
-        });
-      }
     }, heroRef);
 
     return () => ctx.revert();
@@ -41,13 +26,13 @@ const HeroSection = () => {
   return (
     <section
       ref={heroRef}
-      className="relative h-[70vh] sm:min-h-screen w-full flex flex-col justify-center items-center text-center overflow-hidden px-4 sm:px-6 lg:px-8 py-8 pt-30 sm:py-16 md:py-24 lg:py-32 lg:pt-36"
+      className="relative h-[85vh] sm:min-h-screen md:min-h-screen lg:min-h-screen w-full flex flex-col justify-center items-center text-center overflow-hidden px-4 sm:px-6 lg:px-8  pt-30 sm:pt-16 md:pt-24 lg:pt-39"
     >
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black/60 to-black/90 z-0" />
 
       {/* Main Content */}
-      <div className="relative z-1 w-full max-w-7xl mx-auto flex flex-col items-center justify-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center justify-center">
         {/* Hero Text */}
         <div className="overflow-hidden space-y-2 sm:space-y-3 md:space-y-4 w-full">
           {["We Create", "Unforgettable", "Experiences"].map((line, i) => (
@@ -87,14 +72,23 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 1.5 }}
           className="mt-6 sm:mt-8 md:mt-10 flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 md:gap-6 w-full"
         >
-          <button className="w-full sm:w-auto px-6 py-2.5 sm:px-7 sm:py-3 md:px-8 md:py-3 rounded-full text-white font-semibold border border-white/30 hover:border-white backdrop-blur-md hover:bg-white/15 transition-all duration-500 text-sm sm:text-base">
-            Explore Services
-          </button>
-          <button className="w-full sm:w-auto px-6 py-2.5 sm:px-7 sm:py-3 md:px-8 md:py-3 rounded-full text-white font-semibold border border-white/30 hover:border-white backdrop-blur-md hover:bg-white/15 transition-all duration-500 text-sm sm:text-base">
-            View Work
-          </button>
+          <CustomButton
+            label="Explore Services"
+            variant="primary"
+            size="medium"
+            to="/services"
+            onClick={() => console.log("Explore Services clicked")}
+          />
+          <CustomButton
+            label="View Work"
+            variant="secondary"
+            size="medium"
+            to="/work"
+            onClick={() => console.log("View Work clicked")}
+          />
         </motion.div>
       </div>
+      <ScrollDownIndicator />
     </section>
   );
 };
