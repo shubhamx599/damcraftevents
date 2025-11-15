@@ -1,5 +1,5 @@
 // src/components/layout/Nav.jsx
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { RiMenuLine, RiCloseLine, RiArrowRightUpLine } from "@remixicon/react";
