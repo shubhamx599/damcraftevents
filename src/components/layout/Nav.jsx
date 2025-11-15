@@ -10,7 +10,7 @@ const LINKS = [
   { label: "Work", path: "/work" },
   { label: "Gallery", path: "/gallery" },
   { label: "About", path: "/about" },
-  { label: "Contact", path: "/contact" }
+  { label: "Contact", path: "/contact" },
 ];
 
 const Nav = () => {
@@ -22,7 +22,7 @@ const Nav = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -37,19 +37,15 @@ const Nav = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       className={`fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[1180px] rounded-xl bg-black/50 transition-all duration-500 ${
-        scrolled 
-          ? "glass-card shadow-lg backdrop-blur-2xl rounded-xl" 
+        scrolled
+          ? "glass-card shadow-lg backdrop-blur-2xl rounded-xl"
           : "bg-transparent border border-(--border-glass) backdrop-blur-xl rounded-xl"
       }`}
     >
-      {/* Mobile First Layout */}
+      {/* Layout */}
       <div className="flex items-center justify-between bg-black/30 rounded-xl px-4 py-2 md:px-6 md:py-3">
-        
-        {/* Logo - Mobile First */}
-        <Link 
-          to="/" 
-          className="flex items-center group"
-        >
+        {/* Logo */}
+        <Link to="/" className="flex items-center group">
           <div className="flex flex-col">
             <div className="text-white font-bold text-base md:text-lg font-[Space Grotesk] tracking-tight leading-none">
               DAM CRAFT
@@ -91,9 +87,7 @@ const Nav = () => {
 
         {/* CTA Button - Hidden on Mobile */}
         <div className="hidden md:block">
-          <motion.div
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.div whileTap={{ scale: 0.95 }}>
             <Link
               to="/contact"
               className="btn-gradient font-[Outfit] text-xs font-semibold inline-flex items-center gap-1 px-4 py-2"
@@ -119,7 +113,11 @@ const Nav = () => {
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-              {mobileOpen ? <RiCloseLine size={16} /> : <RiMenuLine size={16} />}
+              {mobileOpen ? (
+                <RiCloseLine size={16} />
+              ) : (
+                <RiMenuLine size={16} />
+              )}
             </motion.div>
           </AnimatePresence>
         </motion.button>
