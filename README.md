@@ -21,32 +21,25 @@ dam-craft-events
 │  │  │  └─ Nav.jsx
 │  │  ├─ sections
 │  │  │  ├─ EventSection.jsx
-│  │  │  ├─ Gallery.jsx
 │  │  │  ├─ HeroSection.jsx
 │  │  │  ├─ ProjectSection.jsx
 │  │  │  ├─ StatsSection.jsx
 │  │  │  └─ StorySection.jsx
 │  │  └─ ui
+│  │     ├─ Brands.jsx
 │  │     ├─ CustomButton.jsx
 │  │     ├─ CustomCursor.jsx
-│  │     ├─ HoverRevealCard.jsx
-│  │     ├─ logo.jsx
-│  │     ├─ MajorProjectItem.jsx
-│  │     ├─ ScrollFloat.jsx
-│  │     └─ TiltedCard.jsx
+│  │     ├─ ProjectCard.jsx
+│  │     ├─ ProjectDetailModal.jsx
+│  │     ├─ ScrollDownIndicator.jsx
+│  │     └─ ScrollFloat.jsx
 │  ├─ constants
-│  │  ├─ eventData.js
-│  │  └─ eventImages.js
-│  ├─ hooks
-│  │  ├─ useGsapFullWidthOnScroll.js
-│  │  ├─ useHorizontalScroll.js
-│  │  ├─ useScrollAnimation.js
-│  │  ├─ useScrollMorph.js
-│  │  └─ useSmoothScroll.js
+│  │  └─ projectsData.js
 │  ├─ main.jsx
 │  ├─ pages
 │  │  ├─ About.jsx
 │  │  ├─ Contact.jsx
+│  │  ├─ Gallery.jsx
 │  │  ├─ Home.jsx
 │  │  ├─ Services.jsx
 │  │  └─ Work.jsx
@@ -56,8 +49,7 @@ dam-craft-events
 │     ├─ animations
 │     │  └─ pageTransition.jsx
 │     ├─ Routing.jsx
-│     ├─ ScrollToTop.jsx
-│     └─ SectionWrapper.jsx
+│     └─ ScrollToTop.jsx
 └─ vite.config.js
 
 ```

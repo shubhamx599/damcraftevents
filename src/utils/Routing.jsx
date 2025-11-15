@@ -1,7 +1,6 @@
-import React, { lazy, Suspense } from 'react'
+import { lazy, Suspense } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
-import withPageTransition from './animations/pageTransition';
 
 // Lazy load pages for better performance
 const Home = lazy(() => import('../pages/Home.jsx'))
@@ -24,24 +23,16 @@ const PageLoader = () => (
 const Routing = () => {
   const location = useLocation();
   
-  // Pehle hi components ko withPageTransition se wrap karein
-  const HomeWithTransition = withPageTransition(Home);
-  const AboutWithTransition = withPageTransition(About);
-  const WorkWithTransition = withPageTransition(Work);
-  const GalleryWithTransition = withPageTransition(Gallery);
-  const ServicesWithTransition = withPageTransition(Services);
-  const ContactWithTransition = withPageTransition(Contact);
-  
   return (
     <Suspense fallback={<PageLoader />}>
       <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<HomeWithTransition />} />
-          <Route path="/about" element={<AboutWithTransition />} />
-          <Route path="/work" element={<WorkWithTransition />} />
-          <Route path="/gallery" element={<GalleryWithTransition />} />
-          <Route path="/services" element={<ServicesWithTransition />} />
-          <Route path="/contact" element={<ContactWithTransition />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/contact" element={<Contact />} />
           
           {/* 404 Page */}
           <Route path="*" element={
