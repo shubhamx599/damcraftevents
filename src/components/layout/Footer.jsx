@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   RiInstagramLine,
@@ -11,6 +11,7 @@ import {
   RiPhoneLine,
   RiAwardFill,
   RiSparklingFill,
+  RiArrowRightLine,
   RiChatSmile2Line,
   RiTimerFlashLine,
   RiTeamLine,
@@ -19,6 +20,7 @@ import {
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   // Scroll to top visibility
   useEffect(() => {
@@ -96,44 +98,37 @@ const Footer = () => {
                   <RiSparklingFill className="text-4xl text-yellow-400" />
                 </motion.div>
 
-                <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-                  <span className="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 bg-clip-text text-transparent">
-                    Ready to create
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+                  Ready to Create{" "}
+                  <span className="bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent">
+                    Magic
                   </span>{" "}
-                  <br />
-                  <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                    something extraordinary?
-                  </span>
-                </h3>
+                  Together?
+                </h2>
 
-                <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8 leading-relaxed">
+                <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
                   Let's transform your vision into an unforgettable experience
                   that resonates and inspires.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={mailTo}
-                    className="group relative px-8 py-4 rounded-full font-semibold bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-black overflow-hidden"
+                    onClick={() => navigate("/contact")}
+                    className="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-black px-8 py-4 rounded-2xl font-semibold hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3"
                   >
-                    <span className="relative z-10 flex items-center">
-                      <RiMailLine className="inline-block mr-3 text-lg" />
-                      Start Your Project
-                    </span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 via-pink-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    Start Your Project
+                    <RiArrowRightLine size={20} />
                   </motion.button>
 
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => window.location.assign("/portfolio")}
-                    className="group px-8 py-4 rounded-full border-2 border-white/20 bg-white/5 text-white font-semibold hover:bg-white/10 hover:border-white/30 transition-all"
+                    onClick={() => navigate("/work")}
+                    className="border border-white/30 text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white hover:text-black transition-all duration-300"
                   >
-                    <span className="flex items-center">
-                      View Our Portfolio
-                    </span>
+                    View Our Work
                   </motion.button>
                 </div>
               </motion.div>
