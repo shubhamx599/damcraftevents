@@ -47,10 +47,10 @@ const Work = () => {
   }, [isModalOpen]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-purple-900/20 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white">
       {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="max-w-6xl mt-12 mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ const Work = () => {
               </span>
             </motion.div>
 
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6">
               <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 Our
               </span>
@@ -156,50 +156,6 @@ const Work = () => {
               <p className="text-gray-400">Try selecting a different category</p>
             </motion.div>
           )}
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-3xl p-8 sm:p-12 border border-white/10"
-          >
-            <RiSparklingFill className="text-4xl text-yellow-400 mx-auto mb-6" />
-            
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-              Ready to Create <span className="bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent">Magic</span> Together?
-            </h2>
-            
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Let's transform your vision into an unforgettable experience that resonates and inspires.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => navigate('/contact')}
-                className="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-black px-8 py-4 rounded-2xl font-semibold hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3"
-              >
-                Start Your Project
-                <RiArrowRightLine size={20} />
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => navigate('/services')}
-                className="border border-white/30 text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white hover:text-black transition-all duration-300"
-              >
-                View Services
-              </motion.button>
-            </div>
-          </motion.div>
         </div>
       </section>
 

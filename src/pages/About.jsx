@@ -159,7 +159,7 @@ const About = () => {
   ];
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-black text-white overflow-hidden">
+    <div ref={containerRef} className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white overflow-hidden">
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -174,7 +174,7 @@ const About = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20">
+      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 mt-12">
         <div className="relative z-10 max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -194,7 +194,7 @@ const About = () => {
               </span>
             </motion.div>
 
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6">
               <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 Creating
               </span>

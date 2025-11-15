@@ -130,7 +130,7 @@ const Contact = () => {
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
       <div
         ref={sectionRef}
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 mt-10 lg:mt-21"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 mt-10 lg:mt-12"
       >
         {/* Header Section */}
         <motion.div
@@ -152,7 +152,7 @@ const Contact = () => {
             </span>
           </motion.div>
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
             <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Get In{" "}
             </span>
@@ -222,7 +222,7 @@ const Contact = () => {
                   <div
                     className={`absolute inset-0 rounded-2xl blur-md opacity-30`}
                   />
-                  <div className="relative bg-black/50 rounded-2xl p-4 w-16 h-16 flex items-center justify-center border border-white/10">
+                  <div className="relative  rounded-2xl p-4 w-16 h-16 flex items-center justify-center border border-white/10">
                     <contact.icon size={28} className="text-white" />
                   </div>
                 </div>

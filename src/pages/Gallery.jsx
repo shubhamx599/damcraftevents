@@ -281,10 +281,10 @@ const Gallery = () => {
   const currentMedia = lightboxIndex !== null ? galleryItems[lightboxIndex] : null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-purple-900/20 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white">
       {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto mt-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -302,7 +302,7 @@ const Gallery = () => {
               </span>
             </motion.div>
 
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6">
               <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                 Event
               </span>
