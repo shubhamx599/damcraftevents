@@ -45,7 +45,7 @@ const Contact = () => {
       description: "Get a quote or discuss your project",
       action: handleEmailClick,
       gradient: "from-purple-500 to-pink-500",
-      buttonText: "Send Email"
+      buttonText: "Send Email",
     },
     {
       icon: RiPhoneLine,
@@ -54,7 +54,7 @@ const Contact = () => {
       description: "Available 24/7 for urgent events",
       action: handlePhoneClick,
       gradient: "from-green-500 to-blue-500",
-      buttonText: "Call Now"
+      buttonText: "Call Now",
     },
     {
       icon: RiMapPinLine,
@@ -64,7 +64,11 @@ const Contact = () => {
       description: "Meet us for a detailed consultation",
       gradient: "from-orange-500 to-red-500",
       buttonText: "Get Directions",
-      action: () => window.open("https://maps.google.com?q=Building+B-22+Jhilmil+Industrial+Area+Delhi+110092", "_blank")
+      action: () =>
+        window.open(
+          "https://maps.google.com?q=Building+B-22+Jhilmil+Industrial+Area+Delhi+110092",
+          "_blank"
+        ),
     },
     {
       icon: RiWhatsappLine,
@@ -73,8 +77,8 @@ const Contact = () => {
       description: "Instant response for quick queries",
       action: handleWhatsAppClick,
       gradient: "from-green-400 to-green-600",
-      buttonText: "Message Now"
-    }
+      buttonText: "Message Now",
+    },
   ];
 
   const stats = [
@@ -86,13 +90,13 @@ const Contact = () => {
 
   const services = [
     "Corporate Events",
-    "Brand Activations", 
+    "Brand Activations",
     "Talent Management",
     "Advertising Solutions",
     "Wedding Planning",
     "Product Launches",
     "Mall Activations",
-    "Market Activations"
+    "Market Activations",
   ];
 
   const containerVariants = {
@@ -100,16 +104,16 @@ const Contact = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const cardVariants = {
-    hidden: { 
-      y: 50, 
+    hidden: {
+      y: 50,
       opacity: 0,
-      scale: 0.9
+      scale: 0.9,
     },
     visible: {
       y: 0,
@@ -117,14 +121,17 @@ const Contact = () => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
-      <div ref={sectionRef} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 mt-10 lg:mt-21">
+      <div
+        ref={sectionRef}
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 mt-10 lg:mt-21"
+      >
         {/* Header Section */}
         <motion.div
           initial={{ y: 30, opacity: 0 }}
@@ -156,8 +163,9 @@ const Contact = () => {
           </h1>
 
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Ready to create something extraordinary? Choose your preferred way to connect 
-            with us. We're here to bring your vision to life with premium event experiences.
+            Ready to create something extraordinary? Choose your preferred way
+            to connect with us. We're here to bring your vision to life with
+            premium event experiences.
           </p>
         </motion.div>
 
@@ -195,21 +203,25 @@ const Contact = () => {
             <motion.div
               key={index}
               variants={cardVariants}
-              whileHover={{ 
+              whileHover={{
                 y: -10,
                 scale: 1.02,
-                transition: { duration: 0.3 }
+                transition: { duration: 0.3 },
               }}
               className="relative group"
             >
               {/* Glow Effect */}
-              <div className={`absolute inset-0 bg-gray-600/60 rounded-3xl blur-xl opacity-0 group-hover:opacity-30 transition-all duration-500`} />
-              
+              <div
+                className={`absolute inset-0 bg-gray-600/60 rounded-3xl blur-xl opacity-0 group-hover:opacity-30 transition-all duration-500`}
+              />
+
               {/* Main Card */}
               <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-500 h-full">
                 {/* Icon */}
                 <div className="relative mb-6">
-                  <div className={`absolute inset-0 rounded-2xl blur-md opacity-30`} />
+                  <div
+                    className={`absolute inset-0 rounded-2xl blur-md opacity-30`}
+                  />
                   <div className="relative bg-black/50 rounded-2xl p-4 w-16 h-16 flex items-center justify-center border border-white/10">
                     <contact.icon size={28} className="text-white" />
                   </div>
@@ -220,7 +232,7 @@ const Contact = () => {
                   <h3 className="text-xl font-semibold text-white">
                     {contact.title}
                   </h3>
-                  
+
                   <div className="space-y-2">
                     <p className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                       {contact.value}
@@ -244,15 +256,17 @@ const Contact = () => {
                     className={`w-full bg-gradient-to-r ${contact.gradient} text-white py-4 px-6 rounded-2xl font-semibold hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 group/btn mt-4`}
                   >
                     {contact.buttonText}
-                    <RiArrowRightUpLine 
-                      size={18} 
-                      className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform duration-300" 
+                    <RiArrowRightUpLine
+                      size={18}
+                      className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform duration-300"
                     />
                   </motion.button>
                 </div>
 
                 {/* Hover Border */}
-                <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r ${contact.gradient} group-hover:w-3/4 transition-all duration-500 rounded-full`} />
+                <div
+                  className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r ${contact.gradient} group-hover:w-3/4 transition-all duration-500 rounded-full`}
+                />
               </div>
             </motion.div>
           ))}
@@ -268,13 +282,13 @@ const Contact = () => {
         >
           <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12 text-center">
             <motion.div
-              animate={{ 
+              animate={{
                 rotate: [0, -5, 5, -5, 0],
               }}
-              transition={{ 
+              transition={{
                 duration: 4,
                 repeat: Infinity,
-                repeatType: "reverse"
+                repeatType: "reverse",
               }}
               className="inline-block mb-6"
             >
@@ -287,25 +301,35 @@ const Contact = () => {
             <p className="text-gray-300 mb-8 text-lg">
               For urgent events or quick consultations, we're just a call away
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+
+            {/* Buttons Container */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-stretch sm:items-center w-full">
+              {/* Call Button */}
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handlePhoneClick}
-                className="bg-gradient-to-r from-green-500 to-green-600 text-white px-12 py-4 rounded-2xl font-semibold hover:shadow-2xl hover:shadow-green-500/25 transition-all duration-300 flex items-center gap-4 text-lg"
+                className="bg-gradient-to-r from-green-500 to-green-600 text-white 
+               w-full sm:w-auto px-8 py-4 rounded-2xl font-semibold 
+               hover:shadow-2xl hover:shadow-green-500/25 transition-all 
+               duration-300 flex items-center justify-center gap-4 text-base sm:text-lg"
               >
-                <RiPhoneLine size={24} />
-                Call Now: +91 8527846574
+                <RiPhoneLine size={22} />
+                +91 8527846574
               </motion.button>
-              
+
+              {/* WhatsApp Button */}
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleWhatsAppClick}
-                className="border border-white/30 text-white px-12 py-4 rounded-2xl font-semibold hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-4 text-lg backdrop-blur-sm"
+                className="border border-white/30 text-white 
+               w-full sm:w-auto px-8 py-4 rounded-2xl font-semibold 
+               hover:bg-white hover:text-black transition-all duration-300 
+               flex items-center justify-center gap-4 text-base sm:text-lg 
+               backdrop-blur-sm"
               >
-                <RiWhatsappLine size={24} />
+                <RiWhatsappLine size={22} />
                 WhatsApp Instant
               </motion.button>
             </div>
@@ -338,11 +362,11 @@ const Contact = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-all text-center group cursor-pointer"
               >
-              <div className="flex items-center justify-center">
-                <p className="text-white/80 group-hover:text-white font-medium text-sm">
-                  {service}
-                </p>
-              </div>
+                <div className="flex items-center justify-center">
+                  <p className="text-white/80 group-hover:text-white font-medium text-xs md:text-sm sm:text-sm lg:text-base">
+                    {service}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -358,17 +382,39 @@ const Contact = () => {
             viewport={{ once: true }}
             className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8"
           >
-            <h4 className="text-2xl font-bold text-white mb-6">Follow Our Journey</h4>
+            <h4 className="text-2xl font-bold text-white mb-6">
+              Follow Our Journey
+            </h4>
             <p className="text-gray-300 mb-6">
               Stay updated with our latest events and behind-the-scenes moments
             </p>
-            
+
             <div className="flex gap-4 flex-wrap">
               {[
-                { Icon: RiInstagramLine, color: "from-purple-500 to-pink-500", href: "https://instagram.com", label: "Instagram" },
-                { Icon: RiFacebookLine, color: "from-blue-500 to-blue-600", href: "https://facebook.com", label: "Facebook" },
-                { Icon: RiLinkedinLine, color: "from-blue-400 to-cyan-400", href: "https://linkedin.com", label: "LinkedIn" },
-                { Icon: RiTwitterLine, color: "from-sky-400 to-cyan-400", href: "https://twitter.com", label: "Twitter" },
+                {
+                  Icon: RiInstagramLine,
+                  color: "from-purple-500 to-pink-500",
+                  href: "https://instagram.com",
+                  label: "Instagram",
+                },
+                {
+                  Icon: RiFacebookLine,
+                  color: "from-blue-500 to-blue-600",
+                  href: "https://facebook.com",
+                  label: "Facebook",
+                },
+                {
+                  Icon: RiLinkedinLine,
+                  color: "from-blue-400 to-cyan-400",
+                  href: "https://linkedin.com",
+                  label: "LinkedIn",
+                },
+                {
+                  Icon: RiTwitterLine,
+                  color: "from-sky-400 to-cyan-400",
+                  href: "https://twitter.com",
+                  label: "Twitter",
+                },
               ].map((social, index) => (
                 <motion.a
                   key={social.href}
@@ -397,15 +443,17 @@ const Contact = () => {
             viewport={{ once: true }}
             className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8"
           >
-            <h4 className="text-2xl font-bold text-white mb-6">Why Choose Us?</h4>
+            <h4 className="text-2xl font-bold text-white mb-6">
+              Why Choose Us?
+            </h4>
             <div className="space-y-4">
               {[
                 "✓ 24/7 Premium Support",
-                "✓ Free Initial Consultation", 
+                "✓ Free Initial Consultation",
                 "✓ 500+ Successful Events",
                 "✓ 5-Star Client Ratings",
                 "✓ Award Winning Team",
-                "✓ End-to-End Management"
+                "✓ End-to-End Management",
               ].map((feature, index) => (
                 <motion.div
                   key={feature}
