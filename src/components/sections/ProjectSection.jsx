@@ -345,24 +345,6 @@ export default function ProjectSection() {
             ))}
           </div>
         </div>
-
-        <div className="text-center">
-          <div className="bg-gradient-to-r from-red-600 to-pink-600 rounded-2xl p-6 sm:p-8 lg:p-12 relative overflow-hidden">
-            <div className="relative z-10">
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold">Ready to Create Magic Together?</h3>
-              <p className="mt-3 text-gray-100 max-w-2xl mx-auto">Let's transform your ideas into unforgettable experiences.</p>
-
-              <motion.button
-                onClick={handleContact}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="mt-6 inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-semibold"
-              >
-                Start Your Project
-              </motion.button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
