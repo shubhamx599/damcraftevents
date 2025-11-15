@@ -5,9 +5,10 @@ import withPageTransition from './animations/pageTransition';
 
 // Lazy load pages for better performance
 const Home = lazy(() => import('../pages/Home.jsx'))
-const About = lazy(() => import('../pages/About.jsx'))
-const Work = lazy(() => import('../pages/Work.jsx'))
 const Services = lazy(() => import('../pages/Services.jsx'))
+const Work = lazy(() => import('../pages/Work.jsx'))
+const Gallery = lazy(() => import('../pages/Gallery.jsx'))
+const About = lazy(() => import('../pages/About.jsx'))
 const Contact = lazy(() => import('../pages/Contact.jsx'))
 
 // Loading component
@@ -27,6 +28,7 @@ const Routing = () => {
   const HomeWithTransition = withPageTransition(Home);
   const AboutWithTransition = withPageTransition(About);
   const WorkWithTransition = withPageTransition(Work);
+  const GalleryWithTransition = withPageTransition(Gallery);
   const ServicesWithTransition = withPageTransition(Services);
   const ContactWithTransition = withPageTransition(Contact);
   
@@ -37,6 +39,7 @@ const Routing = () => {
           <Route path="/" element={<HomeWithTransition />} />
           <Route path="/about" element={<AboutWithTransition />} />
           <Route path="/work" element={<WorkWithTransition />} />
+          <Route path="/gallery" element={<GalleryWithTransition />} />
           <Route path="/services" element={<ServicesWithTransition />} />
           <Route path="/contact" element={<ContactWithTransition />} />
           
