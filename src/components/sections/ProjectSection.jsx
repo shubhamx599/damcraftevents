@@ -1,4 +1,10 @@
-import React, { useRef, useState, useEffect, useCallback, useMemo } from "react";
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -157,11 +163,14 @@ const ServiceCard = React.memo(function ServiceCard({
     isActive: active,
   });
 
-  const handleCardClick = useCallback((e) => {
-    // if the click is on an interactive element, ignore
-    if (e.target.closest("button")) return;
-    toggle();
-  }, [toggle]);
+  const handleCardClick = useCallback(
+    (e) => {
+      // if the click is on an interactive element, ignore
+      if (e.target.closest("button")) return;
+      toggle();
+    },
+    [toggle]
+  );
 
   const canShowVideo = inView && !error && videoSrc;
 
@@ -173,7 +182,9 @@ const ServiceCard = React.memo(function ServiceCard({
       transition={{ duration: 0.6, delay: Math.min(index * 0.08, 0.5) }}
       viewport={{ once: true, margin: "-20px" }}
       onClick={handleCardClick}
-      className={`relative overflow-hidden rounded-2xl bg-gray-900 group cursor-pointer ${featured ? "lg:col-span-2" : ""}`}
+      className={`relative overflow-hidden rounded-2xl bg-gray-900 group cursor-pointer ${
+        featured ? "lg:col-span-2" : ""
+      }`}
     >
       <div className="w-full aspect-video sm:aspect-[16/9] lg:aspect-[16/9] bg-gradient-to-br from-gray-800 to-black">
         {canShowVideo ? (
@@ -187,7 +198,9 @@ const ServiceCard = React.memo(function ServiceCard({
           <div className="w-full h-full flex items-center justify-center p-4">
             <div className="text-center text-gray-400">
               <RiErrorWarningLine size={28} className="mx-auto opacity-70" />
-              <p className="mt-2 text-sm font-medium">{error ? "Video unavailable" : "Preview"}</p>
+              <p className="mt-2 text-sm font-medium">
+                {error ? "Video unavailable" : "Preview"}
+              </p>
               <p className="mt-1 text-xs text-gray-400">{title}</p>
             </div>
           </div>
@@ -199,11 +212,17 @@ const ServiceCard = React.memo(function ServiceCard({
         <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end">
           <div className="mb-2 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-red-500" />
-            <span className="text-xs uppercase tracking-wider text-white/80">Service {String(index + 1).padStart(2, "0")}</span>
+            <span className="text-xs uppercase tracking-wider text-white/80">
+              Service {String(index + 1).padStart(2, "0")}
+            </span>
           </div>
 
-          <h3 className="text-lg sm:text-xl font-bold text-white leading-tight">{title}</h3>
-          <p className="mt-2 text-sm sm:text-base text-white/70 line-clamp-2">{description}</p>
+          <h3 className="text-lg sm:text-xl font-bold text-white leading-tight">
+            {title}
+          </h3>
+          <p className="mt-2 text-sm sm:text-base text-white/70 line-clamp-2">
+            {description}
+          </p>
         </div>
 
         {/* play/pause badge */}
@@ -258,41 +277,56 @@ const StatCard = React.memo(({ number, label, Icon, delay = 0 }) => (
 export default function ProjectSection() {
   const navigate = useNavigate();
 
-  const services = useMemo(() => [
-    {
-      title: "Corporate Events",
-      description: "Professional conferences, product launches, and corporate gatherings that leave lasting impressions.",
-      video: "https://cdn.pixabay.com/video/2020/03/31/34685-403408160_tiny.mp4",
-      featured: true,
-    },
-    {
-      title: "Social Celebrations",
-      description: "Memorable birthdays, anniversaries, and private parties crafted with personal touch.",
-      video: "https://cdn.pixabay.com/video/2015/11/07/1275-145116912_tiny.mp4",
-    },
-    {
-      title: "Brand Activations",
-      description: "Engaging mall and market activations that turn audiences into loyal customers.",
-      video: "https://cdn.pixabay.com/video/2024/02/02/198898-909564555_tiny.mp4",
-    },
-    {
-      title: "Entertainment Shows",
-      description: "Spectacular concerts, live performances, and entertainment events that captivate audiences.",
-      video: "https://cdn.pixabay.com/video/2016/09/09/5026-182666667_tiny.mp4",
-    },
-    {
-      title: "Talent Management",
-      description: "Professional anchors, influencers, and celebrity collaborations for your events.",
-      video: "https://cdn.pixabay.com/video/2025/04/23/273922_tiny.mp4",
-    },
-  ], []);
+  const services = useMemo(
+    () => [
+      {
+        title: "Corporate Events",
+        description:
+          "Professional conferences, product launches, and corporate gatherings that leave lasting impressions.",
+        video:
+          "https://cdn.pixabay.com/video/2020/03/31/34685-403408160_tiny.mp4",
+        featured: true,
+      },
+      {
+        title: "Social Celebrations",
+        description:
+          "Memorable birthdays, anniversaries, and private parties crafted with personal touch.",
+        video:
+          "https://cdn.pixabay.com/video/2015/11/07/1275-145116912_tiny.mp4",
+      },
+      {
+        title: "Brand Activations",
+        description:
+          "Engaging mall and market activations that turn audiences into loyal customers.",
+        video:
+          "https://cdn.pixabay.com/video/2024/02/02/198898-909564555_tiny.mp4",
+      },
+      {
+        title: "Entertainment Shows",
+        description:
+          "Spectacular concerts, live performances, and entertainment events that captivate audiences.",
+        video:
+          "https://cdn.pixabay.com/video/2016/09/09/5026-182666667_tiny.mp4",
+      },
+      {
+        title: "Talent Management",
+        description:
+          "Professional anchors, influencers, and celebrity collaborations for your events.",
+        video: "https://cdn.pixabay.com/video/2025/04/23/273922_tiny.mp4",
+      },
+    ],
+    []
+  );
 
-  const stats = useMemo(() => [
-    { number: "400+", label: "Events Executed", icon: RiCalendarEventLine },
-    { number: "50+", label: "Happy Clients", icon: RiUserHeartLine },
-    { number: "10+", label: "Years Experience", icon: RiStarFill },
-    { number: "40+", label: "Team Members", icon: RiTeamLine },
-  ], []);
+  const stats = useMemo(
+    () => [
+      { number: "400+", label: "Events Executed", icon: RiCalendarEventLine },
+      { number: "50+", label: "Happy Clients", icon: RiUserHeartLine },
+      { number: "10+", label: "Years Experience", icon: RiStarFill },
+      { number: "40+", label: "Team Members", icon: RiTeamLine },
+    ],
+    []
+  );
 
   const handleContact = useCallback(() => navigate("/contact"), [navigate]);
 
@@ -314,7 +348,9 @@ export default function ProjectSection() {
           </ScrollFloat>
 
           <p className="mt-4 text-base sm:text-lg text-gray-300 max-w-3xl mx-auto">
-            Experience the difference with our comprehensive event solutions. From intimate gatherings to grand celebrations, we bring your vision to life.
+            Experience the difference with our comprehensive event solutions.
+            From intimate gatherings to grand celebrations, we bring your vision
+            to life.
           </p>
         </div>
 
@@ -336,12 +372,20 @@ export default function ProjectSection() {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
               Trusted by <span className="text-red-500">Industry Leaders</span>
             </h2>
-            <p className="mt-2 text-gray-300">Our track record speaks for itself</p>
+            <p className="mt-2 text-gray-300">
+              Our track record speaks for itself
+            </p>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {stats.map((st, idx) => (
-              <StatCard key={st.label} number={st.number} label={st.label} Icon={st.icon} delay={idx * 0.08} />
+              <StatCard
+                key={st.label}
+                number={st.number}
+                label={st.label}
+                Icon={st.icon}
+                delay={idx * 0.08}
+              />
             ))}
           </div>
         </div>
