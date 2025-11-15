@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Brands from "../components/ui/Brands.jsx";
 import {
   RiMailLine,
   RiPhoneLine,
@@ -122,8 +123,8 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 relative overflow-hidden">
-      <div ref={sectionRef} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 mt-24">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+      <div ref={sectionRef} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 mt-10 lg:mt-21">
         {/* Header Section */}
         <motion.div
           initial={{ y: 30, opacity: 0 }}
@@ -421,6 +422,7 @@ const Contact = () => {
           </motion.div>
         </div>
       </div>
+      <Brands />
     </div>
   );
 };
