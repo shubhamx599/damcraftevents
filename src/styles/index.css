@@ -97,7 +97,7 @@ h6 {
 
 /* Button Styles */
 .btn-gradient {
-  background: var(--gradient-2);
+  background: #ff0080;
   color: #fff;
   padding: 0.9rem 2rem;
   border-radius: 50px;
