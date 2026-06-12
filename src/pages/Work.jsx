@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import {
   RiArrowRightLine,
   RiSparklingFill,
@@ -14,7 +13,6 @@ const Work = () => {
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const navigate = useNavigate();
 
   const filteredProjects = projectsData.filter(project => 
     activeCategory === "all" || project.category === activeCategory

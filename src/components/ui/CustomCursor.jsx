@@ -112,7 +112,7 @@ const CustomCursor = () => {
       }
     };
 
-    const handleElementLeave = (e) => {
+    const handleElementLeave = () => {
       isInteractiveRef.current = false;
 
       gsap.to(circle, {

@@ -2,7 +2,6 @@
 import React, {
   useCallback,
   useEffect,
-  useMemo,
   useRef,
   useState,
 } from "react";
@@ -123,7 +122,7 @@ const VideoPlayer = React.memo(function VideoPlayer({
         if (vid.duration && vid.duration < 30) {
           vid.play().catch(() => {});
         }
-      } catch (e) {
+      } catch {
         // ignore duration access errors on some cross-origin responses
       }
     };
@@ -164,7 +163,9 @@ const VideoPlayer = React.memo(function VideoPlayer({
             // safe unobserve
             try {
               if (node) io.unobserve(node);
-            } catch (e) {}
+            } catch {
+              // ignore unobserve errors
+            }
           }
         });
       },
@@ -189,8 +190,7 @@ const VideoPlayer = React.memo(function VideoPlayer({
       try {
         vid.src = src;
         vid.dataset.loaded = "true";
-      } catch (e) {
-        setHasError(true);
+      } catch {
         setIsLoading(false);
       }
     }
@@ -461,7 +461,7 @@ const CTASection = ({ onExplore, loading }) => (
    Main Exported Component
    --------------------------- */
 export default function EventSection() {
-  const navigate = useNavigate?.() || ((p) => (window.location.href = p));
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const onExplore = useCallback(() => {
@@ -470,7 +470,7 @@ export default function EventSection() {
     try {
       navigate("/services");
       // navigation will usually unmount this component, so clearing loading is optional.
-    } catch (e) {
+    } catch {
       // fallback: hard redirect
       window.location.href = "/services";
     }

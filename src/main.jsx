@@ -19,7 +19,7 @@ root.render(
 );
 
 // Service Worker Registration (Optional - for PWA)
-if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+if ('serviceWorker' in navigator && import.meta.env.PROD) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then((registration) => {
@@ -32,7 +32,7 @@ if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
 }
 
 // Performance monitoring
-if (process.env.NODE_ENV === 'development') {
+if (import.meta.env.DEV) {
   console.log('🚀 Development mode active');
   
   // Log performance metrics

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   RiPlayFill,
@@ -235,24 +235,24 @@ const Gallery = () => {
 
   // Lightbox navigation
   const openLightbox = (index) => setLightboxIndex(index);
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setLightboxIndex(null);
     setIsPlaying(false);
-  };
+  }, []);
 
-  const nextItem = () => {
+  const nextItem = useCallback(() => {
     setLightboxIndex(prev => 
       prev === galleryItems.length - 1 ? 0 : prev + 1
     );
     setIsPlaying(false);
-  };
+  }, [galleryItems.length]);
 
-  const prevItem = () => {
+  const prevItem = useCallback(() => {
     setLightboxIndex(prev => 
       prev === 0 ? galleryItems.length - 1 : prev - 1
     );
     setIsPlaying(false);
-  };
+  }, [galleryItems.length]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -276,7 +276,7 @@ const Gallery = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [lightboxIndex]);
+  }, [lightboxIndex, closeLightbox, nextItem, prevItem]);
 
   const currentMedia = lightboxIndex !== null ? galleryItems[lightboxIndex] : null;
 

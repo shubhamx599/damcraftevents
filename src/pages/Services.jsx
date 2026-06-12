@@ -549,7 +549,7 @@ const Services = () => {
                     
                     {/* Stats */}
                     <div className="grid grid-cols-3 gap-4">
-                      {Object.entries(service.stats).map(([key, value], idx) => (
+                      {Object.entries(service.stats).map(([key, value]) => (
                         <motion.div
                           key={key}
                           whileHover={{ scale: 1.05 }}

@@ -55,13 +55,6 @@ const Footer = () => {
     { name: "Advertising Solutions", projects: "150+" },
   ];
 
-  const stats = [
-    { number: "500+", label: "Events Executed" },
-    { number: "50+", label: "Cities Covered" },
-    { number: "12+", label: "Years Experience" },
-    { number: "98%", label: "Client Satisfaction" },
-  ];
-
   return (
     <footer className="bg-black text-white relative overflow-hidden">
       {/* background elements */}

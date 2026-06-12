@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import {
   RiTeamLine,
   RiLightbulbFlashLine,
@@ -16,13 +15,19 @@ import {
   RiSparklingFill,
 } from "@remixicon/react";
 
+const stats = [
+  { target: 500, key: 'events', label: 'Events Executed' },
+  { target: 200, key: 'clients', label: 'Happy Clients' },
+  { target: 12, key: 'years', label: 'Years Experience' },
+  { target: 40, key: 'team', label: 'Team Members' }
+];
+
 const About = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   });
-  const navigate = useNavigate();
 
   // Parallax effects
   const y1 = useTransform(scrollYProgress, [0, 1], [0, 100]);
@@ -51,13 +56,6 @@ const About = () => {
     years: 0,
     team: 0
   });
-
-  const stats = [
-    { target: 500, key: 'events', label: 'Events Executed' },
-    { target: 200, key: 'clients', label: 'Happy Clients' },
-    { target: 12, key: 'years', label: 'Years Experience' },
-    { target: 40, key: 'team', label: 'Team Members' }
-  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(

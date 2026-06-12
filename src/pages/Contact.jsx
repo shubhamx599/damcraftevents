@@ -33,10 +33,6 @@ const Contact = () => {
     window.open("https://wa.me/918527846574", "_blank");
   };
 
-  const handleScheduleCall = () => {
-    window.open("https://calendly.com/damcraftevents", "_blank");
-  };
-
   const contactInfo = [
     {
       icon: RiMailLine,
@@ -177,7 +173,7 @@ const Contact = () => {
           viewport={{ once: true }}
           className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
         >
-          {stats.map((stat, index) => (
+          {stats.map((stat) => (
             <motion.div
               key={stat.label}
               whileHover={{ scale: 1.05 }}

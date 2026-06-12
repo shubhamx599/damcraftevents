@@ -7,7 +7,7 @@ import CustomCursor from "./components/ui/CustomCursor.jsx";
 import ScrollToTop from "./utils/ScrollToTop.jsx";
 
 const App = () => {
-  const lenis = useLenis(({ scroll }) => {
+  const lenis = useLenis(() => {
     // Optional scroll callbacks
   });
 
@@ -71,7 +71,7 @@ const App = () => {
         </div>
       </ReactLenis>
 
-      <div className="global-loading fixed top-0 left-0 w-full h-1 bg-linear-to-r from-green-500 to-blue-500 z-[1000] opacity-0 pointer-events-none"></div>
+      <div className="global-loading fixed top-0 left-0 w-full h-1 bg-linear-to-r from-green-500 to-blue-500 z-1000 opacity-0 pointer-events-none"></div>
     </>
   );
 };
@@ -83,7 +83,7 @@ class ErrorBoundary extends React.Component {
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(_error) {
     return { hasError: true };
   }
 

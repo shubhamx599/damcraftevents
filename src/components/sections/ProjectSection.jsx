@@ -5,7 +5,6 @@ import React, {
   useCallback,
   useMemo,
 } from "react";
-import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   RiPlayFill,
@@ -27,6 +26,9 @@ function useInView(options = {}) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
 
+  const rootMargin = options.rootMargin;
+  const threshold = options.threshold;
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -42,14 +44,14 @@ function useInView(options = {}) {
       },
       {
         root: null,
-        rootMargin: options.rootMargin ?? "100px 0px",
-        threshold: options.threshold ?? 0.1,
+        rootMargin: rootMargin ?? "100px 0px",
+        threshold: threshold ?? 0.1,
       }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [ref.current]);
+  }, [rootMargin, threshold]);
 
   return { ref, inView };
 }
@@ -84,7 +86,7 @@ function useVideoPlayer({ videoSrc, isActive }) {
       v.removeEventListener("canplay", onCanPlay);
       v.removeEventListener("error", onError);
     };
-  }, [videoRef.current]);
+  }, []);
 
   // Auto-play when card becomes active and video ready
   useEffect(() => {
@@ -107,27 +109,31 @@ function useVideoPlayer({ videoSrc, isActive }) {
     } else if (!isActive && isPlaying) {
       v.pause();
     }
-  }, [isActive, error]);
+  }, [isActive, error, isPlaying]);
 
   const play = useCallback(() => {
     const v = videoRef.current;
     if (!v || error) return;
     v.muted = true;
     v.play().catch(() => setError(true));
-  }, [videoRef.current, error]);
+  }, [error]);
 
   const pause = useCallback(() => {
     const v = videoRef.current;
     if (!v) return;
     v.pause();
-  }, [videoRef.current]);
+  }, []);
 
   const toggle = useCallback(() => {
     const v = videoRef.current;
     if (!v || error) return;
-    if (v.paused) play();
-    else pause();
-  }, [videoRef.current, error]);
+    if (v.paused) {
+      v.muted = true;
+      v.play().catch(() => setError(true));
+    } else {
+      v.pause();
+    }
+  }, [error]);
 
   return {
     videoRef,
@@ -275,7 +281,6 @@ const StatCard = React.memo(({ number, label, Icon, delay = 0 }) => (
 // Main ProjectSection
 // -----------------------------
 export default function ProjectSection() {
-  const navigate = useNavigate();
 
   const services = useMemo(
     () => [
@@ -327,8 +332,6 @@ export default function ProjectSection() {
     ],
     []
   );
-
-  const handleContact = useCallback(() => navigate("/contact"), [navigate]);
 
   return (
     <section className="relative bg-black text-white py-12 sm:py-16 lg:py-24 overflow-hidden">
