@@ -3,10 +3,11 @@ import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CustomButton from "../../components/ui/CustomButton";
+import v1 from "../../assets/videos/v1.mp4";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const mainVideo = "https://www.pexels.com/download/video/2066560/";
+const mainVideo = v1;
 const storyVideo = "https://www.pexels.com/download/video/6519561/";
 
 const StorySection = () => {
