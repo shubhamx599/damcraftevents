@@ -20,9 +20,9 @@ const CustomButton = ({
   };
 
   const variantClasses = {
-    primary: " border-white text-black bg-white",
-    secondary: "border-white text-white hover:bg-white hover:text-black",
-    outline: "border-gray-400 text-gray-700 hover:bg-gray-100 hover:text-black",
+    primary: "border-[var(--text-primary)] text-[var(--bg-dark)] bg-[var(--text-primary)]",
+    secondary: "border-[var(--text-primary)] text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-dark)]",
+    outline: "border-[var(--border-glass)] text-[var(--text-secondary)] hover:bg-[var(--border-glass)] hover:text-[var(--text-primary)]",
   };
 
   const handleClick = (e) => {

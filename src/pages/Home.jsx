@@ -6,7 +6,7 @@ import ProjectSection from "../components/sections/ProjectSection";
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+    <div className="min-h-screen bg-[var(--bg-darker)] text-[var(--text-primary)] overflow-hidden">
       <HeroSection />
       <StatsSection />
       <StorySection />

@@ -356,28 +356,28 @@ const ServiceCard = React.memo(function ServiceCard({ service, index }) {
 
         {/* Text column */}
         <div className={`${isReverse ? "lg:col-start-1 lg:row-start-1" : ""}`}>
-          <div className="text-white">
+          <div className="text-[var(--text-primary)]">
             <div className="flex gap-3 items-center mb-3 md:mb-4">
               <div
                 className="w-3 h-3 rounded-full flex-shrink-0"
                 style={{ backgroundColor: service.color }}
               />
-              <span className="text-xs uppercase tracking-wider font-semibold text-gray-300">
+              <span className="text-xs uppercase tracking-wider font-semibold text-[var(--text-secondary)]">
                 {service.label}
               </span>
-              <div className="h-px bg-gradient-to-r from-white to-transparent flex-grow ml-2" />
+              <div className="h-px bg-gradient-to-r from-[var(--text-primary)]/20 to-transparent flex-grow ml-2" />
             </div>
 
             <h3 className="text-2xl sm:text-3xl font-bold mb-3 md:mb-4 leading-tight">
               {service.heading}
             </h3>
 
-            <p className="text-gray-300 mb-4 text-base sm:text-lg leading-relaxed">
+            <p className="text-[var(--text-secondary)] mb-4 text-base sm:text-lg leading-relaxed">
               {service.description}
             </p>
 
             {service.features && service.features.length > 0 && (
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm sm:text-base text-gray-300">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm sm:text-base text-[var(--text-secondary)]">
                 {service.features.slice(0, 4).map((f, i) => (
                   <li key={i} className="flex items-center gap-3 py-1">
                     <div
@@ -408,18 +408,18 @@ const HeaderSection = () => (
       scrollEnd="bottom bottom-=40%"
       stagger={0.02}
       containerClassName="mb-4"
-      textClassName="text-white text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-300"
+      textClassName="text-[var(--text-primary)] text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-[var(--text-primary)] to-[var(--text-secondary)]"
     >
       Our Innovative Efforts
     </ScrollFloat>
 
     <motion.p
-      className="mt-4 text-gray-300 max-w-3xl mx-auto leading-relaxed text-sm sm:text-base"
+      className="mt-4 text-[var(--text-secondary)] max-w-3xl mx-auto leading-relaxed text-sm sm:text-base"
       {...fadeInUp}
     >
       Transforming ordinary events into extraordinary experiences through
       creative execution.
-      <span className="block mt-2 text-xs sm:text-sm text-gray-400">
+      <span className="block mt-2 text-xs sm:text-sm text-[var(--text-secondary)] opacity-80">
         Where every detail matters and every moment creates impact.
       </span>
     </motion.p>
@@ -429,11 +429,11 @@ const HeaderSection = () => (
 const CTASection = ({ onExplore, loading }) => (
   <div className="relative mt-6">
     <div className="absolute inset-0 bg-gradient-to-r from-blue-600/6 via-purple-600/6 to-pink-600/6 rounded-3xl -z-10" />
-    <div className="text-center py-8 md:py-12 px-4 rounded-3xl border border-white/8 bg-white/4 backdrop-blur-sm">
+    <div className="text-center py-8 md:py-12 px-4 rounded-3xl border border-[var(--border-glass)] bg-[var(--bg-dark)]/40 backdrop-blur-sm">
       <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3">
         Ready to bring your vision to life?
       </h3>
-      <p className="text-gray-300 mb-5 max-w-2xl mx-auto text-sm sm:text-base">
+      <p className="text-[var(--text-secondary)] mb-5 max-w-2xl mx-auto text-sm sm:text-base">
         Let's create something extraordinary together. Our team is ready to
         transform your ideas into unforgettable experiences.
       </p>
@@ -477,9 +477,9 @@ export default function EventSection() {
   }, [navigate]);
 
   return (
-    <section className="relative py-12 md:py-20 bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 text-white overflow-hidden">
+    <section className="relative py-12 md:py-20 bg-gradient-to-br from-[var(--bg-dark)] via-[var(--bg-darker)] to-[var(--bg-dark)] text-[var(--text-primary)] overflow-hidden border-b border-[var(--border-glass)]">
       {/* subtle global background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-purple-900/20 to-gray-900/40 -z-20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--bg-darker)]/30 via-[var(--bg-dark)]/20 to-[var(--bg-darker)]/40 -z-20" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <HeaderSection />

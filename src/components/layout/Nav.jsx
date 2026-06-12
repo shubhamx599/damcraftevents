@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import { RiMenuLine, RiCloseLine, RiArrowRightUpLine } from "@remixicon/react";
+import { RiMenuLine, RiCloseLine, RiArrowRightUpLine, RiSunLine, RiMoonLine } from "@remixicon/react";
 
 const LINKS = [
   { label: "Home", path: "/" },
@@ -17,6 +17,7 @@ const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +28,19 @@ const Nav = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (theme === "light") {
+      document.documentElement.classList.add("light");
+    } else {
+      document.documentElement.classList.remove("light");
+    }
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
+
   const isActiveLink = (path) => {
     return location.pathname === path;
   };
@@ -36,21 +50,21 @@ const Nav = () => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[1180px] rounded-xl bg-black/50 transition-all duration-500 ${
+      className={`fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[1180px] rounded-xl transition-all duration-500 ${
         scrolled
           ? "glass-card shadow-lg backdrop-blur-2xl rounded-xl"
-          : "bg-transparent border border-(--border-glass) backdrop-blur-xl rounded-xl"
+          : "bg-transparent border border-[var(--border-glass)] backdrop-blur-xl rounded-xl"
       }`}
     >
       {/* Layout */}
-      <div className="flex items-center justify-between bg-black/30 rounded-xl px-4 py-2 md:px-6 md:py-3">
+      <div className="flex items-center justify-between bg-black/10 dark:bg-black/30 rounded-xl px-4 py-2 md:px-6 md:py-3">
         {/* Logo */}
         <Link to="/" className="flex items-center group">
           <div className="flex flex-col">
-            <div className="text-white font-bold text-base md:text-lg font-[Space Grotesk] tracking-tight leading-none">
+            <div className="text-[var(--text-primary)] font-bold text-base md:text-lg font-[Space Grotesk] tracking-tight leading-none">
               DAM CRAFT
             </div>
-            <div className="text-[8px] md:text-[9px] text-[rgba(255,255,255,0.6)] tracking-[0.15em] md:tracking-[0.2em] uppercase font-[Outfit] font-medium mt-0.5">
+            <div className="text-[8px] md:text-[9px] text-[var(--text-secondary)] opacity-80 tracking-[0.15em] md:tracking-[0.2em] uppercase font-[Outfit] font-medium mt-0.5">
               Events & Activations
             </div>
           </div>
@@ -68,8 +82,8 @@ const Nav = () => {
                 to={path}
                 className={`font-[Outfit] font-medium text-xs uppercase tracking-wider transition-colors duration-300 relative py-1 ${
                   isActiveLink(path)
-                    ? "text-white"
-                    : "text-[rgba(255,255,255,0.7)] hover:text-white"
+                    ? "text-[var(--text-primary)]"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                 }`}
               >
                 {label}
@@ -85,8 +99,19 @@ const Nav = () => {
           ))}
         </nav>
 
-        {/* CTA Button - Hidden on Mobile */}
-        <div className="hidden md:block">
+        {/* Desktop Controls - CTA & Theme Toggle */}
+        <div className="hidden md:flex items-center gap-4">
+          {/* Theme Toggle Button */}
+          <motion.button
+            onClick={toggleTheme}
+            className="p-2 rounded-full border border-[var(--border-glass)] hover:bg-[var(--border-glass)] transition-all text-[var(--text-primary)] cursor-pointer"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            aria-label="Toggle Theme"
+          >
+            {theme === "dark" ? <RiSunLine size={16} /> : <RiMoonLine size={16} />}
+          </motion.button>
+
           <motion.div whileTap={{ scale: 0.95 }}>
             <Link
               to="/contact"
@@ -101,7 +126,7 @@ const Nav = () => {
         {/* Mobile Menu Button - Visible only on Mobile */}
         <motion.button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-1.5 rounded-lg bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] transition-all duration-300 text-white border border-[rgba(255,255,255,0.1)]"
+          className="md:hidden p-1.5 rounded-lg bg-[var(--border-glass)] hover:bg-[var(--border-glass)] transition-all duration-300 text-[var(--text-primary)] border border-[var(--border-glass)]"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -133,7 +158,7 @@ const Nav = () => {
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="md:hidden overflow-hidden rounded-b-xl"
           >
-            <div className="px-4 py-4 bg-[#050505] border-t border-[rgba(255,255,255,0.1)] glass-card rounded-b-xl">
+            <div className="px-4 py-4 bg-[var(--bg-darker)] border-t border-[var(--border-glass)] glass-card rounded-b-xl">
               <div className="flex flex-col gap-1">
                 {LINKS.map(({ label, path }) => (
                   <motion.div
@@ -146,8 +171,8 @@ const Nav = () => {
                       to={path}
                       className={`block py-3 px-3 rounded-lg font-[Outfit] font-medium text-base transition-all duration-300 ${
                         isActiveLink(path)
-                          ? "text-white bg-[rgba(255,255,255,0.05)]"
-                          : "text-[rgba(255,255,255,0.7)] hover:text-white hover:bg-[rgba(255,255,255,0.05)]"
+                          ? "text-[var(--text-primary)] bg-[var(--border-glass)]"
+                          : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--border-glass)]"
                       }`}
                       onClick={() => setMobileOpen(false)}
                     >
@@ -155,11 +180,38 @@ const Nav = () => {
                     </Link>
                   </motion.div>
                 ))}
+                
+                {/* Mobile Theme Toggle */}
+                <motion.div
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                  className="py-3 px-3 flex justify-between items-center border-t border-[var(--border-glass)] mt-1"
+                >
+                  <span className="font-[Outfit] font-medium text-base text-[var(--text-secondary)]">Theme</span>
+                  <button
+                    onClick={toggleTheme}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border-glass)] bg-[var(--border-glass)] text-[var(--text-primary)]"
+                  >
+                    {theme === "dark" ? (
+                      <>
+                        <RiSunLine size={16} />
+                        <span className="text-sm font-[Outfit] font-semibold">Light Mode</span>
+                      </>
+                    ) : (
+                      <>
+                        <RiMoonLine size={16} />
+                        <span className="text-sm font-[Outfit] font-semibold">Dark Mode</span>
+                      </>
+                    )}
+                  </button>
+                </motion.div>
+
                 <motion.div
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.3, delay: 0.1 }}
-                  className="pt-3 mt-1 border-t border-[rgba(255,255,255,0.1)]"
+                  className="pt-3 mt-1 border-t border-[var(--border-glass)]"
                 >
                   <Link
                     to="/contact"

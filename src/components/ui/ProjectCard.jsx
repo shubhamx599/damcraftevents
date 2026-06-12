@@ -40,7 +40,7 @@ const ProjectCard = ({ project, index, onProjectClick }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative rounded-3xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-white/20 transition-all duration-500">
+      <div className="relative rounded-3xl overflow-hidden bg-[var(--bg-dark)] border border-[var(--border-glass)] group-hover:border-[var(--text-primary)]/20 transition-all duration-500 shadow-lg">
         {/* Media Container */}
         <div className="aspect-video relative overflow-hidden">
           {project.video ? (
@@ -97,23 +97,23 @@ const ProjectCard = ({ project, index, onProjectClick }) => {
         {/* Content */}
         <div className="p-6">
           <div className="flex items-start justify-between mb-3">
-            <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-yellow-400 group-hover:to-pink-500 group-hover:bg-clip-text transition-all">
+            <h3 className="text-xl font-bold text-[var(--text-primary)] group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-yellow-400 group-hover:to-pink-500 group-hover:bg-clip-text transition-all">
               {project.title}
             </h3>
             <motion.div
               whileHover={{ scale: 1.1 }}
               className="opacity-0 group-hover:opacity-100 transition-all duration-300"
             >
-              <RiExternalLinkLine size={20} className="text-gray-400" />
+              <RiExternalLinkLine size={20} className="text-[var(--text-secondary)]" />
             </motion.div>
           </div>
 
-          <p className="text-gray-300 text-sm mb-4 line-clamp-2">
+          <p className="text-[var(--text-secondary)] text-sm mb-4 line-clamp-2">
             {project.description}
           </p>
 
           {/* Project Meta */}
-          <div className="flex flex-wrap gap-4 text-xs text-gray-400">
+          <div className="flex flex-wrap gap-4 text-xs text-[var(--text-secondary)]/80">
             <div className="flex items-center gap-1">
               <RiCalendarLine size={12} />
               <span>{project.year}</span>
@@ -133,13 +133,13 @@ const ProjectCard = ({ project, index, onProjectClick }) => {
             {project.tags.slice(0, 3).map((tag, idx) => (
               <span
                 key={idx}
-                className="px-2 py-1 bg-white/10 rounded-full text-xs text-white/80 border border-white/10"
+                className="px-2 py-1 bg-[var(--border-glass)] rounded-full text-xs text-[var(--text-secondary)] border border-[var(--border-glass)]"
               >
                 {tag}
               </span>
             ))}
             {project.tags.length > 3 && (
-              <span className="px-2 py-1 bg-white/5 rounded-full text-xs text-white/60 border border-white/10">
+              <span className="px-2 py-1 bg-[var(--border-glass)]/50 rounded-full text-xs text-[var(--text-secondary)]/80 border border-[var(--border-glass)]">
                 +{project.tags.length - 3}
               </span>
             )}

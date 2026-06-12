@@ -28,7 +28,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
             transition={{ type: "spring", damping: 25 }}
-            className="relative bg-gray-900 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+            className="relative bg-[var(--bg-dark)] border border-[var(--border-glass)] rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
@@ -37,11 +37,11 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
               animate={{ scale: 1 }}
               transition={{ delay: 0.2 }}
               onClick={onClose}
-              className="absolute top-4 right-4 z-10 bg-white/10 backdrop-blur-md rounded-full p-3 border border-white/20 hover:bg-white/20 transition-all"
+              className="absolute top-4 right-4 z-10 bg-[var(--border-glass)] backdrop-blur-md rounded-full p-3 border border-[var(--border-glass)] hover:bg-[var(--border-glass)]/80 text-[var(--text-primary)] transition-all"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <RiCloseLine size={20} className="text-white" />
+              <RiCloseLine size={20} className="text-current" />
             </motion.button>
 
             {/* Media Section */}
@@ -60,7 +60,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
                   className="w-full h-full object-cover rounded-t-3xl"
                 />
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent rounded-t-3xl" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-dark)] to-transparent rounded-t-3xl" />
 
               {/* Media Type Badge */}
               <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-white flex items-center gap-2">
@@ -83,7 +83,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
                 {project.tags.map((tag, idx) => (
                   <span
                     key={idx}
-                    className="px-3 py-1 bg-white/10 rounded-full text-sm text-white/80 border border-white/10"
+                    className="px-3 py-1 bg-[var(--border-glass)] rounded-full text-sm text-[var(--text-secondary)] border border-[var(--border-glass)]"
                   >
                     {tag}
                   </span>
@@ -91,12 +91,12 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
               </div>
 
               {/* Title */}
-              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+              <h2 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)] mb-4">
                 {project.title}
               </h2>
 
               {/* Description */}
-              <p className="text-gray-300 text-lg mb-6 leading-relaxed">
+              <p className="text-[var(--text-secondary)] text-lg mb-6 leading-relaxed">
                 {project.longDescription}
               </p>
 
@@ -104,42 +104,42 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="bg-white/5 rounded-2xl p-4 border border-white/10"
+                  className="bg-[var(--border-glass)]/50 rounded-2xl p-4 border border-[var(--border-glass)] shadow-sm"
                 >
                   <RiCalendarLine className="text-purple-400 mb-2" size={20} />
-                  <div className="text-sm text-gray-400">Year</div>
-                  <div className="text-white font-semibold">{project.year}</div>
+                  <div className="text-sm text-[var(--text-secondary)]">Year</div>
+                  <div className="text-[var(--text-primary)] font-semibold">{project.year}</div>
                 </motion.div>
 
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="bg-white/5 rounded-2xl p-4 border border-white/10"
+                  className="bg-[var(--border-glass)]/50 rounded-2xl p-4 border border-[var(--border-glass)] shadow-sm"
                 >
                   <RiMapPinLine className="text-pink-400 mb-2" size={20} />
-                  <div className="text-sm text-gray-400">Location</div>
-                  <div className="text-white font-semibold">
+                  <div className="text-sm text-[var(--text-secondary)]">Location</div>
+                  <div className="text-[var(--text-primary)] font-semibold">
                     {project.location}
                   </div>
                 </motion.div>
 
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="bg-white/5 rounded-2xl p-4 border border-white/10"
+                  className="bg-[var(--border-glass)]/50 rounded-2xl p-4 border border-[var(--border-glass)] shadow-sm"
                 >
                   <RiUserLine className="text-yellow-400 mb-2" size={20} />
-                  <div className="text-sm text-gray-400">Attendees</div>
-                  <div className="text-white font-semibold">
+                  <div className="text-sm text-[var(--text-secondary)]">Attendees</div>
+                  <div className="text-[var(--text-primary)] font-semibold">
                     {project.attendees}
                   </div>
                 </motion.div>
 
                 <motion.div
                   whileHover={{ scale: 1.05 }}
-                  className="bg-white/5 rounded-2xl p-4 border border-white/10"
+                  className="bg-[var(--border-glass)]/50 rounded-2xl p-4 border border-[var(--border-glass)] shadow-sm"
                 >
                   <RiSparklingFill className="text-green-400 mb-2" size={20} />
-                  <div className="text-sm text-gray-400">Duration</div>
-                  <div className="text-white font-semibold">
+                  <div className="text-sm text-[var(--text-secondary)]">Duration</div>
+                  <div className="text-[var(--text-primary)] font-semibold">
                     {project.duration}
                   </div>
                 </motion.div>
@@ -149,16 +149,16 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
               {project.client && (
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="bg-white/5 rounded-2xl p-4 border border-white/10 mb-6"
+                  className="bg-[var(--border-glass)]/50 rounded-2xl p-4 border border-[var(--border-glass)] mb-6"
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="text-sm text-gray-400">Client</div>
-                      <div className="text-white font-semibold text-lg">
+                      <div className="text-sm text-[var(--text-secondary)]">Client</div>
+                      <div className="text-[var(--text-primary)] font-semibold text-lg">
                         {project.client}
                       </div>
                     </div>
-                    <RiExternalLinkLine className="text-gray-400" size={20} />
+                    <RiExternalLinkLine className="text-[var(--text-secondary)]" size={20} />
                   </div>
                 </motion.div>
               )}
@@ -168,9 +168,9 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="bg-white/5 rounded-2xl p-6 border border-white/10 mb-6"
+                className="bg-[var(--border-glass)]/50 rounded-2xl p-6 border border-[var(--border-glass)] mb-6"
               >
-                <h3 className="text-xl font-bold text-white mb-4">
+                <h3 className="text-xl font-bold text-[var(--text-primary)] mb-4">
                   Event Highlights
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -181,7 +181,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
                       className="flex items-center gap-3"
                     >
                       <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex-shrink-0" />
-                      <span className="text-gray-300">{highlight}</span>
+                      <span className="text-[var(--text-secondary)]">{highlight}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -194,9 +194,9 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="bg-white/5 rounded-2xl p-6 border border-white/10"
+                    className="bg-[var(--border-glass)]/50 rounded-2xl p-6 border border-[var(--border-glass)]"
                   >
-                    <h3 className="text-xl font-bold text-white mb-4">
+                    <h3 className="text-xl font-bold text-[var(--text-primary)] mb-4">
                       Event Gallery
                     </h3>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">

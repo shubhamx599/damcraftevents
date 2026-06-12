@@ -19,19 +19,19 @@ const Brands = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full px-4 sm:px-6 md:px-10 lg:px-20 py-20 bg-gradient-to-br from-[#0d0d0d] via-[#121212] to-black overflow-hidden"
+      className="w-full px-4 sm:px-6 md:px-10 lg:px-20 py-20 bg-gradient-to-br from-[var(--bg-dark)] via-[var(--bg-darker)] to-[var(--bg-dark)] overflow-hidden"
     >
       {/* Header */}
       <div className="text-center mb-16">
-        <div className="inline-block border border-white/10 rounded-full px-6 py-2 mb-4 backdrop-blur-md bg-white/5">
-          <p className="text-xs tracking-wider uppercase text-white/70">Trusted By</p>
+        <div className="inline-block border border-[var(--border-glass)] rounded-full px-6 py-2 mb-4 backdrop-blur-md bg-[var(--border-glass)]">
+          <p className="text-xs tracking-wider uppercase text-[var(--text-secondary)]">Trusted By</p>
         </div>
 
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-red-500 via-pink-500 to-yellow-400 bg-clip-text text-transparent">
           Industry Leaders Worldwide
         </h2>
 
-        <p className="text-base sm:text-lg text-white/60 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
           Collaborating with renowned brands to deliver exceptional event experiences that leave a lasting impact.
         </p>
       </div>
@@ -42,7 +42,7 @@ const Brands = () => {
           <div
             key={idx}
             ref={(el) => (itemsRef.current[idx] = el)}
-            className="brand-item p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 hover:border-white/20 transition-all duration-500 cursor-pointer group relative overflow-hidden"
+            className="brand-item p-6 rounded-2xl bg-[var(--bg-dark)] border border-[var(--border-glass)] backdrop-blur-sm hover:bg-[var(--border-glass)]/80 hover:border-[var(--text-primary)]/20 transition-all duration-500 cursor-pointer group relative overflow-hidden shadow-sm"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-red-500/0 via-pink-500/0 to-yellow-400/0 group-hover:from-red-500/10 group-hover:via-pink-500/10 group-hover:to-yellow-400/10 transition-all duration-500"></div>
 
@@ -53,7 +53,7 @@ const Brands = () => {
               className="w-20 h-20 object-cover rounded-xl grayscale-0 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 mx-auto"
             />
 
-            <p className="text-center text-white/70 text-sm mt-4 translate-y-2  group-hover:translate-y-0 transition-all duration-500">
+            <p className="text-center text-[var(--text-secondary)] text-sm mt-4 translate-y-2  group-hover:translate-y-0 transition-all duration-500">
               {logo.name}
             </p>
           </div>
@@ -63,11 +63,11 @@ const Brands = () => {
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-20 text-center">
         {[{ n: "50+", l: "Brand Partnerships" }, { n: "100%", l: "Client Satisfaction" }, { n: "10+", l: "Years Collaborating" }].map((s, i) => (
-          <div key={i} className="p-6 rounded-2xl bg-white/5 border border-white/10 shadow-lg">
+          <div key={i} className="p-6 rounded-2xl bg-[var(--bg-dark)] border border-[var(--border-glass)] shadow-lg">
             <h3 className="text-3xl font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
               {s.n}
             </h3>
-            <p className="text-white/60 mt-1">{s.l}</p>
+            <p className="text-[var(--text-secondary)] mt-1">{s.l}</p>
             <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-blue-400 mx-auto mt-3 rounded-full"></div>
           </div>
         ))}

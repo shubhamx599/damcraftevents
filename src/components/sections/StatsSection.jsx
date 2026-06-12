@@ -85,11 +85,11 @@ const StatCard = ({ stat, index }) => {
       <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-blue-500/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100" />
 
       {/* Main Card */}
-      <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 text-center hover:border-white/20 transition-all duration-500">
+      <div className="relative bg-[var(--bg-dark)] border border-[var(--border-glass)] rounded-3xl p-8 text-center hover:border-[var(--text-primary)]/20 transition-all duration-500">
         {/* Icon Container */}
         <div className="relative mb-6">
           <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-blue-500 rounded-2xl blur-md opacity-30" />
-          <div className="relative bg-black/50 rounded-2xl p-4 w-16 h-16 mx-auto flex items-center justify-center border border-white/10">
+          <div className="relative bg-black/50 rounded-2xl p-4 w-16 h-16 mx-auto flex items-center justify-center border border-[var(--border-glass)]">
             <stat.icon size={28} className="text-white" />
           </div>
         </div>
@@ -153,10 +153,10 @@ const StatsSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative py-30 pb-0 bg-black text-white overflow-hidden"
+      className="relative py-30 pb-0 bg-[var(--bg-darker)] text-[var(--text-primary)] overflow-hidden"
     >
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70 z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-darker)]/50 via-transparent to-[var(--bg-darker)]/70 z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
         {/* Section Header */}

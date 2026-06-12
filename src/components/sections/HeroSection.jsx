@@ -29,7 +29,7 @@ const HeroSection = () => {
       className="relative h-[85vh] sm:min-h-screen md:min-h-screen lg:min-h-screen w-full flex flex-col justify-center items-center text-center overflow-hidden px-4 sm:px-6 lg:px-8  pt-30 sm:pt-16 md:pt-24 lg:pt-39"
     >
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/60 to-black/90 z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-dark)] via-[var(--bg-darker)]/80 to-[var(--bg-dark)] z-0" />
 
       {/* Main Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center justify-center">

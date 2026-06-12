@@ -157,7 +157,7 @@ const About = () => {
   ];
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white overflow-hidden">
+    <div ref={containerRef} className="min-h-screen bg-gradient-to-b from-[var(--bg-dark)] via-[var(--bg-darker)] to-[var(--bg-dark)] text-[var(--text-primary)] overflow-hidden">
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -168,7 +168,7 @@ const About = () => {
           style={{ y: y2 }}
           className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-full blur-3xl"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(var(--grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--grid-line)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
       </div>
 
       {/* Hero Section */}
@@ -184,16 +184,16 @@ const About = () => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/10 mb-6"
+              className="inline-flex items-center gap-2 bg-[var(--border-glass)] px-4 py-2 rounded-full border border-[var(--border-glass)] mb-6"
             >
               <RiSparklingFill className="text-yellow-400" size={16} />
-              <span className="text-white/80 text-sm font-medium uppercase tracking-wider">
+              <span className="text-[var(--text-secondary)] text-sm font-medium uppercase tracking-wider">
                 Since 2010
               </span>
             </motion.div>
 
             <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-secondary)] bg-clip-text text-transparent">
                 Creating
               </span>
               <br />
@@ -202,8 +202,8 @@ const About = () => {
               </span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Crafting unforgettable experiences through creativity, precision, and passion. 
+            <p className="text-lg sm:text-xl text-[var(--text-secondary)] max-w-3xl mx-auto leading-relaxed">
+              Drafting unforgettable experiences through creativity, precision, and passion. 
               Where every event tells a story and every moment creates lasting memories.
             </p>
           </motion.div>
@@ -249,7 +249,7 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="absolute bottom-6 left-6 right-6 bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20"
+              className="absolute bottom-6 left-6 right-6 bg-black/40 backdrop-blur-md rounded-2xl p-6 border border-[var(--border-glass)]"
             >
               <p className="text-white text-center text-lg font-medium">
                 "Creating moments that matter, experiences that last forever"
@@ -272,7 +272,7 @@ const About = () => {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
               Our <span className="bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">Impact</span> in Numbers
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
               Years of dedication reflected through our achievements and client success stories
             </p>
           </motion.div>
@@ -286,12 +286,12 @@ const About = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="text-center p-6 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all"
+                className="text-center p-6 rounded-3xl bg-[var(--bg-dark)] border border-[var(--border-glass)] hover:border-[var(--text-primary)]/20 transition-all shadow-lg"
               >
                 <div className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent mb-2">
                   {counters[stat.key]}+
                 </div>
-                <div className="text-sm sm:text-base text-white/70">{stat.label}</div>
+                <div className="text-sm sm:text-base text-[var(--text-secondary)]">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -311,7 +311,7 @@ const About = () => {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
               Our <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">Core Values</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
               The principles that guide every event we create and every relationship we build
             </p>
           </motion.div>
@@ -325,13 +325,13 @@ const About = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="group p-6 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all"
+                className="group p-6 rounded-3xl bg-[var(--bg-dark)] border border-[var(--border-glass)] hover:border-[var(--text-primary)]/20 transition-all shadow-lg"
               >
                 <div className={`w-16 h-16 bg-gradient-to-r ${value.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500 mx-auto`}>
                   <value.icon size={28} className="text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white text-center mb-3">{value.title}</h3>
-                <p className="text-gray-300 text-center text-sm leading-relaxed">{value.description}</p>
+                <h3 className="text-xl font-bold text-[var(--text-primary)] text-center mb-3">{value.title}</h3>
+                <p className="text-[var(--text-secondary)] text-center text-sm leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -351,7 +351,7 @@ const About = () => {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
               Meet Our <span className="bg-gradient-to-r from-green-500 to-blue-500 bg-clip-text text-transparent">Visionaries</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
               The passionate minds behind Dam Craft Events, dedicated to transforming your vision into reality
             </p>
           </motion.div>
@@ -367,7 +367,7 @@ const About = () => {
                 whileHover={{ y: -10 }}
                 className="group"
               >
-                <div className="relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 transition-all">
+                <div className="relative overflow-hidden rounded-3xl bg-[var(--bg-dark)] border border-[var(--border-glass)] hover:border-[var(--text-primary)]/20 transition-all shadow-lg">
                   {/* Image */}
                   <div className="aspect-square overflow-hidden">
                     <img
@@ -380,16 +380,16 @@ const About = () => {
 
                   {/* Content */}
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
+                    <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">{member.name}</h3>
                     <p className="text-green-400 font-semibold mb-3">{member.role}</p>
-                    <p className="text-gray-300 text-sm mb-4">{member.description}</p>
+                    <p className="text-[var(--text-secondary)] text-sm mb-4">{member.description}</p>
                     
                     {/* Expertise */}
                     <div className="flex flex-wrap gap-2">
                       {member.expertise.map((skill, idx) => (
                         <span
                           key={idx}
-                          className="px-3 py-1 bg-white/10 rounded-full text-xs text-white/80 border border-white/10"
+                          className="px-3 py-1 bg-[var(--border-glass)] rounded-full text-xs text-[var(--text-secondary)] border border-[var(--border-glass)]"
                         >
                           {skill}
                         </span>
@@ -419,7 +419,7 @@ const About = () => {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
               Our <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">Journey</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
               Milestones that shaped our story and defined our excellence
             </p>
           </motion.div>
@@ -440,14 +440,14 @@ const About = () => {
                 }`}
               >
                 {/* Content */}
-                <div className={`flex-1 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8'} p-6 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10`}>
+                <div className={`flex-1 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8'} p-6 rounded-3xl bg-[var(--bg-dark)] border border-[var(--border-glass)] shadow-lg`}>
                   <div className="text-sm text-yellow-400 font-semibold mb-2">{milestone.year}</div>
-                  <h3 className="text-lg font-bold text-white mb-2">{milestone.event}</h3>
-                  <p className="text-gray-300 text-sm">{milestone.description}</p>
+                  <h3 className="text-lg font-bold text-[var(--text-primary)] mb-2">{milestone.event}</h3>
+                  <p className="text-[var(--text-secondary)] text-sm">{milestone.description}</p>
                 </div>
 
                 {/* Dot */}
-                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-black transform -translate-x-1/2" />
+                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-[var(--bg-dark)] transform -translate-x-1/2" />
               </motion.div>
             ))}
           </div>

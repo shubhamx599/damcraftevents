@@ -58,7 +58,7 @@ const StorySection = () => {
                 </span>{" "}
                 Experiences
               </h2>
-              <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
                 From corporate summits to grand celebrations, we turn visions
                 into immersive, lasting memories.
               </p>
@@ -88,7 +88,7 @@ const StorySection = () => {
       </section>
 
       {/* Story Section */}
-      <section className="py-24 bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-[var(--bg-dark)] via-[var(--bg-darker)] to-[var(--bg-dark)] relative overflow-hidden border-y border-[var(--border-glass)]">
         <div className="max-w-6xl mx-auto px-6 lg:px-20 flex flex-col lg:flex-row gap-12 items-center">
           {/* Left Content */}
           <motion.div
@@ -96,7 +96,7 @@ const StorySection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
-            className="w-full lg:w-1/2 flex flex-col gap-6 text-white"
+            className="w-full lg:w-1/2 flex flex-col gap-6 text-[var(--text-primary)]"
           >
             <h2 className="text-4xl md:text-6xl font-bold">
               Crafting Memories Since{" "}
@@ -105,13 +105,13 @@ const StorySection = () => {
               </span>
             </h2>
 
-            <p className="text-lg md:text-xl leading-relaxed text-white/80">
+            <p className="text-lg md:text-xl leading-relaxed text-[var(--text-secondary)]">
               For over a decade, we’ve been designing unforgettable experiences.
               Whether it’s a boardroom or a ballroom, our mission is simple — to
               deliver excellence with emotion.
             </p>
 
-            <p className="text-lg md:text-xl leading-relaxed text-white/80">
+            <p className="text-lg md:text-xl leading-relaxed text-[var(--text-secondary)]">
               From concept to celebration, every event we create tells a story —
               your story — brought to life with design, detail, and dedication.
             </p>
@@ -128,7 +128,7 @@ const StorySection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
-            className="w-full lg:w-1/2 rounded-3xl md:rounded-4xl overflow-hidden shadow-[0_0_80px_-10px_rgba(255,255,255,0.1)]"
+            className="w-full lg:w-1/2 rounded-3xl md:rounded-4xl overflow-hidden shadow-2xl border border-[var(--border-glass)]"
           >
             <video
               src={storyVideo}

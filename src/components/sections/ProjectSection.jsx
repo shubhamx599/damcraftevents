@@ -188,7 +188,7 @@ const ServiceCard = React.memo(function ServiceCard({
       transition={{ duration: 0.6, delay: Math.min(index * 0.08, 0.5) }}
       viewport={{ once: true, margin: "-20px" }}
       onClick={handleCardClick}
-      className={`relative overflow-hidden rounded-2xl bg-gray-900 group cursor-pointer ${
+      className={`relative overflow-hidden rounded-2xl bg-[var(--bg-dark)] border border-[var(--border-glass)] group cursor-pointer ${
         featured ? "lg:col-span-2" : ""
       }`}
     >
@@ -265,15 +265,15 @@ const StatCard = React.memo(({ number, label, Icon, delay = 0 }) => (
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay }}
     viewport={{ once: true, margin: "-20px" }}
-    className="p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 text-center"
+    className="p-4 rounded-2xl bg-[var(--bg-dark)] border border-[var(--border-glass)] text-center shadow-md"
   >
     <div className="flex justify-center mb-3">
-      <div className="p-2 rounded-xl bg-white/10">
+      <div className="p-2 rounded-xl bg-[var(--border-glass)]">
         <Icon size={22} className="text-red-500" />
       </div>
     </div>
-    <h3 className="text-2xl font-black text-white">{number}</h3>
-    <p className="text-gray-300 text-sm mt-1">{label}</p>
+    <h3 className="text-2xl font-black text-[var(--text-primary)]">{number}</h3>
+    <p className="text-[var(--text-secondary)] text-sm mt-1">{label}</p>
   </motion.div>
 ));
 
@@ -334,8 +334,8 @@ export default function ProjectSection() {
   );
 
   return (
-    <section className="relative bg-black text-white py-12 sm:py-16 lg:py-24 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-purple-900/20 -z-10" />
+    <section className="relative bg-[var(--bg-darker)] text-[var(--text-primary)] py-12 sm:py-16 lg:py-24 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--bg-dark)] via-[var(--bg-darker)] to-[var(--bg-dark)] -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 sm:mb-14">
@@ -345,12 +345,12 @@ export default function ProjectSection() {
             scrollStart="center bottom+=50%"
             scrollEnd="bottom bottom-=40%"
             stagger={0.03}
-            textClassName="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white"
+            textClassName="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-[var(--text-primary)]"
           >
             Our Premium Services
           </ScrollFloat>
 
-          <p className="mt-4 text-base sm:text-lg text-gray-300 max-w-3xl mx-auto">
+          <p className="mt-4 text-base sm:text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
             Experience the difference with our comprehensive event solutions.
             From intimate gatherings to grand celebrations, we bring your vision
             to life.
@@ -375,7 +375,7 @@ export default function ProjectSection() {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
               Trusted by <span className="text-red-500">Industry Leaders</span>
             </h2>
-            <p className="mt-2 text-gray-300">
+            <p className="mt-2 text-[var(--text-secondary)]">
               Our track record speaks for itself
             </p>
           </div>

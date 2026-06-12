@@ -281,7 +281,7 @@ const Gallery = () => {
   const currentMedia = lightboxIndex !== null ? galleryItems[lightboxIndex] : null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-[var(--bg-dark)] via-[var(--bg-darker)] to-[var(--bg-dark)] text-[var(--text-primary)]">
       {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto mt-12 text-center">
@@ -294,16 +294,16 @@ const Gallery = () => {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/10 mb-6"
+              className="inline-flex items-center gap-2 bg-[var(--border-glass)] px-4 py-2 rounded-full border border-[var(--border-glass)] mb-6"
             >
               <RiImageLine className="text-purple-400" size={16} />
-              <span className="text-white/80 text-sm font-medium uppercase tracking-wider">
+              <span className="text-[var(--text-secondary)] text-sm font-medium uppercase tracking-wider">
                 Our Portfolio
               </span>
             </motion.div>
 
             <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-secondary)] bg-clip-text text-transparent">
                 Event
               </span>
               <br />
@@ -312,7 +312,7 @@ const Gallery = () => {
               </span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-[var(--text-secondary)] max-w-3xl mx-auto leading-relaxed">
               Explore our portfolio of unforgettable events, brand activations, and creative experiences 
               that have captivated audiences across the nation.
             </p>
@@ -330,13 +330,13 @@ const Gallery = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="relative max-w-md mx-auto mb-8"
           >
-            <RiSearchLine className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+            <RiSearchLine className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[var(--text-secondary)]" size={20} />
             <input
               type="text"
               placeholder="Search events..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 rounded-2xl bg-white/5 border border-white/10 focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all text-white placeholder-white/40"
+              className="w-full pl-12 pr-4 py-3 rounded-2xl bg-[var(--bg-dark)] border border-[var(--border-glass)] focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all text-[var(--text-primary)] placeholder-[var(--text-secondary)]/60"
             />
           </motion.div>
 
@@ -359,7 +359,7 @@ const Gallery = () => {
                 className={`flex items-center gap-2 px-4 py-3 rounded-2xl border backdrop-blur-sm transition-all ${
                   activeCategory === category.id
                     ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white border-transparent shadow-lg"
-                    : "bg-white/5 border-white/10 text-white/80 hover:bg-white/10 hover:border-white/20"
+                    : "bg-[var(--border-glass)] border-[var(--border-glass)] text-[var(--text-secondary)] hover:bg-[var(--border-glass)]/80 hover:border-[var(--text-primary)]/20"
                 }`}
               >
                 <category.icon size={16} />
@@ -367,7 +367,7 @@ const Gallery = () => {
                 <span className={`text-xs px-2 py-1 rounded-full ${
                   activeCategory === category.id 
                     ? "bg-white/20 text-white" 
-                    : "bg-white/10 text-white/60"
+                    : "bg-[var(--border-glass)] text-[var(--text-secondary)]"
                 }`}>
                   {category.count}
                 </span>
@@ -400,7 +400,7 @@ const Gallery = () => {
                   onClick={() => openLightbox(index)}
                 >
                   {/* Media Container */}
-                  <div className="relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-white/20 transition-all">
+                  <div className="relative rounded-2xl overflow-hidden bg-[var(--bg-dark)] border border-[var(--border-glass)] group-hover:border-[var(--text-primary)]/20 transition-all shadow-lg">
                     {item.type === "video" ? (
                       <div className="aspect-square relative">
                         <video
@@ -457,8 +457,8 @@ const Gallery = () => {
               className="text-center py-20"
             >
               <RiSearchLine size={48} className="text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-2">No events found</h3>
-              <p className="text-gray-400">Try adjusting your search or filter criteria</p>
+              <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">No events found</h3>
+              <p className="text-[var(--text-secondary)]">Try adjusting your search or filter criteria</p>
             </motion.div>
           )}
         </div>

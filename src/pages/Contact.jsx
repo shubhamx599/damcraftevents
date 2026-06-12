@@ -123,7 +123,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-[var(--bg-dark)] via-[var(--bg-darker)] to-[var(--bg-dark)] relative overflow-hidden">
       <div
         ref={sectionRef}
         className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 mt-10 lg:mt-12"
@@ -140,16 +140,16 @@ const Contact = () => {
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/10 mb-6"
+            className="inline-flex items-center gap-2 bg-[var(--border-glass)] px-4 py-2 rounded-full border border-[var(--border-glass)] mb-6"
           >
             <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-pulse" />
-            <span className="text-white/80 text-sm font-medium uppercase tracking-wider">
+            <span className="text-[var(--text-secondary)] text-sm font-medium uppercase tracking-wider">
               Let's Create Magic Together
             </span>
           </motion.div>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-secondary)] bg-clip-text text-transparent">
               Get In{" "}
             </span>
             <br />
@@ -158,7 +158,7 @@ const Contact = () => {
             </span>
           </h1>
 
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto leading-relaxed">
             Ready to create something extraordinary? Choose your preferred way
             to connect with us. We're here to bring your vision to life with
             premium event experiences.
@@ -177,12 +177,12 @@ const Contact = () => {
             <motion.div
               key={stat.label}
               whileHover={{ scale: 1.05 }}
-              className="text-center p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all"
+              className="text-center p-6 rounded-2xl bg-[var(--bg-dark)] border border-[var(--border-glass)] hover:border-[var(--text-primary)]/20 transition-all shadow-lg"
             >
               <div className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-yellow-400 to-pink-500 bg-clip-text text-transparent mb-2">
                 {stat.number}
               </div>
-              <div className="text-sm text-white/70">{stat.label}</div>
+              <div className="text-sm text-[var(--text-secondary)]">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>
@@ -212,35 +212,35 @@ const Contact = () => {
               />
 
               {/* Main Card */}
-              <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-500 h-full">
+              <div className="relative bg-[var(--bg-dark)] border border-[var(--border-glass)] rounded-3xl p-8 hover:border-[var(--text-primary)]/20 transition-all duration-500 h-full shadow-xl">
                 {/* Icon */}
                 <div className="relative mb-6">
                   <div
                     className={`absolute inset-0 rounded-2xl blur-md opacity-30`}
                   />
-                  <div className="relative  rounded-2xl p-4 w-16 h-16 flex items-center justify-center border border-white/10">
-                    <contact.icon size={28} className="text-white" />
+                  <div className="relative  rounded-2xl p-4 w-16 h-16 flex items-center justify-center border border-[var(--border-glass)]">
+                    <contact.icon size={28} className="text-[var(--text-primary)]" />
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="space-y-4">
-                  <h3 className="text-xl font-semibold text-white">
+                  <h3 className="text-xl font-semibold text-[var(--text-primary)]">
                     {contact.title}
                   </h3>
 
                   <div className="space-y-2">
-                    <p className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                    <p className="text-2xl font-bold bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-secondary)] bg-clip-text text-transparent">
                       {contact.value}
                     </p>
                     {contact.subValue && (
-                      <p className="text-lg text-white/80 font-medium">
+                      <p className="text-lg text-[var(--text-secondary)] font-medium">
                         {contact.subValue}
                       </p>
                     )}
                   </div>
 
-                  <p className="text-white/60 text-sm leading-relaxed">
+                  <p className="text-[var(--text-secondary)]/85 text-sm leading-relaxed">
                     {contact.description}
                   </p>
 
@@ -276,7 +276,7 @@ const Contact = () => {
           viewport={{ once: true }}
           className="mb-20"
         >
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12 text-center">
+          <div className="bg-[var(--bg-dark)] border border-[var(--border-glass)] rounded-3xl p-12 text-center shadow-2xl">
             <motion.div
               animate={{
                 rotate: [0, -5, 5, -5, 0],
@@ -291,10 +291,10 @@ const Contact = () => {
               <RiSparklingFill className="text-4xl text-yellow-400" />
             </motion.div>
 
-            <h3 className="text-3xl font-bold text-white mb-4">
+            <h3 className="text-3xl font-bold text-[var(--text-primary)] mb-4">
               Need Immediate Assistance?
             </h3>
-            <p className="text-gray-300 mb-8 text-lg">
+            <p className="text-[var(--text-secondary)] mb-8 text-lg">
               For urgent events or quick consultations, we're just a call away
             </p>
 
@@ -319,9 +319,9 @@ const Contact = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleWhatsAppClick}
-                className="border border-white/30 text-white 
+                className="border border-[var(--border-glass)] text-[var(--text-primary)] 
                w-full sm:w-auto px-8 py-4 rounded-2xl font-semibold 
-               hover:bg-white hover:text-black transition-all duration-300 
+               hover:bg-[var(--border-glass)] transition-all duration-300 
                flex items-center justify-center gap-4 text-base sm:text-lg 
                backdrop-blur-sm"
               >
@@ -341,10 +341,10 @@ const Contact = () => {
           className="mb-20"
         >
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mb-4">
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-secondary)] bg-clip-text text-transparent mb-4">
               Our Services
             </h2>
-            <p className="text-gray-300 text-lg">
+            <p className="text-[var(--text-secondary)] text-lg">
               Comprehensive event solutions for every occasion
             </p>
           </div>
@@ -356,10 +356,10 @@ const Contact = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-all text-center group cursor-pointer"
+                className="p-4 rounded-2xl bg-[var(--bg-dark)] border border-[var(--border-glass)] hover:border-[var(--text-primary)]/20 transition-all text-center group cursor-pointer shadow-sm"
               >
                 <div className="flex items-center justify-center">
-                  <p className="text-white/80 group-hover:text-white font-medium text-xs md:text-sm sm:text-sm lg:text-base">
+                  <p className="text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] font-medium text-xs md:text-sm sm:text-sm lg:text-base">
                     {service}
                   </p>
                 </div>
@@ -376,12 +376,12 @@ const Contact = () => {
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8"
+            className="bg-[var(--bg-dark)] border border-[var(--border-glass)] rounded-3xl p-8 shadow-xl"
           >
-            <h4 className="text-2xl font-bold text-white mb-6">
+            <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-6">
               Follow Our Journey
             </h4>
-            <p className="text-gray-300 mb-6">
+            <p className="text-[var(--text-secondary)] mb-6">
               Stay updated with our latest events and behind-the-scenes moments
             </p>
 
@@ -437,9 +437,9 @@ const Contact = () => {
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8"
+            className="bg-[var(--bg-dark)] border border-[var(--border-glass)] rounded-3xl p-8 shadow-xl"
           >
-            <h4 className="text-2xl font-bold text-white mb-6">
+            <h4 className="text-2xl font-bold text-[var(--text-primary)] mb-6">
               Why Choose Us?
             </h4>
             <div className="space-y-4">
@@ -456,7 +456,7 @@ const Contact = () => {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex items-center gap-3 text-white/80 hover:text-white transition-colors p-3 rounded-xl hover:bg-white/5"
+                  className="flex items-center gap-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors p-3 rounded-xl hover:bg-[var(--border-glass)]"
                 >
                   <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-blue-400 rounded-full" />
                   {feature}
