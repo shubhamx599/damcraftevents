@@ -1,35 +1,10 @@
 import { motion } from "framer-motion";
-import { useRef, useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CustomButton from "../../components/ui/CustomButton";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const mainVideo = "https://cdn.pixabay.com/video/2016/09/09/5026-182666667_tiny.mp4";
 const storyVideo = "https://cdn.pixabay.com/video/2020/03/31/34685-403408160_tiny.mp4";
 
 const StorySection = () => {
-  const videoRef = useRef();
-
-  // Scroll Animation for main video
-  useEffect(() => {
-    if (videoRef.current) {
-      const video = videoRef.current;
-
-      gsap.to(video, {
-        width: "100%",
-        borderRadius: "30px",
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: video,
-          start: "top 80%",
-          end: "top 20%",
-          scrub: 2,
-        },
-      });
-    }
-  }, []);
 
   // Text Reveal Component
   const RevealText = ({ children, delay = 0 }) => (
@@ -69,11 +44,10 @@ const StorySection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="relative flex justify-center h-[45vh] md:h-[60vh] lg:h-[75vh] overflow-hidden rounded-3xl md:rounded-4xl"
+            className="relative flex justify-center h-[45vh] md:h-[60vh] lg:h-[75vh] overflow-hidden rounded-3xl md:rounded-4xl shadow-2xl border border-[var(--border-glass)]"
           >
             <video
-              ref={videoRef}
-              className="h-full w-full md:w-[90%] object-cover shadow-2xl"
+              className="h-full w-full object-cover"
               src={mainVideo}
               autoPlay
               loop
