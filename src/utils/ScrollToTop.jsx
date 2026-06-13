@@ -15,12 +15,7 @@ export default function ScrollToTop() {
       ease: "power2.out"
     });
 
-    const loadingBar = document.querySelector('.global-loading');
-    if (loadingBar) {
-      gsap.timeline()
-        .to(loadingBar, { opacity: 1, duration: 0.1 })
-        .to(loadingBar, { opacity: 0, duration: 0.3, delay: 0.5 });
-    }
+
 
     const updatePageTitle = () => {
       const titles = {

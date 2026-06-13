@@ -70,8 +70,6 @@ const App = () => {
           <Footer />
         </div>
       </ReactLenis>
-
-      <div className="global-loading fixed top-0 left-0 w-full h-1 bg-linear-to-r from-green-500 to-blue-500 z-1000 opacity-0 pointer-events-none"></div>
     </>
   );
 };
