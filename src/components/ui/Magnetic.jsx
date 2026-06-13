@@ -19,19 +19,30 @@ export default function Magnetic({ children, strength = 0.35 }) {
 
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
-      // Get bounding rect of the outer static element
-      const { left, top, width, height } = el.getBoundingClientRect();
-      const centerX = left + width / 2;
-      const centerY = top + height / 2;
+      
+      // Get the bounding rect of the inner transformed element
+      const rectInner = inner.getBoundingClientRect();
+      
+      // Get the current GSAP translations to compute the static layout position
+      const currentX = parseFloat(gsap.getProperty(inner, "x")) || 0;
+      const currentY = parseFloat(gsap.getProperty(inner, "y")) || 0;
+      
+      // Compute the original layout position (untranslated)
+      const leftUntranslated = rectInner.left - currentX;
+      const topUntranslated = rectInner.top - currentY;
+      const { width, height } = rectInner;
+      
+      const centerX = leftUntranslated + width / 2;
+      const centerY = topUntranslated + height / 2;
       const distanceX = clientX - centerX;
       const distanceY = clientY - centerY;
 
-      // Check if cursor is directly over the static outer element
+      // Check if cursor is directly over the untranslated element
       const isHovering =
-        clientX >= left &&
-        clientX <= left + width &&
-        clientY >= top &&
-        clientY <= top + height;
+        clientX >= leftUntranslated &&
+        clientX <= leftUntranslated + width &&
+        clientY >= topUntranslated &&
+        clientY <= topUntranslated + height;
 
       if (isHovering) {
         // Move inner wrapper slightly towards cursor position
