@@ -6,40 +6,35 @@ import { gsap } from "gsap";
  */
 export default function Magnetic({ children, strength = 0.35 }) {
   const ref = useRef(null);
+  const innerRef = useRef(null);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    const inner = innerRef.current;
+    if (!el || !inner) return;
 
-    // quickTo is highly optimized for mousemove animations
-    const xTo = gsap.quickTo(el, "x", { duration: 0.6, ease: "power3.out" });
-    const yTo = gsap.quickTo(el, "y", { duration: 0.6, ease: "power3.out" });
+    // quickTo is highly optimized for mousemove animations on the inner container
+    const xTo = gsap.quickTo(inner, "x", { duration: 0.6, ease: "power3.out" });
+    const yTo = gsap.quickTo(inner, "y", { duration: 0.6, ease: "power3.out" });
 
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
+      // Get bounding rect of the outer static element
       const { left, top, width, height } = el.getBoundingClientRect();
-      
-      // Get the current GSAP translations to compute untranslated position
-      const currentX = parseFloat(gsap.getProperty(el, "x")) || 0;
-      const currentY = parseFloat(gsap.getProperty(el, "y")) || 0;
-      
-      const leftUntranslated = left - currentX;
-      const topUntranslated = top - currentY;
-      
-      const centerX = leftUntranslated + width / 2;
-      const centerY = topUntranslated + height / 2;
+      const centerX = left + width / 2;
+      const centerY = top + height / 2;
       const distanceX = clientX - centerX;
       const distanceY = clientY - centerY;
 
-      // Check if cursor is directly over the untranslated element
+      // Check if cursor is directly over the static outer element
       const isHovering =
-        clientX >= leftUntranslated &&
-        clientX <= leftUntranslated + width &&
-        clientY >= topUntranslated &&
-        clientY <= topUntranslated + height;
+        clientX >= left &&
+        clientX <= left + width &&
+        clientY >= top &&
+        clientY <= top + height;
 
       if (isHovering) {
-        // Move element slightly towards cursor position
+        // Move inner wrapper slightly towards cursor position
         xTo(distanceX * strength);
         yTo(distanceY * strength);
       } else {
@@ -65,7 +60,9 @@ export default function Magnetic({ children, strength = 0.35 }) {
 
   return (
     <div ref={ref} className="inline-block">
-      {children}
+      <div ref={innerRef} className="w-full h-full">
+        {children}
+      </div>
     </div>
   );
 }
