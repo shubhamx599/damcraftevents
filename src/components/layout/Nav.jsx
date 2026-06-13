@@ -103,17 +103,15 @@ const Nav = () => {
         {/* Desktop Controls - CTA & Theme Toggle */}
         <div className="hidden md:flex items-center gap-4">
           {/* Theme Toggle Button */}
-          <Magnetic range={40} strength={0.3}>
-            <motion.button
-              onClick={toggleTheme}
-              className="p-2 rounded-full border border-[var(--border-glass)] hover:bg-[var(--border-glass)] transition-colors duration-300 text-[var(--text-primary)] cursor-pointer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="Toggle Theme"
-            >
-              {theme === "dark" ? <RiSunLine size={16} /> : <RiMoonLine size={16} />}
-            </motion.button>
-          </Magnetic>
+          <motion.button
+            onClick={toggleTheme}
+            className="p-2 rounded-full border border-[var(--border-glass)] hover:bg-[var(--border-glass)] transition-colors duration-300 text-[var(--text-primary)] cursor-pointer"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            aria-label="Toggle Theme"
+          >
+            {theme === "dark" ? <RiSunLine size={16} /> : <RiMoonLine size={16} />}
+          </motion.button>
 
           <Magnetic range={50} strength={0.25}>
             <motion.div whileTap={{ scale: 0.95 }}>
