@@ -20,7 +20,7 @@ const CustomButton = ({
   };
 
   const variantClasses = {
-    primary: "border-[var(--text-primary)] text-[var(--bg-dark)] bg-[var(--text-primary)]",
+    primary: "border-[var(--text-primary)] text-[var(--bg-dark)] bg-[var(--text-primary)] hover:bg-transparent hover:text-[var(--text-primary)]",
     secondary: "border-[var(--text-primary)] text-[var(--text-primary)] hover:bg-[var(--text-primary)] hover:text-[var(--bg-dark)]",
     outline: "border-[var(--border-glass)] text-[var(--text-secondary)] hover:bg-[var(--border-glass)] hover:text-[var(--text-primary)]",
   };
@@ -70,6 +70,8 @@ const CustomButton = ({
     justify-center
     items-center
     font-semibold
+    transform
+    scale-100
     transition-all
     duration-300
     ${sizeClasses[size]}
