@@ -56,7 +56,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-black text-white relative overflow-hidden">
+    <footer className="bg-[var(--bg-darker)] text-[var(--text-primary)] relative overflow-hidden border-t border-[var(--border-glass)]">
       {/* background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl"></div>
@@ -64,12 +64,12 @@ const Footer = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="relative border-y border-white/15">
+      <div className="relative border-y border-[var(--border-glass)]">
         <div className="w-full h-[78vh] sm:h-[45vh] md:h-[40vh] lg:h-[60vh] relative">
           {/* gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/20 to-yellow-900/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-pink-900/10 to-yellow-900/10"></div>
           {/* overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 flex items-center">
+          <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-dark)]/85 via-[var(--bg-dark)]/45 to-[var(--bg-darker)]/95 flex items-center">
             <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 py-8 text-center">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -99,7 +99,7 @@ const Footer = () => {
                   Together?
                 </h2>
 
-                <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                <p className="text-xl text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto">
                   Let's transform your vision into an unforgettable experience
                   that resonates and inspires.
                 </p>
@@ -119,7 +119,7 @@ const Footer = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => navigate("/work")}
-                    className="border border-white/30 text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white hover:text-black transition-colors duration-300"
+                    className="border border-[var(--border-glass)] text-[var(--text-primary)] px-8 py-4 rounded-2xl font-semibold hover:bg-[var(--text-primary)] hover:text-[var(--bg-dark)] transition-colors duration-300"
                   >
                     View Our Work
                   </motion.button>
@@ -143,11 +143,11 @@ const Footer = () => {
                 transition={{ duration: 0.6 }}
               >
                 <div className="flex flex-col">
-                  <div className="text-white pb-3 font-bold text-base md:text-lg font-[Space Grotesk] tracking-tight leading-none">
+                  <div className="text-[var(--text-primary)] pb-3 font-bold text-base md:text-lg font-[Space Grotesk] tracking-tight leading-none">
                     DAM CRAFT EVENTS
                   </div>
                 </div>
-                <p className="text-white/70 leading-relaxed mb-4">
+                <p className="text-[var(--text-secondary)] leading-relaxed mb-4">
                   Premium event design & management — crafting memorable moments
                   for brands and people since 2010. Where creativity meets
                   precision.
@@ -158,10 +158,10 @@ const Footer = () => {
                     <motion.div key={link.name} whileHover={{ scale: 1.05 }}>
                       <Link
                         to={link.to}
-                        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group"
+                        className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--bg-glass)] border border-[var(--border-glass)] hover:bg-[var(--border-glass)] transition-colors duration-300 group"
                       >
                         <link.icon className="text-pink-400 text-sm" />
-                        <span className="text-sm text-white/80 group-hover:text-white">
+                        <span className="text-sm text-[var(--text-secondary)] group-hover:text-[var(--text-primary)]">
                           {link.name}
                         </span>
                       </Link>
@@ -171,14 +171,14 @@ const Footer = () => {
 
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="inline-flex items-center gap-3 bg-gradient-to-r from-white/5 to-white/10 px-4 py-3 rounded-xl border border-white/10 backdrop-blur-sm"
+                  className="inline-flex items-center gap-3 bg-[var(--bg-glass)] px-4 py-3 rounded-xl border border-[var(--border-glass)] backdrop-blur-sm"
                 >
                   <RiAwardFill className="text-2xl text-yellow-400" />
                   <div>
-                    <div className="text-sm font-semibold text-white">
+                    <div className="text-sm font-semibold text-[var(--text-primary)]">
                       Award Winning Agency
                     </div>
-                    <div className="text-xs text-white/60">
+                    <div className="text-xs text-[var(--text-secondary)]">
                       Best Event Management 2023
                     </div>
                   </div>
@@ -189,7 +189,7 @@ const Footer = () => {
             {/* Services Section */}
             <div className="lg:col-span-1">
               <div className="flex flex-col gap-6">
-                <h5 className="text-xl font-semibold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+                <h5 className="text-xl font-semibold bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-secondary)] bg-clip-text text-transparent">
                   Our Services
                 </h5>
                 <div className="grid gap-3">
@@ -197,15 +197,15 @@ const Footer = () => {
                     <motion.div
                       key={service.name}
                       whileHover={{ scale: 1.02 }}
-                      className="flex items-center justify-between p-4 rounded-xl bg-white/3 border border-white/6 hover:border-white/20 transition-all group cursor-pointer"
+                      className="flex items-center justify-between p-4 rounded-xl bg-[var(--bg-glass)] border border-[var(--border-glass)] hover:border-[var(--text-primary)]/20 transition-colors duration-300 group cursor-pointer"
                     >
                       <div className="flex items-center gap-3">
                         <div className="w-2 h-2 rounded-full bg-gradient-to-r from-green-400 to-blue-400 group-hover:from-yellow-400 group-hover:to-pink-400 transition-all"></div>
-                        <span className="text-white/80 group-hover:text-white font-medium">
+                        <span className="text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] font-medium">
                           {service.name}
                         </span>
                       </div>
-                      <span className="text-xs bg-white/10 px-2 py-1 rounded-full text-white/60">
+                      <span className="text-xs bg-[var(--border-glass)] px-2 py-1 rounded-full text-[var(--text-secondary)]">
                         {service.projects}
                       </span>
                     </motion.div>
@@ -217,9 +217,9 @@ const Footer = () => {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  className="mt-4 p-4 rounded-xl bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20"
+                  className="mt-4 p-4 rounded-xl bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-[var(--border-glass)]"
                 >
-                  <p className="text-sm text-white/80 mb-3">
+                  <p className="text-sm text-[var(--text-secondary)] mb-3">
                     Got a unique brief?
                   </p>
                   <div className="flex gap-2">
@@ -227,7 +227,7 @@ const Footer = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={mailTo}
-                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 transition-colors duration-300"
+                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[var(--border-glass)] border border-[var(--border-glass)] hover:bg-[var(--bg-glass)] transition-colors duration-300"
                     >
                       <RiMailLine className="text-sm" />
                       <span className="text-sm">Email</span>
@@ -236,7 +236,7 @@ const Footer = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={callTo}
-                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 transition-colors duration-300"
+                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[var(--border-glass)] border border-[var(--border-glass)] hover:bg-[var(--bg-glass)] transition-colors duration-300"
                     >
                       <RiPhoneLine className="text-sm" />
                       <span className="text-sm">Call</span>
@@ -255,7 +255,7 @@ const Footer = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="flex flex-col gap-6"
               >
-                <h5 className="text-xl font-semibold bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+                <h5 className="text-xl font-semibold bg-gradient-to-r from-[var(--text-primary)] to-[var(--text-secondary)] bg-clip-text text-transparent">
                   Connect With Us
                 </h5>
 
@@ -263,10 +263,10 @@ const Footer = () => {
                   <motion.button
                     whileHover={{ scale: 1.02, x: 5 }}
                     onClick={mailTo}
-                    className="block text-left w-full p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-colors duration-300 group"
+                    className="block text-left w-full p-3 rounded-lg bg-[var(--bg-glass)] border border-[var(--border-glass)] hover:bg-[var(--bg-glass)]/80 hover:border-[var(--text-primary)]/20 transition-colors duration-300 group"
                   >
-                    <div className="text-xs text-white/60 mb-1">Email</div>
-                    <div className="text-white/80 group-hover:text-white font-medium">
+                    <div className="text-xs text-[var(--text-secondary)]/80 mb-1">Email</div>
+                    <div className="text-[var(--text-primary)]/80 group-hover:text-[var(--text-primary)] font-medium">
                       damcraftevents@gmail.com
                     </div>
                   </motion.button>
@@ -274,17 +274,17 @@ const Footer = () => {
                   <motion.button
                     whileHover={{ scale: 1.02, x: 5 }}
                     onClick={callTo}
-                    className="block text-left w-full p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-colors duration-300 group"
+                    className="block text-left w-full p-3 rounded-lg bg-[var(--bg-glass)] border border-[var(--border-glass)] hover:bg-[var(--bg-glass)]/80 hover:border-[var(--text-primary)]/20 transition-colors duration-300 group"
                   >
-                    <div className="text-xs text-white/60 mb-1">Phone</div>
-                    <div className="text-white/80 group-hover:text-white font-medium">
+                    <div className="text-xs text-[var(--text-secondary)]/80 mb-1">Phone</div>
+                    <div className="text-[var(--text-primary)]/80 group-hover:text-[var(--text-primary)] font-medium">
                       +91 85278 46574
                     </div>
                   </motion.button>
 
-                  <div className="p-3 rounded-lg bg-white/5 border border-white/10">
-                    <div className="text-xs text-white/60 mb-1">Address</div>
-                    <address className="not-italic text-white/70 text-sm leading-relaxed">
+                  <div className="p-3 rounded-lg bg-[var(--bg-glass)] border border-[var(--border-glass)]">
+                    <div className="text-xs text-[var(--text-secondary)]/80 mb-1">Address</div>
+                    <address className="not-italic text-[var(--text-secondary)] text-sm leading-relaxed">
                       Building B-22, Jhilmil Industrial Area,
                       <br />
                       Delhi - 110092, India
@@ -293,7 +293,7 @@ const Footer = () => {
                 </div>
 
                 <div>
-                  <p className="text-sm text-white/60 uppercase mb-4 tracking-wider">
+                  <p className="text-sm text-[var(--text-secondary)] uppercase mb-4 tracking-wider">
                     Follow the Journey
                   </p>
                   <div className="flex gap-3">
@@ -345,14 +345,14 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10">
+        <div className="border-t border-[var(--border-glass)]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="text-center sm:text-left">
-                <div className="text-sm text-white/60">
+                <div className="text-sm text-[var(--text-secondary)]">
                   © {currentYear} Dam Craft Events. All rights reserved.
                 </div>
-                <div className="text-xs text-white/40 mt-1">
+                <div className="text-xs text-[var(--text-secondary)]/60 mt-1">
                   Crafting extraordinary experiences since 2010
                 </div>
               </div>
@@ -360,13 +360,13 @@ const Footer = () => {
               <div className="flex items-center gap-6">
                 <Link
                   to="/privacy"
-                  className="text-sm text-white/60 hover:text-white transition-colors"
+                  className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   to="/terms"
-                  className="text-sm text-white/60 hover:text-white transition-colors"
+                  className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                 >
                   Terms of Service
                 </Link>
