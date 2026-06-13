@@ -6,8 +6,8 @@ import CustomButton from "../../components/ui/CustomButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const mainVideo = "https://assets.mixkit.co/videos/preview/mixkit-audience-clapping-at-a-concert-43537-large.mp4";
-const storyVideo = "https://www.pexels.com/download/video/6519561/";
+const mainVideo = "https://cdn.pixabay.com/video/2016/09/09/5026-182666667_tiny.mp4";
+const storyVideo = "https://cdn.pixabay.com/video/2020/03/31/34685-403408160_tiny.mp4";
 
 const StorySection = () => {
   const videoRef = useRef();
