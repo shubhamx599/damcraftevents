@@ -79,7 +79,7 @@ const StorySection = () => {
               loop
               muted
               playsInline
-              preload="none"
+              preload="auto"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
           </motion.div>
@@ -136,7 +136,7 @@ const StorySection = () => {
               loop
               muted
               playsInline
-              preload="none"
+              preload="auto"
             />
           </motion.div>
         </div>
