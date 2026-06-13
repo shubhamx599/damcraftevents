@@ -127,30 +127,32 @@ const Nav = () => {
         </div>
 
         {/* Mobile Menu Button - Visible only on Mobile */}
-        <Magnetic strength={0.25}>
-          <motion.button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-1.5 rounded-lg bg-[var(--border-glass)] hover:bg-[var(--border-glass)] transition-colors duration-300 text-[var(--text-primary)] border border-[var(--border-glass)] cursor-pointer"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={mobileOpen ? "close" : "menu"}
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                {mobileOpen ? (
-                  <RiCloseLine size={16} />
-                ) : (
-                  <RiMenuLine size={16} />
-                )}
-              </motion.div>
-            </AnimatePresence>
-          </motion.button>
-        </Magnetic>
+        <div className="md:hidden">
+          <Magnetic strength={0.25}>
+            <motion.button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="p-1.5 rounded-lg bg-[var(--border-glass)] hover:bg-[var(--border-glass)] transition-colors duration-300 text-[var(--text-primary)] border border-[var(--border-glass)] cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={mobileOpen ? "close" : "menu"}
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {mobileOpen ? (
+                    <RiCloseLine size={16} />
+                  ) : (
+                    <RiMenuLine size={16} />
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </motion.button>
+          </Magnetic>
+        </div>
       </div>
 
       {/* Mobile Menu - Only for Mobile */}
