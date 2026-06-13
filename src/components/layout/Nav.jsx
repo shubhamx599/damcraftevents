@@ -57,7 +57,7 @@ const Nav = () => {
       }`}
     >
       {/* Layout */}
-      <div className="flex items-center justify-between bg-black/10 dark:bg-black/30 rounded-xl px-4 py-2 md:px-6 md:py-3">
+      <div className="flex items-center justify-between bg-[var(--bg-glass)] rounded-xl px-4 py-2 md:px-6 md:py-3">
         {/* Logo */}
         <Link to="/" className="flex items-center group">
           <div className="flex flex-col">

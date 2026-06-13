@@ -14,8 +14,8 @@ const Contact = lazy(() => import('../pages/Contact.jsx'))
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center">
     <div className="flex flex-col items-center gap-4">
-      <div className="w-12 h-12 border-4 border-black border-t-transparent rounded-full animate-spin"></div>
-      <p className="medium text-gray-600">Loading...</p>
+      <div className="w-12 h-12 border-4 border-[var(--text-primary)] border-t-transparent rounded-full animate-spin"></div>
+      <p className="medium text-[var(--text-secondary)]">Loading...</p>
     </div>
   </div>
 )
@@ -39,19 +39,19 @@ const Routing = () => {
             <div className="min-h-screen flex items-center justify-center px-4">
               <div className="text-center">
                 <h1 className="mlarge font-bold mb-4">404 - Page Not Found</h1>
-                <p className="medium mb-8 text-gray-600">
+                <p className="medium mb-8 text-[var(--text-secondary)]">
                   Oops! The page you're looking for doesn't exist.
                 </p>
                 <div className="flex gap-4 justify-center">
                   <a 
                     href="/" 
-                    className="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-colors inline-block"
+                    className="bg-[var(--text-primary)] text-[var(--bg-dark)] px-6 py-3 rounded-full hover:opacity-90 transition-all inline-block font-semibold"
                   >
                     Go Home
                   </a>
                   <button 
                     onClick={() => window.history.back()}
-                    className="border border-gray-300 px-6 py-3 rounded-full hover:bg-gray-50 transition-colors"
+                    className="border border-[var(--border-glass)] text-[var(--text-primary)] px-6 py-3 rounded-full hover:bg-[var(--border-glass)] transition-all font-semibold"
                   >
                     Go Back
                   </button>

@@ -60,7 +60,7 @@ const App = () => {
       >
         <ScrollToTop />
 
-        <div className="app-container min-h-screen bg-white">
+        <div className="app-container min-h-screen bg-[var(--bg-dark)] text-[var(--text-primary)]">
           <Nav />
 
           <main className="main-content relative z-10">

@@ -89,8 +89,8 @@ const StatCard = ({ stat, index }) => {
         {/* Icon Container */}
         <div className="relative mb-6">
           <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-blue-500 rounded-2xl blur-md opacity-30" />
-          <div className="relative bg-black/50 rounded-2xl p-4 w-16 h-16 mx-auto flex items-center justify-center border border-[var(--border-glass)]">
-            <stat.icon size={28} className="text-white" />
+          <div className="relative bg-[var(--border-glass)] rounded-2xl p-4 w-16 h-16 mx-auto flex items-center justify-center border border-[var(--border-glass)]">
+            <stat.icon size={28} className="text-[var(--text-primary)]" />
           </div>
         </div>
 
@@ -102,11 +102,11 @@ const StatCard = ({ stat, index }) => {
         </div>
 
         {/* Label */}
-        <p className="text-lg font-semibold text-white mb-2">{stat.label}</p>
+        <p className="text-lg font-semibold text-[var(--text-primary)] mb-2">{stat.label}</p>
 
         {/* Description */}
         {stat.description && (
-          <p className="text-white/60 text-sm leading-relaxed">
+          <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
             {stat.description}
           </p>
         )}
@@ -174,7 +174,7 @@ const StatsSection = () => {
             </span>{" "}
             Track Record
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-[var(--text-secondary)] max-w-3xl mx-auto">
             Numbers that speak volumes about our commitment to excellence and
             dedication to creating unforgettable experiences
           </p>
@@ -193,7 +193,7 @@ const StatsSection = () => {
           whileInView={{ scaleX: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="my-20 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"
+          className="my-20 h-px bg-gradient-to-r from-transparent via-[var(--border-glass)] to-transparent"
         />
       </div>
     </section>

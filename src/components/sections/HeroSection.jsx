@@ -39,11 +39,11 @@ const HeroSection = () => {
             <h1
               key={i}
               ref={(el) => (textLines.current[i] = el)}
-              className={`hero-title text-center font-black drop-shadow-[0_0_30px_rgba(255,255,255,0.1)] w-full leading-tight sm:leading-tight md:leading-normal lg:leading-normal
+              className={`hero-title text-center font-black drop-shadow-[0_0_30px_var(--border-glass)] w-full leading-tight sm:leading-tight md:leading-normal lg:leading-normal
                 ${
                   line === "Unforgettable"
                     ? "hero-title-unforgettable"
-                    : "text-white"
+                    : "text-[var(--text-primary)]"
                 }`}
             >
               {line}
@@ -56,7 +56,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="text-center w-full max-w-xs sm:max-w-md md:max-w-2xl mt-4 sm:mt-6 md:mt-8 text-gray-300 
+          className="text-center w-full max-w-xs sm:max-w-md md:max-w-2xl mt-4 sm:mt-6 md:mt-8 text-[var(--text-secondary)] 
             text-sm leading-relaxed
             sm:text-base sm:leading-relaxed
             md:text-lg md:leading-relaxed"
