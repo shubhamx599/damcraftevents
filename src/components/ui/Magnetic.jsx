@@ -18,17 +18,25 @@ export default function Magnetic({ children, strength = 0.35 }) {
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
       const { left, top, width, height } = el.getBoundingClientRect();
-      const centerX = left + width / 2;
-      const centerY = top + height / 2;
+      
+      // Get the current GSAP translations to compute untranslated position
+      const currentX = parseFloat(gsap.getProperty(el, "x")) || 0;
+      const currentY = parseFloat(gsap.getProperty(el, "y")) || 0;
+      
+      const leftUntranslated = left - currentX;
+      const topUntranslated = top - currentY;
+      
+      const centerX = leftUntranslated + width / 2;
+      const centerY = topUntranslated + height / 2;
       const distanceX = clientX - centerX;
       const distanceY = clientY - centerY;
 
-      // Check if cursor is directly over the element
+      // Check if cursor is directly over the untranslated element
       const isHovering =
-        clientX >= left &&
-        clientX <= left + width &&
-        clientY >= top &&
-        clientY <= top + height;
+        clientX >= leftUntranslated &&
+        clientX <= leftUntranslated + width &&
+        clientY >= topUntranslated &&
+        clientY <= topUntranslated + height;
 
       if (isHovering) {
         // Move element slightly towards cursor position
