@@ -3,11 +3,10 @@ import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CustomButton from "../../components/ui/CustomButton";
-import v1 from "../../assets/videos/v1.mp4";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const mainVideo = v1;
+const mainVideo = "https://assets.mixkit.co/videos/preview/mixkit-audience-clapping-at-a-concert-43537-large.mp4";
 const storyVideo = "https://www.pexels.com/download/video/6519561/";
 
 const StorySection = () => {

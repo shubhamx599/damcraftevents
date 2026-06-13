@@ -104,13 +104,6 @@ const StatCard = ({ stat, index }) => {
         {/* Label */}
         <p className="text-lg font-semibold text-[var(--text-primary)] mb-2">{stat.label}</p>
 
-        {/* Description */}
-        {stat.description && (
-          <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
-            {stat.description}
-          </p>
-        )}
-
         {/* Animated Border */}
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-red-500 to-blue-500 group-hover:w-3/4 transition-all duration-500 rounded-full" />
       </div>
@@ -127,25 +120,21 @@ const StatsSection = () => {
     {
       number: "400+",
       label: "Successful Events",
-      description: "Corporate conferences to brand activations",
       icon: RiCalendarEventLine,
     },
     {
       number: "50+",
       label: "Happy Clients",
-      description: "Trusted by industry leaders",
       icon: RiUserHeartLine,
     },
     {
       number: "10+",
       label: "Years Experience",
-      description: "Crafting memories since 2010",
       icon: RiAwardLine,
     },
     {
       number: "5",
       label: "Star Rating",
-      description: "Excellence in every event",
       icon: RiStarFill,
     },
   ];

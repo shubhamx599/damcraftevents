@@ -24,6 +24,7 @@ const stats = [
 
 const About = () => {
   const containerRef = useRef(null);
+  const statsRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
@@ -85,14 +86,16 @@ const About = () => {
 
               setTimeout(updateCounter, index * 300);
             });
+            // Trigger animation only once
+            observer.disconnect();
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.1 }
     );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
     }
 
     return () => observer.disconnect();
@@ -100,21 +103,21 @@ const About = () => {
 
   const teamMembers = [
     {
-      image: "https://images.unsplash.com/photo-1603415526960-f7e0328f1a49",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80",
       name: "Mukesh Kumar",
       role: "Founder & CEO",
       description: "Visionary leader with 10+ years in event management",
       expertise: ["Strategic Planning", "Client Relations", "Innovation"]
     },
     {
-      image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80",
       name: "Deepak Sharma",
       role: "Co-Founder & COO",
       description: "Operations expert ensuring flawless execution",
       expertise: ["Operations", "Logistics", "Team Management"]
     },
     {
-      image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e",
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=80",
       name: "Ashish Jain",
       role: "Co-Founder & CMO",
       description: "Creative strategist driving brand partnerships",
@@ -260,7 +263,7 @@ const About = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8">
+      <section ref={statsRef} className="relative py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
