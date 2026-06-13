@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 /**
  * Reusable wrapper that adds a smooth magnetic pull effect to its children.
  */
-export default function Magnetic({ children, range = 50, strength = 0.35 }) {
+export default function Magnetic({ children, strength = 0.35 }) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -23,16 +23,14 @@ export default function Magnetic({ children, range = 50, strength = 0.35 }) {
       const distanceX = clientX - centerX;
       const distanceY = clientY - centerY;
 
+      // Check if cursor is directly over the element
+      const isHovering =
+        clientX >= left &&
+        clientX <= left + width &&
+        clientY >= top &&
+        clientY <= top + height;
 
-
-      // Check if cursor is within range
-      const isClose =
-        clientX >= left - range &&
-        clientX <= left + width + range &&
-        clientY >= top - range &&
-        clientY <= top + height + range;
-
-      if (isClose) {
+      if (isHovering) {
         // Move element slightly towards cursor position
         xTo(distanceX * strength);
         yTo(distanceY * strength);
@@ -55,7 +53,7 @@ export default function Magnetic({ children, range = 50, strength = 0.35 }) {
       window.removeEventListener("mousemove", handleMouseMove);
       el.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, [range, strength]);
+  }, [strength]);
 
   return (
     <div ref={ref} className="inline-block">

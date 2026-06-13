@@ -113,7 +113,7 @@ const Nav = () => {
             {theme === "dark" ? <RiSunLine size={16} /> : <RiMoonLine size={16} />}
           </motion.button>
 
-          <Magnetic range={50} strength={0.25}>
+          <Magnetic strength={0.25}>
             <motion.div whileTap={{ scale: 0.95 }}>
               <Link
                 to="/contact"
@@ -127,7 +127,7 @@ const Nav = () => {
         </div>
 
         {/* Mobile Menu Button - Visible only on Mobile */}
-        <Magnetic range={30} strength={0.25}>
+        <Magnetic strength={0.25}>
           <motion.button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="md:hidden p-1.5 rounded-lg bg-[var(--border-glass)] hover:bg-[var(--border-glass)] transition-colors duration-300 text-[var(--text-primary)] border border-[var(--border-glass)] cursor-pointer"
