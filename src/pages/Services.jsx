@@ -396,7 +396,7 @@ const Services = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })}
-                className="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-black px-8 py-4 rounded-2xl font-semibold hover:shadow-2xl transition-all duration-300 flex items-center gap-3"
+                className="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-black px-8 py-4 rounded-2xl font-semibold hover:shadow-2xl transition-[background-color,color,border-color,box-shadow] duration-300 flex items-center gap-3"
               >
                 Explore Our Services
                 <RiArrowRightLine size={20} />
@@ -406,7 +406,7 @@ const Services = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={openVideoModal}
-                className="flex items-center gap-3 px-8 py-4 bg-[var(--border-glass)] border border-[var(--border-glass)] rounded-2xl text-[var(--text-primary)] font-semibold hover:bg-[var(--border-glass)]/80 transition-all duration-300 group"
+                className="flex items-center gap-3 px-8 py-4 bg-[var(--border-glass)] border border-[var(--border-glass)] rounded-2xl text-[var(--text-primary)] font-semibold hover:bg-[var(--border-glass)]/80 transition-colors duration-300 group"
               >
                 <RiPlayLargeFill size={20} className="group-hover:scale-110 transition-transform" />
                 Watch Showreel
@@ -526,7 +526,7 @@ const Services = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => navigate('/contact')}
-                      className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-2xl transition-all duration-300"
+                      className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-2xl transition-[background-color,color,border-color,box-shadow] duration-300"
                     >
                       Get Quote
                     </motion.button>
@@ -793,7 +793,7 @@ const Services = () => {
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.2 }}
                 onClick={closeVideoModal}
-                className="absolute top-4 right-4 z-10 w-12 h-12 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-all duration-300"
+                className="absolute top-4 right-4 z-10 w-12 h-12 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors duration-300"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >

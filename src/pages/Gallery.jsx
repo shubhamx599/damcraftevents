@@ -356,7 +356,7 @@ const Gallery = () => {
                   setActiveCategory(category.id);
                   setSearchQuery("");
                 }}
-                className={`flex items-center gap-2 px-4 py-3 rounded-2xl border backdrop-blur-sm transition-all ${
+                className={`flex items-center gap-2 px-4 py-3 rounded-2xl border backdrop-blur-sm transition-colors duration-300 ${
                   activeCategory === category.id
                     ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white border-transparent shadow-lg"
                     : "bg-[var(--border-glass)] border-[var(--border-glass)] text-[var(--text-secondary)] hover:bg-[var(--border-glass)]/80 hover:border-[var(--text-primary)]/20"
@@ -480,7 +480,7 @@ const Gallery = () => {
               animate={{ scale: 1 }}
               transition={{ delay: 0.2 }}
               onClick={closeLightbox}
-              className="absolute top-6 right-6 z-10 bg-white/10 backdrop-blur-md rounded-full p-3 border border-white/20 hover:bg-white/20 transition-all"
+              className="absolute top-6 right-6 z-10 bg-white/10 backdrop-blur-md rounded-full p-3 border border-white/20 hover:bg-white/20 transition-colors duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -496,7 +496,7 @@ const Gallery = () => {
                 e.stopPropagation();
                 prevItem();
               }}
-              className="absolute left-4 bg-white/10 backdrop-blur-md rounded-full p-3 border border-white/20 hover:bg-white/20 transition-all"
+              className="absolute left-4 bg-white/10 backdrop-blur-md rounded-full p-3 border border-white/20 hover:bg-white/20 transition-colors duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -511,7 +511,7 @@ const Gallery = () => {
                 e.stopPropagation();
                 nextItem();
               }}
-              className="absolute right-4 bg-white/10 backdrop-blur-md rounded-full p-3 border border-white/20 hover:bg-white/20 transition-all"
+              className="absolute right-4 bg-white/10 backdrop-blur-md rounded-full p-3 border border-white/20 hover:bg-white/20 transition-colors duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >

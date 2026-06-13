@@ -99,7 +99,7 @@ const Work = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveCategory(category.id)}
-                className={`flex items-center gap-2 px-4 py-3 rounded-2xl border backdrop-blur-sm transition-all ${
+                className={`flex items-center gap-2 px-4 py-3 rounded-2xl border backdrop-blur-sm transition-colors duration-300 ${
                   activeCategory === category.id
                     ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white border-transparent shadow-lg"
                     : "bg-[var(--border-glass)] border-[var(--border-glass)] text-[var(--text-secondary)] hover:bg-[var(--border-glass)]/80 hover:border-[var(--text-primary)]/20"

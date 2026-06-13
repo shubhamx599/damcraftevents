@@ -104,7 +104,7 @@ const Nav = () => {
           {/* Theme Toggle Button */}
           <motion.button
             onClick={toggleTheme}
-            className="p-2 rounded-full border border-[var(--border-glass)] hover:bg-[var(--border-glass)] transition-all text-[var(--text-primary)] cursor-pointer"
+            className="p-2 rounded-full border border-[var(--border-glass)] hover:bg-[var(--border-glass)] transition-colors duration-300 text-[var(--text-primary)] cursor-pointer"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             aria-label="Toggle Theme"
@@ -126,7 +126,7 @@ const Nav = () => {
         {/* Mobile Menu Button - Visible only on Mobile */}
         <motion.button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-1.5 rounded-lg bg-[var(--border-glass)] hover:bg-[var(--border-glass)] transition-all duration-300 text-[var(--text-primary)] border border-[var(--border-glass)]"
+          className="md:hidden p-1.5 rounded-lg bg-[var(--border-glass)] hover:bg-[var(--border-glass)] transition-colors duration-300 text-[var(--text-primary)] border border-[var(--border-glass)]"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >

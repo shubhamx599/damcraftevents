@@ -249,7 +249,7 @@ const Contact = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={contact.action}
-                    className={`w-full bg-gradient-to-r ${contact.gradient} text-white py-4 px-6 rounded-2xl font-semibold hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 group/btn mt-4`}
+                    className={`w-full bg-gradient-to-r ${contact.gradient} text-white py-4 px-6 rounded-2xl font-semibold hover:shadow-2xl transition-[background-color,color,border-color,box-shadow] duration-300 flex items-center justify-center gap-3 group/btn mt-4`}
                   >
                     {contact.buttonText}
                     <RiArrowRightUpLine
@@ -307,7 +307,7 @@ const Contact = () => {
                 onClick={handlePhoneClick}
                 className="bg-gradient-to-r from-green-500 to-green-600 text-white 
                w-full sm:w-auto px-8 py-4 rounded-2xl font-semibold 
-               hover:shadow-2xl hover:shadow-green-500/25 transition-all 
+               hover:shadow-2xl hover:shadow-green-500/25 transition-[background-color,color,border-color,box-shadow] 
                duration-300 flex items-center justify-center gap-4 text-base sm:text-lg"
               >
                 <RiPhoneLine size={22} />
@@ -321,9 +321,8 @@ const Contact = () => {
                 onClick={handleWhatsAppClick}
                 className="border border-[var(--border-glass)] text-[var(--text-primary)] 
                w-full sm:w-auto px-8 py-4 rounded-2xl font-semibold 
-               hover:bg-[var(--border-glass)] transition-all duration-300 
-               flex items-center justify-center gap-4 text-base sm:text-lg 
-               backdrop-blur-sm"
+               hover:bg-[var(--border-glass)] transition-colors duration-300 
+               flex items-center justify-center gap-4 text-base sm:text-lg backdrop-blur-sm"
               >
                 <RiWhatsappLine size={22} />
                 WhatsApp Instant

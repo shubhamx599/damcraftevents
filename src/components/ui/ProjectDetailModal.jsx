@@ -37,7 +37,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose }) => {
               animate={{ scale: 1 }}
               transition={{ delay: 0.2 }}
               onClick={onClose}
-              className="absolute top-4 right-4 z-10 bg-[var(--border-glass)] backdrop-blur-md rounded-full p-3 border border-[var(--border-glass)] hover:bg-[var(--border-glass)]/80 text-[var(--text-primary)] transition-all"
+              className="absolute top-4 right-4 z-10 bg-[var(--border-glass)] backdrop-blur-md rounded-full p-3 border border-[var(--border-glass)] hover:bg-[var(--border-glass)]/80 text-[var(--text-primary)] transition-colors duration-300"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >

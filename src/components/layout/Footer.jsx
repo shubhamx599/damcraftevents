@@ -109,7 +109,7 @@ const Footer = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => navigate("/contact")}
-                    className="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-black px-8 py-4 rounded-2xl font-semibold hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3"
+                    className="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-black px-8 py-4 rounded-2xl font-semibold hover:shadow-2xl transition-[background-color,color,border-color,box-shadow] duration-300 flex items-center justify-center gap-3"
                   >
                     Start Your Project
                     <RiArrowRightLine size={20} />
@@ -119,7 +119,7 @@ const Footer = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => navigate("/work")}
-                    className="border border-white/30 text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white hover:text-black transition-all duration-300"
+                    className="border border-white/30 text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white hover:text-black transition-colors duration-300"
                   >
                     View Our Work
                   </motion.button>
@@ -227,7 +227,7 @@ const Footer = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={mailTo}
-                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 transition-all"
+                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 transition-colors duration-300"
                     >
                       <RiMailLine className="text-sm" />
                       <span className="text-sm">Email</span>
@@ -236,7 +236,7 @@ const Footer = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={callTo}
-                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 transition-all"
+                      className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-white/10 border border-white/20 hover:bg-white/20 transition-colors duration-300"
                     >
                       <RiPhoneLine className="text-sm" />
                       <span className="text-sm">Call</span>
@@ -263,7 +263,7 @@ const Footer = () => {
                   <motion.button
                     whileHover={{ scale: 1.02, x: 5 }}
                     onClick={mailTo}
-                    className="block text-left w-full p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group"
+                    className="block text-left w-full p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-colors duration-300 group"
                   >
                     <div className="text-xs text-white/60 mb-1">Email</div>
                     <div className="text-white/80 group-hover:text-white font-medium">
@@ -274,7 +274,7 @@ const Footer = () => {
                   <motion.button
                     whileHover={{ scale: 1.02, x: 5 }}
                     onClick={callTo}
-                    className="block text-left w-full p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all group"
+                    className="block text-left w-full p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-colors duration-300 group"
                   >
                     <div className="text-xs text-white/60 mb-1">Phone</div>
                     <div className="text-white/80 group-hover:text-white font-medium">
@@ -375,7 +375,7 @@ const Footer = () => {
                   animate={isVisible ? { scale: [1, 1.1, 1] } : { scale: 0 }}
                   transition={{ duration: 0.6 }}
                   onClick={scrollToTop}
-                  className="p-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all shadow-lg hover:shadow-xl"
+                  className="p-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-[background-color,color,border-color,box-shadow] duration-300 shadow-lg hover:shadow-xl"
                   aria-label="back to top"
                 >
                   <RiArrowUpLine className="text-white" />

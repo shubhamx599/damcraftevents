@@ -45,13 +45,13 @@ const Routing = () => {
                 <div className="flex gap-4 justify-center">
                   <a 
                     href="/" 
-                    className="bg-[var(--text-primary)] text-[var(--bg-dark)] px-6 py-3 rounded-full hover:opacity-90 transition-all inline-block font-semibold"
+                    className="bg-[var(--text-primary)] text-[var(--bg-dark)] px-6 py-3 rounded-full hover:opacity-90 transition-colors duration-300 inline-block font-semibold"
                   >
                     Go Home
                   </a>
                   <button 
                     onClick={() => window.history.back()}
-                    className="border border-[var(--border-glass)] text-[var(--text-primary)] px-6 py-3 rounded-full hover:bg-[var(--border-glass)] transition-all font-semibold"
+                    className="border border-[var(--border-glass)] text-[var(--text-primary)] px-6 py-3 rounded-full hover:bg-[var(--border-glass)] transition-colors duration-300 font-semibold"
                   >
                     Go Back
                   </button>
