@@ -239,7 +239,7 @@ const ServiceCard = React.memo(function ServiceCard({
               e.stopPropagation();
               toggle();
             }}
-            className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm p-2 rounded-full border border-white/10"
+            className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm p-2 rounded-full border border-white/10 text-white"
           >
             {isPlaying ? <RiPauseFill size={18} /> : <RiPlayFill size={18} />}
           </button>
