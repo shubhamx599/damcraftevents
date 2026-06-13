@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { RiMenuLine, RiCloseLine, RiArrowRightUpLine, RiSunLine, RiMoonLine } from "@remixicon/react";
+import Magnetic from "../ui/Magnetic";
 
 const LINKS = [
   { label: "Home", path: "/" },
@@ -102,50 +103,56 @@ const Nav = () => {
         {/* Desktop Controls - CTA & Theme Toggle */}
         <div className="hidden md:flex items-center gap-4">
           {/* Theme Toggle Button */}
-          <motion.button
-            onClick={toggleTheme}
-            className="p-2 rounded-full border border-[var(--border-glass)] hover:bg-[var(--border-glass)] transition-colors duration-300 text-[var(--text-primary)] cursor-pointer"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            aria-label="Toggle Theme"
-          >
-            {theme === "dark" ? <RiSunLine size={16} /> : <RiMoonLine size={16} />}
-          </motion.button>
-
-          <motion.div whileTap={{ scale: 0.95 }}>
-            <Link
-              to="/contact"
-              className="btn-gradient font-[Outfit] text-xs font-semibold inline-flex items-center gap-1 px-4 py-2"
+          <Magnetic range={40} strength={0.3}>
+            <motion.button
+              onClick={toggleTheme}
+              className="p-2 rounded-full border border-[var(--border-glass)] hover:bg-[var(--border-glass)] transition-colors duration-300 text-[var(--text-primary)] cursor-pointer"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              aria-label="Toggle Theme"
             >
-              Contact Us
-              <RiArrowRightUpLine size={14} />
-            </Link>
-          </motion.div>
+              {theme === "dark" ? <RiSunLine size={16} /> : <RiMoonLine size={16} />}
+            </motion.button>
+          </Magnetic>
+
+          <Magnetic range={50} strength={0.25}>
+            <motion.div whileTap={{ scale: 0.95 }}>
+              <Link
+                to="/contact"
+                className="btn-gradient font-[Outfit] text-xs font-semibold inline-flex items-center gap-1 px-4 py-2"
+              >
+                Contact Us
+                <RiArrowRightUpLine size={14} />
+              </Link>
+            </motion.div>
+          </Magnetic>
         </div>
 
         {/* Mobile Menu Button - Visible only on Mobile */}
-        <motion.button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-1.5 rounded-lg bg-[var(--border-glass)] hover:bg-[var(--border-glass)] transition-colors duration-300 text-[var(--text-primary)] border border-[var(--border-glass)]"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={mobileOpen ? "close" : "menu"}
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              {mobileOpen ? (
-                <RiCloseLine size={16} />
-              ) : (
-                <RiMenuLine size={16} />
-              )}
-            </motion.div>
-          </AnimatePresence>
-        </motion.button>
+        <Magnetic range={30} strength={0.25}>
+          <motion.button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden p-1.5 rounded-lg bg-[var(--border-glass)] hover:bg-[var(--border-glass)] transition-colors duration-300 text-[var(--text-primary)] border border-[var(--border-glass)] cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={mobileOpen ? "close" : "menu"}
+                initial={{ rotate: -90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: 90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                {mobileOpen ? (
+                  <RiCloseLine size={16} />
+                ) : (
+                  <RiMenuLine size={16} />
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </motion.button>
+        </Magnetic>
       </div>
 
       {/* Mobile Menu - Only for Mobile */}

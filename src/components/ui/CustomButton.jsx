@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import Magnetic from "./Magnetic";
 
 const CustomButton = ({
   label = "Read More",
@@ -84,24 +85,26 @@ const CustomButton = ({
   `;
 
   return (
-    <button
-      ref={buttonRef}
-      type="button"
-      disabled={disabled || loading}
-      aria-label={loading ? "Loading..." : label}
-      className={buttonClasses}
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
-    >
-      {loading ? (
-        <div className="flex items-center gap-2">
-          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current"></div>
-          <span>Loading...</span>
-        </div>
-      ) : (
-        label
-      )}
-    </button>
+    <Magnetic>
+      <button
+        ref={buttonRef}
+        type="button"
+        disabled={disabled || loading}
+        aria-label={loading ? "Loading..." : label}
+        className={buttonClasses}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+      >
+        {loading ? (
+          <div className="flex items-center gap-2">
+            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current"></div>
+            <span>Loading...</span>
+          </div>
+        ) : (
+          label
+        )}
+      </button>
+    </Magnetic>
   );
 };
 

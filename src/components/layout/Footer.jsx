@@ -16,6 +16,7 @@ import {
   RiTimerFlashLine,
   RiTeamLine,
 } from "@remixicon/react";
+import Magnetic from "../ui/Magnetic";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -319,23 +320,24 @@ const Footer = () => {
                         href: "https://twitter.com",
                       },
                     ].map((social, index) => (
-                      <motion.a
-                        key={social.href}
-                        href={social.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        initial={{ opacity: 0, scale: 0 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: index * 0.1 }}
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-r ${social.color} shadow-lg hover:shadow-xl transition-all`}
-                        aria-label={social.Icon.name
-                          .replace("Ri", "")
-                          .replace("Line", "")}
-                      >
-                        <social.Icon className="text-white text-lg" />
-                      </motion.a>
+                      <Magnetic key={social.href} range={30} strength={0.3}>
+                        <motion.a
+                          href={social.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          initial={{ opacity: 0, scale: 0 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.4, delay: index * 0.1 }}
+                          whileHover={{ scale: 1.1, y: -2 }}
+                          className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-r ${social.color} shadow-lg hover:shadow-xl transition-all`}
+                          aria-label={social.Icon.name
+                            .replace("Ri", "")
+                            .replace("Line", "")}
+                        >
+                          <social.Icon className="text-white text-lg" />
+                        </motion.a>
+                      </Magnetic>
                     ))}
                   </div>
                 </div>
@@ -371,15 +373,17 @@ const Footer = () => {
                   Terms of Service
                 </Link>
 
-                <motion.button
-                  animate={isVisible ? { scale: [1, 1.1, 1] } : { scale: 0 }}
-                  transition={{ duration: 0.6 }}
-                  onClick={scrollToTop}
-                  className="p-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-[background-color,color,border-color,box-shadow] duration-300 shadow-lg hover:shadow-xl"
-                  aria-label="back to top"
-                >
-                  <RiArrowUpLine className="text-white" />
-                </motion.button>
+                <Magnetic range={40} strength={0.3}>
+                  <motion.button
+                    animate={isVisible ? { scale: [1, 1.1, 1] } : { scale: 0 }}
+                    transition={{ duration: 0.6 }}
+                    onClick={scrollToTop}
+                    className="p-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-[background-color,color,border-color,box-shadow] duration-300 shadow-lg hover:shadow-xl shadow-lg hover:shadow-xl"
+                    aria-label="back to top"
+                  >
+                    <RiArrowUpLine className="text-white" />
+                  </motion.button>
+                </Magnetic>
               </div>
             </div>
           </div>
