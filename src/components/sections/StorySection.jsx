@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import CustomButton from "../../components/ui/CustomButton";
 
-const mainVideo = "https://cdn.pixabay.com/video/2016/09/09/5026-182666667_tiny.mp4";
+const mainVideo = "https://cdn.pixabay.com/video/2020/06/12/41823-431406517_large.mp4";
 const storyVideo = "https://cdn.pixabay.com/video/2020/03/31/34685-403408160_tiny.mp4";
 
 const StorySection = () => {
