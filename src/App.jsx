@@ -94,17 +94,17 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="min-h-screen flex items-center justify-center bg-[var(--bg-dark)]">
           <div className="text-center p-8">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">
+            <h1 className="text-2xl font-bold text-[var(--text-primary)] mb-4">
               Something went wrong
             </h1>
-            <p className="text-gray-600 mb-6">
+            <p className="text-[var(--text-secondary)] mb-6">
               We're sorry for the inconvenience. Please refresh the page.
             </p>
             <button
               onClick={() => window.location.reload()}
-              className="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-colors"
+              className="bg-[var(--text-primary)] text-[var(--bg-dark)] px-6 py-3 rounded-full hover:opacity-90 transition-all font-semibold"
             >
               Refresh Page
             </button>

@@ -64,7 +64,6 @@ const CustomButton = ({
   const buttonClasses = `
     relative
     overflow-hidden
-    bg-transparent
     border-2
     rounded-full
     flex

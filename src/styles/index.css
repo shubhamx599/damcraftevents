@@ -72,7 +72,7 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: black;
+  background: var(--bg-darker);
 }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #ff6b6b, #8b5cf6);
@@ -97,7 +97,7 @@ h6 {
   transition: all 0.4s ease;
 }
 .glass-card:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--border-glass);
   transform: translateY(-5px);
 }
 
