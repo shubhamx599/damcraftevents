@@ -22,21 +22,6 @@ const App = () => {
   useEffect(() => {
     document.body.classList.add("loaded");
 
-    const preloadCriticalImages = () => {
-      const criticalImages = [
-        "/src/assets/1.mp4",
-        "/src/assets/corporate.jpg",
-        "/src/assets/deepak.jpg",
-      ];
-
-      criticalImages.forEach((src) => {
-        const img = new Image();
-        img.src = src;
-      });
-    };
-
-    preloadCriticalImages();
-
     return () => {
       document.body.classList.remove("loaded");
     };

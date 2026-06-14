@@ -83,62 +83,82 @@ const CustomCursor = () => {
       });
     };
 
-    // Enhanced hover effects
-    const handleElementEnter = (e) => {
-      isInteractiveRef.current = true;
-      const size = e.target.getAttribute("data-cursor-size") || 40;
-      const color = e.target.getAttribute("data-cursor-color") || "#fff";
-      const text = e.target.getAttribute("data-cursor-text");
+    // Enhanced hover effects using event delegation
+    const handleMouseOver = (e) => {
+      const interactiveEl = e.target.closest(
+        "a, button, [data-cursor-size], video, input, textarea, .interactive"
+      );
+      if (interactiveEl) {
+        isInteractiveRef.current = true;
+        const size = interactiveEl.getAttribute("data-cursor-size") || 40;
+        const color = interactiveEl.getAttribute("data-cursor-color") || "#fff";
+        const text = interactiveEl.getAttribute("data-cursor-text");
 
-      gsap.to(circle, {
-        width: `${size}px`,
-        height: `${size}px`,
-        backgroundColor: color,
-        duration: 0.3,
-        ease: "power2.out",
-      });
+        gsap.to(circle, {
+          width: `${size}px`,
+          height: `${size}px`,
+          backgroundColor: color,
+          duration: 0.3,
+          ease: "power2.out",
+        });
 
-      // Add text for specific elements
-      if (text) {
-        circle.textContent = text;
-        circle.style.display = "flex";
-        circle.style.alignItems = "center";
-        circle.style.justifyContent = "center";
-        circle.style.fontSize = "10px";
-        circle.style.fontWeight = "bold";
-        circle.style.color = color === "#fff" ? "#000" : "#fff";
-        circle.style.textAlign = "center";
-        circle.style.lineHeight = "1";
+        // Add text for specific elements
+        if (text) {
+          circle.textContent = text;
+          circle.style.display = "flex";
+          circle.style.alignItems = "center";
+          circle.style.justifyContent = "center";
+          circle.style.fontSize = "10px";
+          circle.style.fontWeight = "bold";
+          circle.style.color = color === "#fff" ? "#000" : "#fff";
+          circle.style.textAlign = "center";
+          circle.style.lineHeight = "1";
+        } else {
+          circle.textContent = "";
+          circle.style.display = "block";
+          circle.style.fontSize = "0";
+          circle.style.color = "#fff";
+        }
       }
     };
 
-    const handleElementLeave = () => {
-      isInteractiveRef.current = false;
+    const handleMouseOut = (e) => {
+      const interactiveEl = e.target.closest(
+        "a, button, [data-cursor-size], video, input, textarea, .interactive"
+      );
+      if (interactiveEl) {
+        // Prevent reset if mouse is moving to a child of the same interactive element
+        const relatedTarget = e.relatedTarget;
+        if (
+          relatedTarget &&
+          relatedTarget.closest(
+            "a, button, [data-cursor-size], video, input, textarea, .interactive"
+          ) === interactiveEl
+        ) {
+          return;
+        }
 
-      gsap.to(circle, {
-        width: "20px",
-        height: "20px",
-        backgroundColor: "#000",
-        duration: 0.3,
-        ease: "power2.out",
-      });
+        isInteractiveRef.current = false;
 
-      // Remove text
-      circle.textContent = "";
-      circle.style.display = "block";
-      circle.style.fontSize = "0";
-      circle.style.color = "#fff";
+        gsap.to(circle, {
+          width: "20px",
+          height: "20px",
+          backgroundColor: "#000",
+          duration: 0.3,
+          ease: "power2.out",
+        });
+
+        // Remove text
+        circle.textContent = "";
+        circle.style.display = "block";
+        circle.style.fontSize = "0";
+        circle.style.color = "#fff";
+      }
     };
 
     // Add event listeners
-    const interactiveEls = document.querySelectorAll(
-      "a, button, [data-cursor-size], video, input, textarea, .interactive"
-    );
-
-    interactiveEls.forEach((el) => {
-      el.addEventListener("mouseenter", handleElementEnter);
-      el.addEventListener("mouseleave", handleElementLeave);
-    });
+    document.addEventListener("mouseover", handleMouseOver);
+    document.addEventListener("mouseout", handleMouseOut);
 
     // Page boundary events
     document.documentElement.addEventListener("mouseenter", handleMouseEnter);
@@ -161,11 +181,8 @@ const CustomCursor = () => {
         handleMouseLeave
       );
       gsap.ticker.remove(tick);
-
-      interactiveEls.forEach((el) => {
-        el.removeEventListener("mouseenter", handleElementEnter);
-        el.removeEventListener("mouseleave", handleElementLeave);
-      });
+      document.removeEventListener("mouseover", handleMouseOver);
+      document.removeEventListener("mouseout", handleMouseOut);
     };
   }, []);
 
