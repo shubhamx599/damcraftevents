@@ -1,5 +1,7 @@
 # Dam Craft Events & Activations 🎪⚡
 
+Developed by **[shubhamx599](https://github.com/shubhamx599)**.
+
 A premium, interactive, and immersive portfolio website for **DAM CRAFT Events & Activations**, an award-winning event management agency based in Delhi. Designed with a dark-theme-first aesthetic, fluid micro-interactions, and premium inertial scrolling to showcase brand activations, corporate conferences, and creative exhibitions.
 
 ---
