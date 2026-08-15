@@ -1,17 +1,21 @@
-import React, { useRef } from "react";
+import React, { useRef, forwardRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Magnetic from "./Magnetic";
 
-const CustomButton = ({
-  label = "Read More",
+const CustomButton = forwardRef(({
+  children,
+  label, // kept for backwards compatibility during refactoring
   to,
   variant = "primary",
   size = "medium",
   loading = false,
   disabled = false,
   onClick,
-}) => {
-  const buttonRef = useRef(null);
+  className = "",
+  ...props
+}, ref) => {
+  const internalRef = useRef(null);
+  const buttonRef = ref || internalRef;
   const navigate = useNavigate();
 
   const sizeClasses = {
@@ -31,18 +35,20 @@ const CustomButton = ({
 
     // Ripple logic
     const button = buttonRef.current;
-    const circle = document.createElement("span");
-    const diameter = Math.max(button.clientWidth, button.clientHeight);
-    const radius = diameter / 2;
+    if (button) {
+      const circle = document.createElement("span");
+      const diameter = Math.max(button.clientWidth, button.clientHeight);
+      const radius = diameter / 2;
 
-    circle.style.width = circle.style.height = `${diameter}px`;
-    circle.style.left = `${e.clientX - button.offsetLeft - radius}px`;
-    circle.style.top = `${e.clientY - button.offsetTop - radius}px`;
-    circle.classList.add("ripple");
+      circle.style.width = circle.style.height = `${diameter}px`;
+      circle.style.left = `${e.clientX - button.offsetLeft - radius}px`;
+      circle.style.top = `${e.clientY - button.offsetTop - radius}px`;
+      circle.classList.add("ripple");
 
-    const ripple = button.getElementsByClassName("ripple")[0];
-    if (ripple) ripple.remove();
-    button.appendChild(circle);
+      const ripple = button.getElementsByClassName("ripple")[0];
+      if (ripple) ripple.remove();
+      button.appendChild(circle);
+    }
 
     // Navigation or custom action
     if (onClick) onClick();
@@ -82,7 +88,8 @@ const CustomButton = ({
         ? "cursor-not-allowed opacity-60"
         : "cursor-pointer hover:scale-[1.05] active:scale-95"
     }
-  `;
+    ${className}
+  `.trim();
 
   return (
     <Magnetic>
@@ -90,10 +97,11 @@ const CustomButton = ({
         ref={buttonRef}
         type="button"
         disabled={disabled || loading}
-        aria-label={loading ? "Loading..." : label}
+        aria-label={loading ? "Loading..." : (typeof children === 'string' ? children : label)}
         className={buttonClasses}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
+        {...props}
       >
         {loading ? (
           <div className="flex items-center gap-2">
@@ -101,11 +109,13 @@ const CustomButton = ({
             <span>Loading...</span>
           </div>
         ) : (
-          label
+          children || label
         )}
       </button>
     </Magnetic>
   );
-};
+});
+
+CustomButton.displayName = "CustomButton";
 
 export default CustomButton;

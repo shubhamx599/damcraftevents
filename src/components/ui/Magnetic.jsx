@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 /**
  * Reusable wrapper that adds a smooth magnetic pull effect to its children.
  */
-export default function Magnetic({ children, strength = 0.35 }) {
+export default function Magnetic({ children, strength = 0.35, className = "", ...props }) {
   const ref = useRef(null);
   const innerRef = useRef(null);
 
@@ -70,7 +70,7 @@ export default function Magnetic({ children, strength = 0.35 }) {
   }, [strength]);
 
   return (
-    <div ref={ref} className="inline-block">
+    <div ref={ref} className={`inline-block ${className}`} {...props}>
       <div ref={innerRef} className="w-full h-full">
         {children}
       </div>
